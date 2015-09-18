@@ -30,7 +30,7 @@ function createdatabase() {
 	//	},2000);
 		
 	}, function(tx, error) {
-		console.log(JSON.stringify("no1:"error));
+		console.log(JSON.stringify("no1:"+error));
 
 	},function (tx,error){
 		console.log("no2:"+JSON.stringify(error));
