@@ -14,12 +14,13 @@ function changetabs() {
 }
 
 function loadtabsmsg() {
-	console.log("hhhhh" + currentposition);
+	//console.log("hhhhh" + currentposition);
 	switch (currentposition) {
 		case '0':
 			break;
 		case '1':
-		console.log('分类');
+		//console.log('分类');
+		   
 			loadcategory();
 			break;
 		case '2':
@@ -37,8 +38,8 @@ function loadcategory() {
 	}, "json");
 }
 
-function putResultTodb(result) {
-	console.log("put result to db");
+function putResultTodb(results) {
+	//console.log("put result to db");
 	//create table tm_category ( _id integer primary key AUTOINCREMENT,  _cpsl varchar(5),  _cup varchar(5), _icon varchar(20), _lbname varchar(20))';
 	var db = openDatabase('teambuy', '1.0', 'Test DB', 5 * 1024 * 1024);
 	var deletesql = 'DELETE FROM tm_category';
@@ -46,16 +47,18 @@ function putResultTodb(result) {
 	db.transaction(function(tx) {
 		tx.executeSql(deletesql, [], function(tx, result) {
 			console.log("delete success!"+JSON.stringify(result));
+			for(var i=0;i<results.data.length;i++){
 			tx.executeSql(insert_sql, [results.data[i].lbid,results.data[i].cpsl,results.data[i].cup,results.data[i].icon,results.data[i].lbname,results.data[i].spsl], function(tx, result) {
                    console.log("ycy"+JSON.stringify(result));
 				});
-
+              }
+			
 		},function(tx,result){
 			console.log("shanchu:"+JSON.stringify(result));
 		})
 
-
 	});
+	console.log("前后")；
 
 }
-//数据库部分
+

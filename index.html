@@ -8,7 +8,7 @@
 		<script src="js/mui.min.js"></script>
 		<link href="css/mui.min.css" rel="stylesheet" />
 		<link href="css/index.css" rel="stylesheet" />
-		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/index.js" ></script>
 		<script type="text/javascript" src="js/mainpage.js"></script>
 		<link rel="stylesheet" href="css/mainpage.css" />
 		<script type="text/javascript" src="js/jquery.js"></script>
@@ -30,6 +30,8 @@
 				var showguide = plus.storage.getItem("firstin");
 				if (!showguide) {
 					console.log('diyici');
+					
+					
 					plus.navigator.closeSplashscreen();
 					plus.navigator.setFullscreen(false);
 					plus.storage.setItem("firstin", "true");
@@ -45,45 +47,7 @@
 					});
 				}
 			});
-			 //			function getdbversion() {
-			 //				return "13";
-			 //}
-			 //			function createdatabase() {
-			 //				var db = openDatabase('teambuy', '1.0', 'Test DB', 5 * 1024 * 1024);
-			 //				var sql1 = "CREATE TABLE IF NOT EXISTS PRODUCT_LIST(_id integer primary key AUTOINCREMENT,_bests varchar(10),_buynums varchar(10),_buytimes varchar(10),_collects varchar(10),_content varchar(40),_cpdl varchar(10),_cpxl varchar(10),_dfen varchar(10),_dj0 varchar(10),_dj1 varchar(10),_edate varchar(10),_jldw varchar(10),_kcsl varchar(10),_mid varchar(10),_ok varchar(10),_picurl varchar(40),_rebate varchar(10),_sdate varchar(10),_sells varchar(10),_shopid varchar(10),_tbmoney varchar(10),_title varchar(40),_tmdj varchar(10),_tmlb varchar(10),_tmurl varchar(10),_tmword varchar(10),_xh varchar(10),_zkl varchar(10))";
-			 //				var address_sql = "CREATE TABLE IF NOT EXISTS ADDRESS_MSG(_id integer primary key AUTOINCREMENT,_address varchar(50),_carea  varchar(5), _city varchar(10), _isdef varchar(3),_province varchar(5),_sendid varchar(5),_tel varchar(20),_truename varchaar(10),_username varchar(15),_zipcode varchar(10))";
-			 //				var provice_sql = "CREATE TABLE t_province (id integer primary key AUTOINCREMENT,proname varchar(20) ,proremark varchar(20) )";
-			 //				var city_sql = "CREATE TABLE t_city ( id integer primary key AUTOINCREMENT,  cityname varchar(30),  proid int(5) , citycode varchar(20) )";
-			 //				var zone_sql = "CREATE TABLE t_zone (   id integer primary key AUTOINCREMENT,  zonename varchar(30),  cityid int(5),  zt tinyint(1) ,  username varchar(20) ,  dateandtime, truename varchar(20),  mobile varchar(20) )"
-			 //					//var tm_category_sql='create table tm_category( _id integer primary key AUTOINCREMENT,  _cpsl varchar(5),  _cup varchar(5), _icon varchar(20), _lbname varchar(20),_spsl varchar(20))';
-			 //				var tm_category_sql = "CREATE TABLE IF NOT EXISTS tm_category( _id integer primary key AUTOINCREMENT,  _cpsl varchar(5),  _cup varchar(5), _icon varchar(20), _lbname varchar(20),_spsl varchar(20))";
-			 //				db.transaction(function(tx) {
-			 //					tx.executeSql(tm_category_sql);
-			 //					tx.executeSql(sql1);
-			 //					tx.executeSql(address_sql);
-			 //					tx.executeSql(provice_sql);
-			 //					tx.executeSql(city_sql);
-			 //					tx.executeSql(zone_sql);
-			 //					handleFiles();
-			 //					//insertzonemsg();
-			 //					insertprovicemsg();
-			 //					insertcitymsg();
-			 //					//setTimeout(function(){
-			 //					//	},2000);
-			 //				}, function(tx, error) {
-			 //					console.log(JSON.stringify("no1:"
-			 //						error));
-			 //				}, function(tx, error) {
-			 //					console.log("no2:" + JSON.stringify(error));
-			 //				});
-			 //				console.log("数据库表创建成功");
-			 //			}
-			 //		        var dbversion = getdbversion();
-			 //				var beforeversion = plus.storage.getItem("dbversion");
-			 //				if (dbversion != beforeversion) {
-			 //					createdatabase();
-			 //					plus.storage.setItem("dbversion", dbversion);
-			 //				}	});
+			
 		</script>
 	</head>
 
