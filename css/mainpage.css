@@ -1,0 +1,246 @@
+.body-bg{
+	background-image:url("img/near_background.png");
+	background-size: 100%;
+}
+.index-head-style {
+	width: 100%;
+	height: 44px;
+	background-color: #F5F5F5;
+	position: relative;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -webkit-flex;
+	-moz-box-orient: horizontal;
+	-webkit-box-orient: horizontal;
+}
+.left-bar {
+	-moz-box-orient: horizontal;
+	-webkit-box-orient: horizontal;
+	height: 100%;
+	width: 15%;
+	margin-left: 0.75em;
+	display: -webkit-box;
+	/* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+	
+	display: -moz-box;
+	/* Firefox 17- */
+	
+	display: -webkit-flex;
+	/* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+	
+	display: -moz-flex;
+	/* Firefox 18+ */
+	
+	display: -ms-flexbox;
+	/* IE 10 */
+	
+	display: flex;
+	-webkit-box-orient: horizontal;
+	position: relative;
+	background-size: 100%;
+}
+.city-name {
+	-webkit-box-orient: horizontal;
+	-webkit-box-flex: 2;
+	font: "微软雅黑";
+	color: #E60014;
+	text-align: center;
+	font-size: 0.85em;
+	height: 100%;
+	padding-top: 13px;
+}
+.city-name-img {
+	position: relative;
+	-webkit-box-orient: horizontal;
+	-webkit-box-flex: 2;
+	-moz-box-flex: 1;
+	float: left;
+	display: inline;
+	background-image: url(img/local_icon.png);
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 100%;
+}
+.center-title{
+	-moz-box-orient: horizontal;
+	-webkit-box-orient: horizontal;
+	position: absolute;
+	text-align: center;
+	color: #E60014;
+	font-size: 16px;
+	width: 60%;
+	height: 100%;
+	margin-top: 13px;
+}
+.lun-bo-tu{
+	width: 100%;
+	height: 130px;
+	
+	position: relative;
+	font-size: 0;
+	
+}
+.middle-adv{
+	width: 100%;
+	height: 6.25em;
+	 background-color: #fff;
+	
+	
+}
+.middle-adv-item-inner{
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+.middle-adv-item-img{
+	width: 60%;
+	height: 3.75em;
+	display: block;
+	padding-left: 0.9375em;
+    padding-right: 0.9375em;   
+}
+.middle-adv-item-text{
+	text-align: center;
+	font-size: 0.875em;
+}
+.buttom-adv{
+	margin-top: 10px;
+	width: 100%;
+	height: 194px;
+	display: -webkit-box;
+	display: -moz-box;
+	-moz-box-orient: horizontal;
+	-webkit-box-orient: horizontal;
+}
+.buttom-adv-left{
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	margin-right: 1px;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+.buttom-adv-right{
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	display: -webkit-box;
+	display: -moz-box;
+	-moz-box-orient: vertical;
+   -webkit-box-orient: vertical;	
+}
+.buttom-adv-right-top{
+	width: 100%;
+	background-color: #fff;
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	margin-bottom: 1px;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	margin-right: 1px;
+	
+	
+}
+.buttom-adv-right-buttom{
+	width: 100%;
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	display: -webkit-box;
+	display: -moz-box;
+	-moz-box-orient: horizontal;
+    -webkit-box-orient: horizontal;
+	/*background-size: 100%;
+	background-repeat: no-repeat;*/
+}
+.buttom-adv-right-buttom-inner{
+	
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	margin-right: 1px;
+	 height: initial;
+	 background-color: #fff;
+	 background-size: 100%;
+	background-repeat: no-repeat;
+}
+.lun-bo-tu-img{
+	width: 100%;
+	height: 100%;
+	//background-image: url("http://appimg.teambuy.com.cn/upload/2015/08/14/www_165029_MxjFPgNk.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	display: inline-block;
+	vertical-align: top;
+}
+.special-title{
+	width: 100%;
+	height: 30px;
+	background: #D74B28;
+	font-size: 15px;
+	color: white;
+	margin-top: 10px;
+	line-height: 30px;
+	padding-left: 15px;
+}
+.table-product-list{
+	width: 100%;
+	height: 220px;
+	height: auto;
+	border-collapse:   separate;  
+	border-spacing:   5px;   
+	table-layout:fixed;
+
+	
+}
+.td-product-item{
+	height: 260px;
+	background-color: #fff;
+	border: 1px solid;
+	border-color: #eaeaea;
+	position: relative;
+}
+.td-product-item-img{
+	width: 100%;
+	height: 186px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	
+}
+.td-product-item-title{
+	padding-left: 5px;
+	padding-right: 5px;
+	height: 37px;
+	font-size: 13px;
+	line-height: 15px;
+	overflow: hidden;
+	
+}
+.td-product-item-price{
+	position: relative;
+	width: 100%;
+	height: auto;
+	margin-top: 5px;
+}
+.td-product-item-nowprice{
+	float: left;
+	margin-left: 5px;
+	color: #eb5f62;
+}
+.td-product-item-beforprice{
+	float: left;
+	margin-left: 10px;
+	font-size: 12px;
+	text-decoration: line-through;
+	margin-top: 4px;
+}
+.testcss{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: auto;
+	z-index: 999;
+}
+.testcss2{
+	z-index: 999;
+}
+

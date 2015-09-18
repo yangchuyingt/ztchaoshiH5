@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/priductDetial.js" ></script>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/productDetial.css" rel="stylesheet" />
+		<script type="text/javascript" src="../../js/sqlOpeate.js" ></script>
+		<script type="text/javascript" charset="utf-8">
+		
+		</script>
+	</head>
+
+	<body>
+		<div class="bottom-buy">
+			<div class="buy-at-once">
+				<div class="  buy-at-once-left-img"></div>
+				<div class="buy-at-once-left-text">立刻购买</div>
+			</div>
+			<div class="add-to-factory">
+				<div class="add-to-factory-img"></div>
+				<div class="buy-at-once-left-text">加入购物车</div>
+			</div>
+			<div class="shopcart-img"> </div>
+		</div>
+		<script>
+			var tmid;
+			//console.log("yyy");
+			mui.plusReady(function() {
+				var self = plus.webview.currentWebview();
+				tmid = self.tmid;
+				//console.log(tmid);
+				mui.init({
+					subpages: [{
+						url: 'productDatial-sub.html', //子页面HTML地址，支持本地地址和网络地址
+						id: 'productDatial-sub', //子页面标志
+						styles: {
+							top: '0px',
+							bottom: '50px',
+						},
+						extras: {
+							"tmid": tmid,
+						}
+					}]
+				});
+			});
+			document.querySelector('.buy-at-once').addEventListener('tap', function() {
+				gotoorderpostpage(tmid);
+				//getproductmsg();
+				
+			});
+			document.querySelector('.add-to-factory').addEventListener('tap', function() {
+				console.log("加入购物车：" + tmid);
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,111 @@
+.header{
+	width: 100%;
+	height: 44px;
+	background-color: #F5F5F5;
+	position:  relative;
+}
+.return_img{
+	width: 44px;
+	height: 44px;
+	background-image: url(img/header_back.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	left: 5px;
+}
+.header-center-title{
+	width: auto;
+	height: 44px;
+	line-height: 44px;
+	color: #D52722;
+	position: absolute;
+	left: 40%;
+	top: 0px;
+}
+.order-msg{
+	width: 100%;
+	height: auto;
+	text-align: center;
+}
+.all-price-text{
+	width: 100%;
+	height: 20px;
+    font-size: 15px;
+    text-align: center;
+}
+.color2{
+	color: #9b9b9b;
+}
+.color3{
+	color: #d52722;
+}
+.pay-way-text{
+	width: 100%;
+	height: 44px;
+	padding-left: 10px;
+	background-color: #fff;
+	line-height: 44px;
+}
+.near-background{
+	background-image: url(img/near_background.png);
+	background-size: 100%;
+}
+.pay-by-zhifubao{
+	width: 100%;
+	height: 80px;
+	background-color: #fff;
+	margin-top: 1px;
+	padding: 10px;
+}
+.pay-img{
+	width: 40px;
+	height: 40px;
+	/*background-image: url(img/icon_zhifubao.png);*/
+	background-repeat: no-repeat;
+	background-size: 100%;
+	float: left;
+	margin-top: 9px;
+}
+.zhifubao-img{
+	background-image: url(img/icon_zhifubao.png);
+}
+.yinlian-img{
+	background-image:url(img/icon_yinlian.png)
+}
+.weixin-img{
+	background-image: url(img/icon_weixin.png);
+}
+.pay-way-text{
+	width: auto;
+	height: auto;
+}
+
+.pay-way-is{
+	width: auto;
+	height: 100%;
+	float: left;
+	margin-left: 15px;
+	margin-top: 8px;
+}
+.pay-way-select{
+	width: 50px;
+	height: 100%;
+	line-height: 60px;
+	float: right;
+}
+.buttom-pay{
+	width: 100%;
+	height: 45px;
+	background-color: #fff;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	bottom: 10px;
+	background-image: url(img/buyatonce_press.png);
+	background-size: 40%;
+	background-repeat: no-repeat;
+	background-position: center;
+	
+	text-align: center;
+	line-height: 45px;
+	color: #fff;
+}

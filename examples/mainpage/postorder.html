@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.js"></script>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/postOrder.css" />
+		<script type="text/javascript" src="../../js/postorder.js"></script>
+		<script type="text/javascript" src="../../js/sqlOpeate.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init(
+				/*{preloadPages: [{
+								url:'../me/login.html',
+								id:'login',
+								styles: {}, //窗口参数
+								extras: {"pagenameid":"postorder"}, //自定义扩展参数
+								subpages: [{}, {}] //预加载页面的子页面
+							}]}*/
+			);
+		</script>
+	</head>
+
+	<body>
+		<div class="post-order-header">
+			<div class="mui-action-back title-return"></div>
+			<div class="title-name">立刻购买</div>
+		</div>
+		<div class="order-msg">
+			<div id="order-msg-img" class="order-msg-img"></div>
+			<div id="right-product-title" class="right-product-msg">
+				【圣澜】雅致轻柔优质空调丝绵被优质轻柔
+			</div>
+			<div class="order-price-and-num">
+				<div id="order-price" class="order-price">价格：99</div>
+				<div id="order-sl">数量：1</div>
+			</div>
+			<div class="order-price-sum">
+				<div class="xiao-ji color2">小计：</div>
+				<div id="xiaoji" class="xiao-ji color3">￥99</div>
+			</div>
+		</div>
+		<div class="select-buy-num">
+			<div class="num-text">数量</div>
+			<div class="sub-buy-num"></div>
+			<div id="buy-number-show" class="buy-num-show">1</div>
+			<div class="add-buy-num"></div>
+			<div id="store-number" class="store-number">库存：99件</div>
+		</div>
+
+		<div id="hava-defult-address" class="select-address">
+			
+				<div class="congsignee-msg">
+					收货信息
+				</div>
+				<div id="name-and-tell" class="address-name">不是地址 18672734515</div>
+				<div id="detial-address" class="address-name">中国广东省广州市</div>
+			
+		</div>
+		<div id="no-defult-address" class="no-address color2">
+				请新建收货地址以确保商品顺利到达
+				<div class="select-address_arraw"></div>
+			</div>
+		<div class="addition-msg">
+			<div>
+				订单备注
+			</div>
+			<div class="order-remark"></div>
+		</div>
+		<div class="slect-coupon margin-top10">
+			<div class="select-use-coupon color2">选择使用优惠券</div>
+			<div class="arrw-right"></div>
+			<div class="coupon-price">优惠券金额</div>
+
+		</div>
+		<div class="slect-coupon margin-top3">
+			<div class="select-use-coupon color3">团币</div>
+			<div class="tuanbi-switch"></div>
+			<div class="coupon-price">可使用0团币</div>
+
+		</div>
+		<div class="order-post">
+			<div id="all-nums" class="all-num">共1件,</div>
+			<div id="all-price" class="all-price color3"> ￥99</div>
+			<div class="bt-buy-at-once">立刻购买</div>
+		</div>
+		<script>
+			var buynum = 1;
+			var kucun;
+			var price;
+			var eventname;
+			var loginpage;
+			var allPrice=0 ;
+			var paymoneypage;
+			var tmid;
+			var loginpage;
+		mui.plusReady(function() {
+				var pagelast = plus.webview.currentWebview();
+				tmid = pagelast.tmid;
+				getproductmsg(tmid);
+				setTimeout(function() {
+					paymoneypage = mui.preload({
+						url: 'paymoney.html',
+						id: 'paymoney',
+						/*extras: {
+							"allprice": allPrice
+						},*/
+						styles: {},
+						show: {
+							aniShow: 'none'
+						}
+					});
+					loginpage = mui.preload({
+						url: '../me/login.html',
+						id: 'login',
+						extras: {
+							"pagenameid": "postorder"
+						},
+						styles: {},
+						show: {
+							aniShow: 'none'
+						}
+					});
+					getaddressmsg(loginpage);
+				}, 200);
+				dealAddressMsg();
+			});
+			
+			/*
+			 *获取库存数量
+			 * */
+			kucun = getkucunshuliang();
+			var price = getsingleprice();
+			//var allPrice=price;
+			var flag = false;
+			var price;
+			
+			
+			document.querySelector('.select-address').addEventListener('tap', function() {
+				gotoaddresspage();
+			});
+			document.querySelector('.no-address').addEventListener('tap',function(){
+				gotoaddresspage();
+			});
+			document.querySelector('.sub-buy-num').addEventListener('tap', function() {
+				if (!flag) {
+					price = getsingleprice();
+					flag = true;
+				}
+				if (buynum <= 1) {
+					return;
+				} else {
+					buynum--;
+					allPrice = buynum * Number(price);
+					$("#buy-number-show").text(buynum);
+					$("#order-sl").text("数量：" + buynum);
+					$("#all-nums").text("共" + buynum + "件");
+					$("#xiaoji").text("￥" + allPrice);
+					$("#all-price").text("￥" + allPrice);
+				}
+			});
+			document.querySelector('.add-buy-num').addEventListener('tap', function() {
+				if (!flag) {
+					price = getsingleprice();
+					flag = true;
+				}
+				if (buynum >= kucun) {
+					return;
+				} else {
+					buynum++;
+					allPrice = buynum * Number(price);
+					$("#buy-number-show").text(buynum);
+					$("#order-sl").text("数量：" + buynum);
+					$("#all-nums").text("共" + buynum + "件");
+					$("#xiaoji").text("￥" + allPrice);
+					$("#all-price").text("￥" + allPrice);
+				}
+			});
+			var addressid;
+			var send_way;
+			window.addEventListener('selectedaddress', function(event) {//finishlogin
+				//loadaddressmsg();
+				 addressid = event.detail.address_id;
+				 send_way=event.detail.send_way;
+				 console.log("send_way");
+				 dealAddressMsg(addressid);
+				 console.log("用户自定义事件已经执行"+addressid);
+				//loadaddressmsg(loginpage);
+			})
+			document.querySelector('.bt-buy-at-once').addEventListener("tap",function(event){
+				
+				if(allPrice==0){
+					allPrice=getsingleprice();
+				}
+				//posterordermethod(id, sl, cm,addressid,sendm,shopmess,allPrice)
+				posterordermethod(tmid,$("#buy-number-show").text()," ",addressid,send_way,"",allPrice);
+				//showpaymoneypage(paymoneypage,allPrice);
+			});
+		</script>
+	</body>
+
+</html>

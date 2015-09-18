@@ -1,0 +1,73 @@
+.body-bg{
+	background-image: url(img/near_background.png);
+	background-size: 100%;
+}
+.header{
+	width: 100%;
+	height: 44px;
+	background: #F5F5F5;
+	
+}
+.title-return{
+	position:  absolute;
+	left: 10px;
+	width: 40px;
+	height: 50px;
+    background-image:url(img/header_back.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.title-name{
+	position: absolute;
+	left: 40%;
+	height: 100%;
+	line-height: 44px;
+}
+.add-address{
+	width: auto;
+	margin-left: 15px;
+	margin-right: 15px;
+	border: 1px solid;
+	border-color: #EAEAEA;
+	height: 40px;
+	font-size: 16px;
+	line-height: 40px;
+	text-align: center;
+	background-color: #fff;
+	margin-top: 10px;
+}
+.user-address-show{
+	width: 100%;
+	height: 130px;
+	background-color: #fff;
+	margin-top: 15px;
+	position: relative;
+	padding: 15px;
+	font-size: 16px;
+	
+}
+.border-white{
+	border: 1px solid;
+	border-color: #EAEAEA;
+}
+.signee-time{
+	width: 100%;
+	height: 50px;
+	background: white;
+	font-size: 16px;
+	padding: 15px;
+	
+}
+.margin-top{
+	margin-top: 7px;
+}
+.defult-address{
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 70px;
+	height: 75px;
+	background-image: url(img/defult_address_img.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}

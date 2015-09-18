@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.js"></script>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/congsigneeaddress.css" />
+		<script type="text/javascript" src="../../js/congsigneeaddress.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</head>
+
+	<body class="body-bg">
+		<div class="header">
+			<div class="mui-action-back title-return"></div>
+			<div class="title-name">地址管理</div>
+		</div>
+		<div id="add-new-address" class="add-address">新 增 地 址</div>
+		<div id="address-add">
+			<!--<div class="user-address-show border-white">
+				<div class="margin-top">老爸 13581397692</div>
+				<div class="margin-top"> 北京市-北京市-东城区</div>
+				<div class="margin-top"> 详细地址</div>
+				<div class="defult-address"></div>
+			</div>
+			<div class="signee-time border-white">所有时间</div>-->
+		</div>
+		<script>
+			var loginpage;
+			var addresspage;
+			mui.plusReady(function() {
+				var pagelast = plus.webview.currentWebview();
+				var tmid = pagelast.tmid;
+				setTimeout(function() {
+					loginpage = mui.preload({
+						url: '../me/login.html',
+						id: 'login',
+						extras: {
+							"pagenameid": "congsigneeaddress"
+						},
+						styles: {},
+						show: {
+							aniShow: 'none'
+						}
+					});
+					addresspage = mui.preload({
+						url: '../me/AddressCreate.html',
+						id: 'AddressCreate',
+						extras: {},
+						styles: {},
+						show: {
+							aniShow: 'none'
+						}
+					});
+					getaddressmsg(loginpage);
+				}, 200);
+			});
+			window.addEventListener('finishlogin', function(event) { //finishlogin
+				//loadaddressmsg();
+				console.log("用户登录自定义事件已经执行");
+				getaddressmsg(loginpage, false);
+				//loadaddressmsg(loginpage);
+			})
+			/* document.querySelector(".add-address").addEventListener("tap", function() {
+				addresspage.show();
+				console.log("新增地址");
+			});*/
+			$("#add-new-address").click(function() {
+				addresspage.show();
+				console.log("新增地址");
+			});
+			/*function showaddress(){
+				addresspage.show();
+				console.log("新增地址");
+			}*/
+		</script>
+	</body>
+
+</html>

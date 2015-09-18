@@ -1,0 +1,171 @@
+.body-ind{
+    width: 100%;
+    height: 100%;
+    background-color: #D52722;
+  
+    
+	
+}
+.buttom-show{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 45px;
+	table-layout:fixed;
+	background-color: #F5F5F5;
+	z-index: 900;
+	/*background-color: #007AFF;*/
+}
+.bottom-item{
+	width: 100%;
+	height: 100%;
+	
+}
+.bottom-item-img{
+	
+	margin: auto;
+	margin-top: 5px;
+	width: 30px;
+	height: 25px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+ .img0{
+ 	margin: auto;
+	margin-top: 5px;
+	width: 30px;
+	height: 25px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+ 	background-image: url(img/tab_sale_on.png);
+ }
+ .img02{
+ 	margin: auto;
+	margin-top: 5px;
+	width: 30px;
+	height: 25px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+ 	background-image: url(img/tab_sale_off.png);
+ }
+ .img12{
+ 	background-image: url(img/tab_nearby_off.png);
+ 	margin: auto;
+	margin-top: 5px;
+	width: 30px;
+	height: 25px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+ }
+ .img1{
+ 	background-image: url(img/tab_nearby_on.png);
+ 	margin: auto;
+	margin-top: 5px;
+	width: 30px;
+	height: 25px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+ }
+ .img2{
+ 	margin: auto;
+	margin-top: 5px;
+	width: 30px;
+	height: 25px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+ 	background-image: url(img/tab_activities_on.png);
+ }
+  .img22{
+ 	margin: auto;
+	margin-top: 5px;
+	width: 30px;
+	height: 25px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+ 	background-image: url(img/tab_activities_off.png);
+ }
+ .img32{
+ 	margin: auto;
+	margin-top: 5px;
+	width: 30px;
+	height: 25px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+ 	background-image: url(img/tab_me_off.png);
+ }
+.img3{
+ 	margin: auto;
+	margin-top: 5px;
+	width: 30px;
+	height: 25px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+ 	background-image: url(img/tab_me_on.png);
+ }
+ .text-not-select{
+ 	color: #777777;
+ 	font-size: 12px;
+ 	text-align: center;
+ }
+
+.bootom-item-text{
+	font-size: 12px;
+	color: #D74B28;
+	text-align: center;
+}
+.viewpager-main{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	bottom: 45px;
+}
+.sild-group-main{
+	width: 100%;
+	height: 100%;
+}
+.iframe-show{
+	width: 100%;
+	height: 100%;
+	
+}
+/* 中团超市分类部分代码*/
+.category-header{
+	width:100%;
+	height: 44px;
+	background: #F5F5F5;
+	position:  relative;
+	
+}
+.category-text{
+   position:absolute;
+  left: 45%;
+   top: 0px;
+   height: 44px;
+   width: auto;
+   line-height: 44px;
+   color: #D52722;
+}
+.category-concreate{
+	width: 100%;
+	height: 100%;
+    background-size: 100%;
+	background-image: url(img/near_background.png);
+	
+}
+.left-menu{
+	display: inline-block;
+	width: 30%;
+	height: 100%;
+	background-color: #0062CC;
+}
+.right-catagory{
+	display: inline-block;
+	width: 70%;
+	height: 100%;
+	background-color: #4CD964;
+}

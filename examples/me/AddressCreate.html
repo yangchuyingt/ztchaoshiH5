@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../../js/mui.min.js"></script>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/AddressCreate.css" />
+		<script type="text/javascript" src="../../js/jquery.js"></script>
+		<script type="text/javascript" src="../../js/AddressCreate.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</head>
+
+	<body>
+		<div class="header">
+			<div class="mui-action-back left-bar"></div>
+			<div class="middle-title">地址管理</div>
+			<div id="save-address" class="right-bar">保存</div>
+		</div>
+		<div class="divide-line"></div>
+
+		<div class="sign-name-msg">
+			<label>收货人姓名：</label>
+			<input id="receivename" type="text" class="signee-name" />
+		</div>
+		<div class="line"></div>
+		<div class="sign-name-msg">
+			<!--class="signee-name"-->
+			<label>收货人电话号码：</label>
+			<input id="receivenamber" type="tell" class="signee-name" />
+		</div>
+		<div class="line"></div>
+		<div class="sign-name-msg">
+			<label>收货时间:</label>
+			<div id="can-signee-times" onclick="showdialog()" class="can-signee-time"> 所有时间</div>
+
+		</div>
+		<div id="receive-time" class="mui-popover ">
+			<ul class="mui-table-view ">
+				<li value='0' class="mui-table-view-cell mui-text-center"><a href="#">所有时间</a></li>
+				<li value='1' class="mui-table-view-cell mui-text-center"><a href="#">周六周日及节假日可收货</a></li>
+				<li value='2' class="mui-table-view-cell mui-text-center"><a href="#">工作日可收货</a></li>
+			</ul>
+		</div>
+
+		<div class="divide-line"></div>
+		<div class="detial-city">
+			<div class="big-white-line"></div>
+			<div class="divide-line"></div>
+			<div class="sign-name-msg">选择省份:
+				<div id="provice-selected" onclick="showprovicedialog()" class="can-signee-time">北京</div>
+			</div>
+			<div id="show-provice" class="mui-popover showdialog-style">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<ul id="provice-add" class="mui-table-view">
+						</ul>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="divide-line"></div>
+			<div class="sign-name-msg">选择城市:
+				<div id="city-selected" onclick="showcitydialog()" class="can-signee-time">北京</div>
+			</div>
+			<div id="show-city" class="mui-popover showdialog-style">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<ul id="city-add" class="mui-table-view">
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="divide-line"></div>
+			<div class="sign-name-msg">选择县/区:
+				<div id="zone-selected" onclick="showzonedialog()" class="can-signee-time">东城县</div>
+			</div>
+			<div id="show-zone" class="mui-popover showdialog-style">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<ul id="zone-add" class="mui-table-view">
+						</ul>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="divide-line"></div>
+		<div class="concreteAddress">
+			详细地址：
+			<input id="concrete-address" type="text" class="concreteAddress-write"></input>
+		</div>
+		<div class="divide-line"></div>
+		<div class="select-defult-address">
+			<div class="select-defult-address-name">设为默认地址：</div>
+			<div id="setdefult-address" class="defult-image-select1"></div>
+		</div>
+	</body>
+	<script>
+		var selectedproviceid = "1";
+		var selectedcityid = "1";
+		var selectedzoneid = "1";
+		var isdefaddress = "1";
+		var receivetime = "0";
+		var loginpage;
+		document.querySelector('#save-address').addEventListener('tap', function() {
+			console.log("保存了地址");
+			saveaddress();
+		});
+		mui('.mui-scroll-wrapper').scroll();
+		function showdialog() {
+			mui('#receive-time').popover('toggle');
+		//	document.getElementById('show-provice').style.display = "none";
+			console.log("执行了 ");
+			/*$("#can-signee-times ").html("周六周日及节假日可收货 ");
+			//document.querySelector(".can-signee-times ")
+			document.getElementById("can-signee-times ").innerHTML="New text! ";*/
+		}
+		mui(".mui-table-view").on('tap', 'li', function(e) {
+			var value = this.getAttribute('value');
+			mui('#receive-time').popover('toggle');
+			document.getElementById('receive-time').style.display = "none"
+			switch (value) {
+				case '0':
+					$("#can-signee-times ").html("所有时间 ");
+					receivetime = "0";
+					break;
+				case '1':
+					$("#can-signee-times ").html("周六周日及节假日可收货 ");
+					receivetime = "1";
+					break;
+				case '2':
+					$("#can-signee-times ").html("工作日可收货 ");
+					receivetime = "2";
+					break;
+			}
+		});
+		mui('#provice-add').on('tap', 'li', function(e) {
+			mui('#show-provice').popover('toggle');
+			var value = this.getAttribute('value');
+			document.getElementById('show-provice').style.display = "none";
+			var arr = value.split(',');
+			selectedproviceid = arr[0];
+			$("#provice-selected").text(arr[1]);
+		});
+		mui('#city-add').on('tap', 'li', function(e) {
+			mui("#show-city").popover('toggle');
+			var value = this.getAttribute('value');
+			document.getElementById('show-city').style.display = "none";
+			var arr = value.split(',');
+			console.log(value);
+			selectedcityid = arr[0];
+			$("#city-selected").text(arr[1]);
+		});
+		mui('#zone-add').on('tap', 'li', function(e) {
+			mui("#show-zone").popover('toggle');
+			document.getElementById('show-zone').style.display = "none";
+			var value = this.getAttribute('value');
+			var arr = value.split(',');
+			selectedzoneid = arr[0];
+			$("#zone-selected").text(arr[1]);
+		});
+		document.querySelector("#setdefult-address").addEventListener("tap", function() {
+			changedefultaddress();
+		});
+			mui.plusReady(function() {
+				setTimeout(function() {
+					loginpage = mui.preload({
+						url: 'login.html',
+						id: 'login',
+						extras: {
+							"pagenameid": "AddressCreate"
+						},
+						styles: {},
+						show: {
+							aniShow: 'none'
+						}
+					});
+					
+				}, 200);
+			});
+		
+	</script>
+
+</html>

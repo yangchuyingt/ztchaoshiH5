@@ -1,0 +1,96 @@
+.body-bg{
+	background-color: #EAEAEA;
+	width: 100%;
+	
+}
+.header{
+	width: 100%;
+	height: 44px;
+	background: #FFF;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	
+}
+.title-return{
+	position:  absolute;
+	left: 10px;
+	width: 40px;
+	height: 50px;
+    background-image:url(img/header_back.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.title-name{
+	position: absolute;
+	left: 45%;
+	height: 100%;
+	line-height: 44px;
+}
+.border-white{
+	border: 1px solid;
+	border-color: #EAEAEA;
+}
+.login{
+	width: auto;
+	height: 70px;
+	margin-top: 45px;
+	padding-top: 30px;
+	position: relative;
+	margin-left: 20px;
+	margin-right: 20px;
+	
+}
+.user-name{
+	outline: none;
+	background: none;
+	border: none;
+	width: 60%;
+	height: 25px;
+	margin-left: 20px;
+	-webkit-user-select: text;
+	-webkit-appearance: none;
+	
+}
+.red-line{
+	margin-top: 15px;
+	width: auto;
+	height: 2px;
+	background-color: #D52722;
+}
+.password{
+	width: auto;
+	height: 70px;
+	outline: none;
+	padding-top: 10px;
+	position: relative;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+.login-btn{
+	width: auto;
+	height: 40px;
+	background-color: #D52722;
+	line-height: 40px;
+	text-align: center;
+	color: #fff;
+	margin-left: 25px;
+	margin-right: 25px;
+	
+}
+.quickly-rigiste{
+	float: left;
+	margin-left: 23px;
+	text-decoration: underline;
+	margin-top: 10px;
+	font-size: 14px;
+}
+.forget-password{
+	float:  right;
+	margin-right: 23px;
+	text-decoration: underline;
+	margin-top: 10px;
+	font-size: 14px;
+	margin-right: 27px;
+}

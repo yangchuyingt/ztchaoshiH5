@@ -1,0 +1,276 @@
+.post-order-header{
+	width: 100%;
+	height: 44px;
+	background: #F5F5F5;
+	position: relative;
+	left: 0px;
+	right: 0px;
+	
+}
+.title-return{
+	position:  absolute;
+	left: 10px;
+	width: 40px;
+	height: 50px;
+    background-image:url(img/header_back.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.title-name{
+	position: absolute;
+	left: 40%;
+	height: 100%;
+	line-height: 44px;
+}
+.order-msg{
+	height: 100px;
+	width: 100%;
+	border: 1px solid;
+	border-color: #EAEAEA;
+	background-color: #fff;
+	padding: 7px;
+	position: relative;
+}
+.order-msg-img{
+	height: 5.1875em;
+	width: 5.1875em;
+	background-color: #007AFF;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	float: left;
+	margin-right: 7px;
+}
+.right-product-msg{
+	width: 14.375em;
+	height: 2em;
+	line-height: 1.0625em;
+	overflow: hidden;
+	font-size: 0.815em;
+}
+.order-price-and-num{
+	width: auto;
+	height: 20px;
+	line-height: 20px;
+	font-size: 13px;
+	color: #9B9B9B;
+	
+}
+.order-price{
+	margin-left: 7px;
+	margin-right: 10px;
+	float: left;
+	display: block;
+	
+}
+.order-price-sum{
+	position: absolute;
+	float: none;
+	width: auto;
+	line-height: 20px;
+	font-size: 13px;
+	right: 10px;
+    bottom: 3px;	
+}
+.xiao-ji{
+	display: inline;
+}
+.color2{
+	color: #9b9b9b;
+}
+.color3{
+	color: #d52722;
+}
+.select-buy-num{
+	width: 100%;
+	height: 100px;
+	border: 1px solid;
+	border-color: #EAEAEA;
+	background-color: #fff;
+	margin-top: 10px;
+	padding: 10px;
+}
+.num-text{
+	font-size: 20px;
+	font-weight:100; 
+	}
+.sub-buy-num{
+	    margin-top: 10px;
+		background-image: url(img/can_not_sub_anymore.png);
+		width: 40px;
+		height: 40px;
+		background-repeat: no-repeat;
+		background-size: 100%;
+		float: left;
+		margin-right: 10px;
+	}
+.buy-num-show{
+		border: 1px solid;
+		border-color: #D52722;
+		border-radius: 5px;
+		width: 80px;
+		height: 40px;
+		float: left;
+		text-align: center;
+		margin-top: 10px;
+		line-height: 40px;
+		margin-right: 10px;
+	}
+.add-buy-num{
+	margin-top: 10px;
+		background-image: url(img/add.png);
+		width: 40px;
+		height: 40px;
+		background-repeat: no-repeat;
+		background-size: 100%;
+		float: left;
+		margin-right: 10px;
+}
+.store-number{
+	margin-top: 30px;
+	color: #9B9B9B;
+	font-size: 14px;
+}
+.select-address-no{
+	
+	position: relative;
+}
+.select-address{
+	display: none;
+	width: 100%;
+	height: 100px;
+	background-color: #fff;
+	background-image:url(img/address_background.png) ;
+	background-repeat: no-repeat;
+	margin-top: 10px;
+	background-size: cover;
+	padding: 10px;
+	
+}
+.have-address{
+}
+.no-address{
+	/*display:none ;*/
+	width: 100%;
+	height: 50px;
+	margin-top: 10px;
+	background-image: url(img/address_background2.png);
+	background-size:cover ;
+	background-repeat: no-repeat;
+	line-height: 50px;
+	text-align: center;
+	font-size: 15px;
+	position: relative;
+}
+.select-address_arraw{
+	position: absolute;
+	width: 15px;
+	height: 30px;
+	background-image: url(img/brand_more.png);
+	background-repeat: no-repeat;
+	background-size: 60%;
+	top: 15px;
+	right: 5px;
+	
+}
+.congsignee-msg{
+	font-weight: 100;
+	font-size: 18px;
+}
+.address-name{
+	font-size: 15px;
+	color: #9b9b9b;
+	margin-top: 5px;
+}
+.addition-msg{
+	background-color: #fff;
+	width: 100%;
+	height: 150px;
+	margin-top: 10px;
+	padding: 10px;
+}
+.order-remark{
+	width: 100%;
+	height: 100px;
+	border: 1.5px solid;
+	border-radius: 5px;
+	border-color: #9b9b9b;
+	margin-top: 10px;
+}
+.slect-coupon{
+	width: 100%;
+	height: 40px;
+	background-color: #fff;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.margin-top10{
+	margin-top: 10px;
+}
+.margin-top3{
+	margin-top: 3px;
+}
+.select-use-coupon{
+	font: 15px;
+	line-height: 40px;
+	float: left;
+}
+.coupon-price{
+	color: #9B9B9B;
+	font: 15px;
+	line-height: 40px;
+	float: right;
+}
+.arrw-right{
+	width: 10px;
+	height: 30px;
+	background-image: url(img/brand_more.png);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	float: right;
+	margin-top: 10px;
+	margin-left: 30px;
+	
+}
+.tuanbi-switch{
+	width: 70px;
+	height: 35px;
+	background-image: url(img/flight_switch_off.png);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	float: right;
+	margin-left: 10px;
+	margin-top: 5px;
+}
+.order-post{
+	width: 100%;
+	height: 47px;
+	margin-top: 5px;
+	background-color:#fff;
+	padding-left: 10px;
+	
+}
+.all-num{
+	height: 47px;
+	line-height: 47px;
+	font-size: 15px;
+	float: left;
+}
+.all-price{
+	float: left;
+	font-size: 15px;
+	line-height: 47px;
+	margin-left: 10px;
+}
+.bt-buy-at-once{
+	float: right;
+	width: 150px;
+	height: 47px;
+	line-height: 40px;
+	margin-top: 3px;
+	margin-right: 10px;
+	background-image: url(img/buyatonce_un.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	color: #fff;
+	text-align: center;
+}

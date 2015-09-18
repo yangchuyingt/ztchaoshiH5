@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/index.css" rel="stylesheet" />
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/mainpage.js"></script>
+		<link rel="stylesheet" href="css/mainpage.css" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init({
+				pullRefresh: {
+					container: '#refreshContainer',
+					down: {
+						callback: pulldownRefresh
+					},
+					up: {
+						contentrefresh: '正在加载...',
+						contentnomore: '没有更多数据了！',
+						callback: pullupRefresh
+					}
+				}
+			});
+			mui.plusReady(function() {
+				var showguide = plus.storage.getItem("firstin");
+				if (!showguide) {
+					console.log('diyici');
+					plus.navigator.closeSplashscreen();
+					plus.navigator.setFullscreen(false);
+					plus.storage.setItem("firstin", "true");
+					mui.openWindow({
+						id: 'guide',
+						url: 'examples/guide.html',
+						show: {
+							aniShow: 'none'
+						},
+						waiting: {
+							autoShow: false
+						}
+					});
+				}
+			});
+			 //			function getdbversion() {
+			 //				return "13";
+			 //}
+			 //			function createdatabase() {
+			 //				var db = openDatabase('teambuy', '1.0', 'Test DB', 5 * 1024 * 1024);
+			 //				var sql1 = "CREATE TABLE IF NOT EXISTS PRODUCT_LIST(_id integer primary key AUTOINCREMENT,_bests varchar(10),_buynums varchar(10),_buytimes varchar(10),_collects varchar(10),_content varchar(40),_cpdl varchar(10),_cpxl varchar(10),_dfen varchar(10),_dj0 varchar(10),_dj1 varchar(10),_edate varchar(10),_jldw varchar(10),_kcsl varchar(10),_mid varchar(10),_ok varchar(10),_picurl varchar(40),_rebate varchar(10),_sdate varchar(10),_sells varchar(10),_shopid varchar(10),_tbmoney varchar(10),_title varchar(40),_tmdj varchar(10),_tmlb varchar(10),_tmurl varchar(10),_tmword varchar(10),_xh varchar(10),_zkl varchar(10))";
+			 //				var address_sql = "CREATE TABLE IF NOT EXISTS ADDRESS_MSG(_id integer primary key AUTOINCREMENT,_address varchar(50),_carea  varchar(5), _city varchar(10), _isdef varchar(3),_province varchar(5),_sendid varchar(5),_tel varchar(20),_truename varchaar(10),_username varchar(15),_zipcode varchar(10))";
+			 //				var provice_sql = "CREATE TABLE t_province (id integer primary key AUTOINCREMENT,proname varchar(20) ,proremark varchar(20) )";
+			 //				var city_sql = "CREATE TABLE t_city ( id integer primary key AUTOINCREMENT,  cityname varchar(30),  proid int(5) , citycode varchar(20) )";
+			 //				var zone_sql = "CREATE TABLE t_zone (   id integer primary key AUTOINCREMENT,  zonename varchar(30),  cityid int(5),  zt tinyint(1) ,  username varchar(20) ,  dateandtime, truename varchar(20),  mobile varchar(20) )"
+			 //					//var tm_category_sql='create table tm_category( _id integer primary key AUTOINCREMENT,  _cpsl varchar(5),  _cup varchar(5), _icon varchar(20), _lbname varchar(20),_spsl varchar(20))';
+			 //				var tm_category_sql = "CREATE TABLE IF NOT EXISTS tm_category( _id integer primary key AUTOINCREMENT,  _cpsl varchar(5),  _cup varchar(5), _icon varchar(20), _lbname varchar(20),_spsl varchar(20))";
+			 //				db.transaction(function(tx) {
+			 //					tx.executeSql(tm_category_sql);
+			 //					tx.executeSql(sql1);
+			 //					tx.executeSql(address_sql);
+			 //					tx.executeSql(provice_sql);
+			 //					tx.executeSql(city_sql);
+			 //					tx.executeSql(zone_sql);
+			 //					handleFiles();
+			 //					//insertzonemsg();
+			 //					insertprovicemsg();
+			 //					insertcitymsg();
+			 //					//setTimeout(function(){
+			 //					//	},2000);
+			 //				}, function(tx, error) {
+			 //					console.log(JSON.stringify("no1:"
+			 //						error));
+			 //				}, function(tx, error) {
+			 //					console.log("no2:" + JSON.stringify(error));
+			 //				});
+			 //				console.log("数据库表创建成功");
+			 //			}
+			 //		        var dbversion = getdbversion();
+			 //				var beforeversion = plus.storage.getItem("dbversion");
+			 //				if (dbversion != beforeversion) {
+			 //					createdatabase();
+			 //					plus.storage.setItem("dbversion", dbversion);
+			 //				}	});
+		</script>
+	</head>
+
+	<body class="body-ind ">
+		<div class="mui-slider viewpager-main">
+			<div class="mui-slider-group sild-group-main">
+				<div class="mui-slider-item">
+					<header class="mui-bar mui-bar-nav index-head-style">
+						<div class="left-bar">
+							<div class="city-name">广州</div>
+							<div class="city-name-img"></div>
+						</div>
+						<div class="center-title">中团易购</div>
+					</header>
+					<!--下拉刷新容器-->
+					<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+						<div class="mui-scroll">
+
+							<!--数据列表-->
+							<ul class="mui-table-view mui-table-view-chevron">
+
+								<div id="slider" class="mui-slider mui-fullscreen lun-bo-tu ">
+									<div id="lun-bo-tus" class="mui-slider-group .mui-slider-loop">
+
+									</div>
+
+								</div>
+
+								<table class="middle-adv">
+									<tr>
+										<td>
+											<div id="clickmiddleadv" value="1">
+												<div class="middle-adv-item-inner">
+													<img id="mid-adv-img1" class="middle-adv-item-img" width="60px" src="css/img/buy_one_send_one.png" />
+												</div>
+												<div id="mid-adv-text1" class="middle-adv-item-text">买就送</div>
+											</div>
+										</td>
+										<td>
+											<div id="clickmiddleadv" value="2">
+												<div class="middle-adv-item-inner">
+													<img id="mid-adv-img2" class="middle-adv-item-img" width="60px" src="css/img/special_sale_select.png" />
+												</div>
+												<div id="mid-adv-text2" class="middle-adv-item-text">爆款精选</div>
+											</div>
+										</td>
+										<td>
+											<div id="clickmiddleadv" value="3">
+												<div class="middle-adv-item-inner">
+													<img id="mid-adv-img3" class="middle-adv-item-img" width="60px" src="css/img/today_half_price.png" />
+												</div>
+												<div id="mid-adv-text3" class="middle-adv-item-text">今日新品</div>
+											</div>
+										</td>
+										<td>
+											<div id="clickmiddleadv" value="4">
+												<div class="middle-adv-item-inner">
+													<img id="mid-adv-img4" class="middle-adv-item-img" width="60px" src="css/img/tweenty_nine_nine.png" />
+													<div id="mid-adv-text4" class="middle-adv-item-text">限量体验</div>
+												</div>
+
+											</div>
+										</td>
+									</tr>
+								</table>
+								<div class="buttom-adv">
+									<div id="buttom-adv-left" onclick='bottonAdvClick("1")' class="buttom-adv-left"></div>
+									<div class="buttom-adv-right">
+										<div id="buttom-adv-right-top" onclick='bottonAdvClick("2")' class="buttom-adv-right-top">
+
+										</div>
+										<div id="buttom-adv-right-bottom" class="buttom-adv-right-buttom">
+
+											<div id="buttom-adv-right-bottom-inner1" onclick='bottonAdvClick("3")' class="buttom-adv-right-buttom-inner"></div>
+
+											<div id="buttom-adv-right-bottom-inner2" onclick='bottonAdvClick("4")' class="buttom-adv-right-buttom-inner"></div>
+
+										</div>
+									</div>
+								</div>
+
+								<div class="special-title">爆款特卖</div>
+
+								<!--<tr >
+									
+	     	 <td >
+	     	 	<div class="td-product-item">
+	     	 		<div id="product-img-item1" class="td-product-item-img"></div>
+	     	 		<div class="td-product-item-title">路华折叠桌，路华折叠桌，路华折叠</div>
+	     	 		<div class="td-product-item-price">
+	     	 			<div class="td-product-item-nowprice">￥79</div>
+	     	 			<div class="td-product-item-beforprice">￥179</div>
+	     	 		</div>
+	     	 	</div>
+	     	 </td>
+	     	  <td ><div class="td-product-item">
+	     	 		<div id="product-img-item2" class="td-product-item-img"></div>
+	     	 		<div class="td-product-item-title">路华折叠桌，路华折叠桌，路华折叠</div>
+	     	 		<div class="td-product-item-price">
+	     	 			<div class="td-product-item-nowprice">￥79</div>
+	     	 			<div class="td-product-item-beforprice">￥179</div>
+	     	 		</div>
+	     	 	</div>
+	     	  </td>
+	     	</tr>-->
+								<!--hhhhhh-->
+								<table id="table-product-list" class="table-product-list">
+
+								</table>
+							</ul>
+						</div>
+					</div>
+					<a href="#"><img src="http://appimg.teambuy.com.cn/upload/2015/06/11/www_145927_NxsGSxUp.jpg" /></a>
+					<!--<iframe class="iframe-show" scrolling="yes"  frameBorder="0" src="mainpage.html" ></iframe><!--frameBorder="0" width="900" scrolling="no" height="90"-->-->
+				</div>
+				<div class="mui-slider-item">
+					<div class="category-header">
+						<div class="category-text">分类</div>
+					</div>
+					<div class='category-concreate'>
+						<div class='left-menu'></div>
+						<div class='right-catagory'></div>
+					</div>
+					<!--<a href="#"><img src="http://appimg.teambuy.com.cn/upload/2015/06/11/www_142735_C6SADJo1.jpg" /></a>-->
+					<!--<iframe class="iframe-show" scrolling="yes"  frameBorder="0" src="category.html" ></iframe>-->
+				</div>
+				<div class="mui-slider-item">
+
+					<a href="#"><img src="http://appimg.teambuy.com.cn/upload/2015/06/11/025858_93843.jpg" /></a>
+					<!--<iframe class="iframe-show" scrolling="yes"  frameBorder="0" src="shopcart.html" ></iframe>-->
+				</div>
+				<div class="mui-slider-item">
+
+					<a href="#"><img src="http://appimg.teambuy.com.cn/upload/2015/06/11/105212_82189.jpg" /></a>
+					<!--<iframe class="iframe-show" scrolling="yes"  frameBorder="0" src="me.html" ></iframe>-->
+				</div>
+			</div>
+		</div>
+		<table class="buttom-show">
+			<tr>
+				<td value='0'>
+					<div class="bottom-item">
+						<div id="tab0" class="img0"></div>
+						<div id='text0' class="bootom-item-text">首页</div>
+					</div>
+				</td>
+				<td value='1'>
+					<div class="bottom-item">
+						<div id="tab1" class="img12"></div>
+						<div id='text1' class="text-not-select">分类</div>
+					</div>
+				</td>
+				<td value='2'>
+					<div class="bottom-item">
+						<div id="tab2" class="img22"></div>
+						<div id='text2' class="text-not-select">购物车</div>
+					</div>
+				</td>
+				<td value='3'>
+					<div class="bottom-item">
+						<div id="tab3" class="img32"></div>
+						<div id='text3' class="text-not-select">我的</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</body>
+	<script>
+		var currentposition = '0';
+		var beforposition = '0';
+		 //创建数据库表
+		mui('.buttom-show').on('tap', 'td', function(e) {
+			currentposition = this.getAttribute('value');
+			//console.log(currentposition+','+beforposition);
+			changetabs();
+			var gallery = mui('.viewpager-main');
+			gallery.slider().gotoItem(Number(currentposition));
+			//gallery.slider().gotoItem(2);
+		});
+		document.querySelector('.mui-slider').addEventListener('slide', function(event) {
+			console.log("你正在看第" + (event.detail.slideNumber) + "张图片");
+			currentposition = event.detail.slideNumber;
+			changetabs();
+		});
+		 //主页面部分的js代码
+		function addmiddleadvlistener() {
+			mui("table").on('tap', '#clickmiddleadv', function(event) {
+				var id = this.getAttribute('id');
+				var value = this.getAttribute('value');
+				console.log(id + value);
+			});
+		}
+		getadv();
+		getproduct(0);
+		addmiddleadvlistener();
+		addlistlistener();
+	</script>
+
+</html>

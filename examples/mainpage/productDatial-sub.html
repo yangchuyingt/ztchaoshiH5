@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../../js/mui.min.js"></script>
+		<script src="../../js/priductDetial.js"></script>
+		<script src="../../js/jquery.js"></script>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/productDetial.css" rel="stylesheet" />
+		<script type="text/javascript" src="../../js/sqlOpeate.js" ></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</head>
+
+	<body class="bady-background mui-content">
+		<div class="mui-action-back back-buttom"></div>
+		<div id="slider" class="mui-slider mui-fullscreen product-img-show">
+			<div id="top-slider-group" class="mui-slider-group">
+
+			</div>
+		</div>
+		<div class="white-bg">
+			<div class="product-price">
+				<div id="before-price" class="before-price color1">原价：￥210</div>
+				<div id="now-price" class="now-price">新品特惠：￥110</div>
+			</div>
+			<div class="right-share">
+				<img class="share-img" src="../../css/img/share_tm.png" />
+			</div>
+		</div>
+		<div id="product-name"class="product-name">【圣蓝】雅致蚕丝优质轻柔舒适空调被</div>
+
+		<div class=" product-paramters2 mui-collapse mui-table-view-cell ">
+			<a class="a-height" href="#">
+				<div class="paramter-text-tu">查看：尺码分类</div>
+				<div class="paramter-img2"></div>
+			</a>
+			<ul class="mui-table-view  show-content">
+				<div id="size-masage"></div>
+			</ul>
+
+		</div>
+		<div class="product-paramters margin-top">
+			<div class="paramter-left-img-tu photo-word-detail"></div>
+			<div class="paramter-text">图文详情</div>
+			<div class="paramter-img"></div>
+		</div>
+		<div class=" product-paramters2 mui-collapse mui-table-view-cell ">
+			<a class="a-height" href="#">
+				<div class="paramter-left-img photo-product-paramter"></div>
+				<div class="paramter-text-tu">产品参数</div>
+				<div class="paramter-img2"></div>
+			</a>
+			<ul class="mui-table-view  show-content">
+				<div id="product-paramters"></div>
+				
+			</ul>
+
+		</div>
+		<div class=" product-paramters2 mui-collapse mui-table-view-cell ">
+			<a class="a-height" href="#">
+				<div class="paramter-left-img photo-product-evlute"></div>
+				<div class="paramter-text-tu">产品评价</div>
+				<div class="paramter-img2"></div>
+			</a>
+			<ul class="mui-table-view  show-content">
+				<div>heh</div>
+				<div>heh</div>
+			</ul>
+
+		</div>
+	    <div class=" product-paramters2 mui-collapse mui-table-view-cell ">
+			<a class="a-height" href="#">
+				<div class="paramter-text-tu margin-left">查看店铺</div>
+				<div class="paramter-img2"></div>
+			</a>
+			<ul class="mui-table-view  show-content">
+				<div id="size-masage"></div>
+			</ul>
+
+		</div>
+
+		<script>
+			var tmid;
+			mui.plusReady(function() {
+				var self = plus.webview.currentWebview();
+				tmid = self.tmid;
+				getproductchima(tmid);
+				getproductimg(tmid);
+				getaproductmsg(tmid);
+				//console.log("mui ready");
+				
+			});
+			
+		</script>
+	</body>
+
+</html>

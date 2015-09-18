@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../../js/mui.min.js"></script>
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link href="../../css/paymoney.css" rel="stylesheet" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+		<script type="text/javascript" src="../../js/jquery.js"></script>
+		<script type="text/javascript" src="../../js/pingpp_pay.js"></script>
+		<script type="text/javascript" src="../../js/paymoney.js"></script>
+	</head>
+
+	<body class="near-background">
+		<div class="header">
+			<div class="mui-action-back return_img"></div>
+			<div class="header-center-title">支付收银台</div>
+		</div>
+		<div class="order-msg">
+			<div id="show-price" class="all-price">
+				<!--共计：<font color="#D52722">￥866</font>--></div>
+			<div class="all-price">订单已提交，请尽快支付</div>
+			<div class="all-price color2">也可以稍后去<font color="#D52722">未支付订单</font>支付</div>
+
+		</div>
+		<div class="pay-way-text">
+			选择支付方式
+		</div>
+		<div class="pay-by-zhifubao">
+			<div class="pay-img zhifubao-img">
+			</div>
+			<div class="pay-way-is">
+				支付宝支付
+				<br/>
+				<font color="#9B9B9B" size="2">
+		推荐有支付宝账户的用户使用</font>
+			</div>
+			<div class="pay-way-select">
+				<input type="checkbox" />
+			</div>
+		</div>
+		<div class="pay-by-zhifubao">
+			<div class="pay-img yinlian-img">
+			</div>
+			<div class="pay-way-is">
+				银联支付
+				<br/>
+				<font color="#9B9B9B" size="2">
+		各大银行无卡支付，快捷支付</font>
+			</div>
+			<div class="pay-way-select">
+				<input type="checkbox" />
+			</div>
+		</div>
+		<div class="pay-by-zhifubao">
+			<div class="pay-img weixin-img">
+			</div>
+			<div class="pay-way-is">
+				微信支付
+				<br/>
+				<font color="#9B9B9B" size="2">
+		推荐安装5.0以上的版本使用</font>
+			</div>
+			<div class="pay-way-select">
+				<input type="checkbox" />
+			</div>
+		</div>
+		<div class="buttom-pay">
+			确 定 支 付
+		</div>
+	</body>
+	<script>
+		var price;
+		var orderno;
+
+		function showallprice(price) {
+				//	共计：<font color="#D52722">￥866</font>
+				var str = '共计：<font color="#D52722">￥' + price + '</font>'
+				$("#show-price").append(str);
+			}
+			/*function pingPay(price, order) {
+					var url = "http://app.teambuy.com.cn/apnc/m/tmord/a/createpaybych"
+					var charge = {
+						"order_no": order,
+						"app": {
+							"id": "app_3LuYhhseDkzIG7orn"
+						},
+						"channel": "alipay",
+						"amount": price,
+						"client_ip": url,
+						"currency": "cny",
+						"subject": "",
+						"body": ""
+					};
+					pingpp.createPayment(charge, function(result, err) {
+						console.log(JSON.stringify(result));
+						console.log(JSON.stringify(err));
+					});
+				}*/
+
+		function pingPay(price, order) {
+			var url = "http://app.teambuy.com.cn/apnc/m/tmord/a/createpaybych";
+			var token = plus.storage.getItem("token");
+			
+			var sessid = plus.storage.getItem("sessid");
+			$.post(url,{
+				"acctoken": token,
+				"sessid": sessid,
+				"ordno": order,
+				"paym": "alipay"
+			}, function(result) {
+				console.log("charge"+JSON.stringify(result));
+				pingpp.createPayment(result.data.charge, function(result, err) {
+						console.log(JSON.stringify(result));
+						console.log(JSON.stringify(err));
+					});
+			}, "json");
+			console.log(order);
+		}
+		window.addEventListener('getprice', function(event) {
+			price = event.detail.aa;
+			orderno = event.detail.ordno;
+			console.log(orderno);
+			
+			showallprice(price);
+		});
+		document.querySelector('.buttom-pay').addEventListener('tap', function() {
+			//h_pay(price, orderno);
+			pingPay(price, orderno);
+			console.log(orderno);
+			console.log("yyyy");
+		});
+	</script>
+
+</html>
