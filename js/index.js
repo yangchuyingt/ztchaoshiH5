@@ -58,7 +58,7 @@ function putResultTodb(results) {
 		})
 
 	});
-	console.log("前后")；
+
 
 }
 
