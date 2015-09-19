@@ -19,8 +19,8 @@ function loadtabsmsg() {
 		case '0':
 			break;
 		case '1':
-		//console.log('分类');
-		   
+		    console.log('分类');
+		    getcatfromdatabase();
 			loadcategory();
 			break;
 		case '2':
@@ -49,7 +49,7 @@ function putResultTodb(results) {
 			console.log("delete success!"+JSON.stringify(result));
 			for(var i=0;i<results.data.length;i++){
 			tx.executeSql(insert_sql, [results.data[i].lbid,results.data[i].cpsl,results.data[i].cup,results.data[i].icon,results.data[i].lbname,results.data[i].spsl], function(tx, result) {
-                   console.log("ycy"+JSON.stringify(result));
+                   //Sconsole.log("ycy"+JSON.stringify(result));
 				});
               }
 			
@@ -58,7 +58,32 @@ function putResultTodb(results) {
 		})
 
 	});
-	console.log("前后")；
 
 }
-
+/*
+ *从数据库获取分类然后显示出来
+ * //$("#table-product-list ").empty();
+ * $("#table-product-list").append(result);
+ * */
+function getcatfromdatabase(){
+	console.log("从数据库获取分类然后显示出来");
+	var db = openDatabase('teambuy', '1.0', 'Test DB', 5 * 1024 * 1024);
+	var left_sql="select _id,_lbname from tm_category where _cup=0";
+	db.transaction(function(tx){
+		tx.executeSql(left_sql,[],function(tx,reslut){
+			showleftview(reslut);
+		},function(tx,result){
+			console.log("category:"+JSON.stringify(result));
+		});
+	});
+	
+}
+function showleftview(data){//results.rows.item(i).name
+  var ht='';
+ // console.log("分类的长度："+data.rows.length);
+   for(var i=0;i<data.rows.length;i++){//<div class="category-left-menu-item">女装</div>
+		ht+='<div class="category-left-menu-item">'+data.rows.item(i)._lbname +'</div>';
+	}
+	$("#left-menu").empty();
+	$("#left-menu").append(ht);
+}
