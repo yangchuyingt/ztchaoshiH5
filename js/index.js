@@ -122,7 +122,7 @@ function showleftview(data){//results.rows.item(i).name
  * 从数据库获取又不的分类；
  * 
  * 
- *//
+ */
 function getRightCatFromDb(cup){
 	var db = openDatabase('teambuy', '1.0', 'Test DB', 5 * 1024 * 1024);
 	var right_sql = 'select _id,_lbname,_icon from tm_category where cup=?';
