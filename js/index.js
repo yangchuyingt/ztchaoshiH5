@@ -34,7 +34,8 @@ function loadcategory() {
 	var url = "http://app.teambuy.com.cn/apnc/m/temai/a/gettmlb";
 	$.post(url, {}, function(result) {
 		putResultTodb(result);
-		//console.log("ttt:"+JSON.stringify(result));
+		showleftfromnet(result);
+	  //console.log("ttt:"+JSON.stringify(result));
 	}, "json");
 }
 
@@ -78,12 +79,66 @@ function getcatfromdatabase(){
 	});
 	
 }
-function showleftview(data){//results.rows.item(i).name
-  var ht='';
-  //console.log("分类的长度："+data.rows.length);
-   for(var i=0;i<data.rows.length;i++){//<div class="category-left-menu-item">女装</div>
-		ht+='<div class="category-left-menu-item">'+data.rows.item(i)._lbname +'</div>';
-	}
+/*
+ * 
+ * 从网上获取的数据显示在左边的菜单
+ * 
+ */
+function showleftfromnet(data){
+	 var flag;
+	 var ht='';
+	 for(var i=0;i<data.data.length;i++){
+	 	if(data.data[i].cup!='0'){
+	 		continue;
+	 	}
+	 	if(!flag){
+	 		category_big=data.data[i].lbid;
+	 		flag=true;
+	 	}
+	 	ht+='<div value="'+data.data[i].lbid+'" class="category-left-menu-item">'+data.data[i].lbname +'</div>';
+	 }
+	 console.log("netht:"+ht);
 	$("#left-menu").empty();
 	$("#left-menu").append(ht);
 }
+function showleftview(data){//results.rows.item(i).name
+  var ht='';
+  var flag;
+  //console.log("分类的长度："+data.rows.length);
+   for(var i=0;i<data.rows.length;i++){//<div class="category-left-menu-item">女装</div>
+      if(!flag){
+      	category_big=data.rows.item(i)._id;
+      	flag=true;
+      }
+		ht+='<div value="'+data.rows.item(i)._id+'" class="category-left-menu-item">'+data.rows.item(i)._lbname +'</div>';
+	}
+   // console.log("dbht:"+ht);
+	$("#left-menu").empty();
+	$("#left-menu").append(ht);
+	getRightCatFromDb(category_big);
+	
+}
+/*
+ * 从数据库获取又不的分类；
+ * 
+ * 
+ *//
+function getRightCatFromDb(cup){
+	var db = openDatabase('teambuy', '1.0', 'Test DB', 5 * 1024 * 1024);
+	var right_sql = 'select _id,_lbname,_icon from tm_category where cup=?';
+	db.transaction(function(tx){
+		tx.executeSql(right_sql,[cup],function(tx,result){
+			var rightHt='';
+			for(var i=0;i<result.rows.length;i++){
+				rightHt+='<div value="'+result.rows.item(i)._id+'" class="right-cat-item"><img class="right-catgory-img" src="'+result.rows.item(i)._icon+'"/><div class="right-catgory-text">'+result.rows.item(i)._lbname+'</div></div>';
+			}
+			console.log('rightht:'+rightHt);
+			$("#right-catagory").empty();
+	        $("#right-catagory").append(rightHt);
+		},function(tx,result){
+			console.log("category:"+JSON.stringify(result));
+		});
+	});
+	
+}
+  
