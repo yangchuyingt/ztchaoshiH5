@@ -54,7 +54,7 @@ function loadproduct(data, page, clear) {
 				console.log(productionarray[page*10+i].xh);
 				console.log(productionarray[page*10+i+1].xh);*/
 		}
-		console.log("reslut:"+result);
+		//console.log("reslut:"+result);
 		if (clear) {
 			$("#table-product-list ").empty();
 			//$("#table-product-list").children("tr").remove();
@@ -94,13 +94,13 @@ function getadv() {
 	 * */
 
 function getproduct(page, clear, ispullup) {
-	console.log("getmainpage");
+	//console.log("getmainpage");
 	var url = "http://app.teambuy.com.cn/apnc/m/temai/a/gettemai";
 	$.post(url, {
 		"page": page
 	}, function(result) {
 		var ret;
-		console.log(JSON.stringify(result));
+		//console.log(JSON.stringify(result));
 		if (result.ret == "1") {
 			loadproduct(result.data, page, clear);
 			ret = "1";
@@ -127,7 +127,6 @@ function pullupRefresh() {
 	getproduct(page + 1, false, true);
 	//console.log(result);
 	this.endPullupToRefresh(false);
-	console.log("");
 
 
 }
@@ -139,7 +138,7 @@ function finishpullup(ret) {
 			mui('#pullup-container').pullRefresh().endPullupToRefresh(false);
 			mui('#pullup-container').pullRefresh().refresh(true);
 			// mui('#pullup-container').pullRefresh().refresh(true);
-			console.log("ret=1");
+			//console.log("ret=1");
 		} else {
 			mui('#pullup-container').pullRefresh().endPullupToRefresh(true);
 			console.log(JSON.stringify(ret));
@@ -167,7 +166,7 @@ function bottonAdvClick(Position) {
 function addlistlistener(){
 	mui("#table-product-list").on('tap','td',function(event){
 		var tmid=this.getAttribute('value');
-		console.log("tmid:"+tmid);
+		//console.log("tmid:"+tmid);
 		mui.openWindow({
 			url: 'examples/mainpage/productDetial.html',
 			id: 'productDetial',
