@@ -245,9 +245,11 @@
 		</table>
 	</body>
 	<script>
-		var currentposition = '0';
-		var beforposition = '0';
+		var currentposition = '0';//底部四个按钮的记录
+		var beforposition = '0';//底部以前的
 		var category_big='1';
+		var current_left_item='0';//左边item当前位置
+		var befor_left_item='0';
 		 //创建数据库表
 		mui('.buttom-show').on('tap', 'td', function(e) {
 			currentposition = this.getAttribute('value');
@@ -257,10 +259,24 @@
 			gallery.slider().gotoItem(Number(currentposition));
 			//gallery.slider().gotoItem(2);
 		});
+		//主页最底部下面的四个按钮的点击事件
 		document.querySelector('.mui-slider').addEventListener('slide', function(event) {
 			console.log("你正在看第" + (event.detail.slideNumber) + "张图片");
 			currentposition = event.detail.slideNumber;
 			changetabs();
+		});
+		//左边菜单的点击事件
+		mui('#left-menu').on('tap','div',function(e){
+			var cup=this.getAttribute('value');
+			current_left_item=this.getAttribute('id');
+			console.log(current_left_item,befor_left_item);
+			getRightCatFromDb(cup);
+			changeleftcss(current_left_item,befor_left_item);
+		});
+		//右边小类的点击事件
+		mui("#right-catagory").on('tap','.right-cat-item',function(){
+			var  lbid=this.getAttribute('value');
+			toCategorylist(lbid);
 		});
 		 //主页面部分的js代码
 		function addmiddleadvlistener() {
