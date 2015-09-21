@@ -35,7 +35,7 @@ function loadcategory() {
 	$.post(url, {}, function(result) {
 		putResultTodb(result);
 		showleftfromnet(result);
-	  console.log("ttt:"+JSON.stringify(result));
+	  //console.log("ttt:"+JSON.stringify(result));
 	}, "json");
 }
 
@@ -126,9 +126,9 @@ function showleftview(data){//results.rows.item(i).name
 function getRightCatFromDb(cup){
 	console.log("right-category");
 	var db = openDatabase('teambuy', '1.0', 'Test DB', 5* 1024 * 1024);
-	var right_sql = 'select _id,_lbname,_icon from tm_category where _cup=?';
+	var right_sql = 'select _id,_lbname,_icon from tm_category where _cup='+cup;
 	db.transaction(function(tx){
-		tx.executeSql(right_sql,[cup],function(tx,result){
+		tx.executeSql(right_sql,[],function(tx,result){
 			var rightHt='';
 			console.log('rightlength:'+result.rows.length+'cup:'+cup);
 			for(var i=0;i<result.rows.length;i++){
