@@ -167,7 +167,7 @@
 }
 .right-catagory{
 	display: inline-block;
-	width: 75%;
+	width: 73%;
 	height: 100%;
 	background-color: #4CD964;
 }
@@ -213,4 +213,38 @@
 	text-align: center;
 	font-size: 0.875em;
 }
-
+.shop-cart-delete-order{
+	position: absolute;
+	top: 0px;
+	right: 10px;
+	line-height: 44px;
+	color: #D52722;
+}
+.shop-cart-content-without-order{
+	width: 100%;
+	height: 100%;
+   position: relative;
+   background-image: url(img/near_background.png);
+   background-size: 100%;
+  
+   
+}
+.middle_content{
+	width: 100%;
+	height: 200px;
+	margin-top: 30%;
+	background-color: #0062CC;
+	}
+.shopcart-img{
+	//src="css/img/shop_cart_package.png"
+	width: 50px;
+	height: 60px;
+	top: 0px;
+	left: 40%;
+	background-color: #000000;
+	margin-bottom: 30%;
+	margin-top: 30%;
+	/*background-image: url(img/shop_cart_package.png);
+	background-repeat: no-repeat;
+	background-size: 100%;*/
+}

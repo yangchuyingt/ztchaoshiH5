@@ -180,7 +180,6 @@ function toCategorylist(lbid) {
 
 function changeleftcss() {
 	//document.querySelector('#left-menu').className =''
-	console.log("jj"+current_left_item+','+befor_left_item);
 	//console.log(nowposition==beforepostion);
 	if (current_left_item!= befor_left_item) {
 		$("#left-menu").children('div').eq(Number(befor_left_item)).removeClass('category-left-menu-item2');
@@ -191,5 +190,4 @@ function changeleftcss() {
 		befor_left_item=current_left_item;
 		//console.log("hehe:"+current_left_item+','+befor_left_item);
 	}
-	console.log("hehe");
 }

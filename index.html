@@ -204,8 +204,16 @@
 					<!--<iframe class="iframe-show" scrolling="yes"  frameBorder="0" src="category.html" ></iframe>-->
 				</div>
 				<div class="mui-slider-item">
-
-					<a href="#"><img src="http://appimg.teambuy.com.cn/upload/2015/06/11/025858_93843.jpg" /></a>
+                    <div class="category-header">
+						<div class="category-text">购物车</div>
+					    <div class="shop-cart-delete-order">删除订单</div>
+					</div>
+					 <div class='shop-cart-content-without-order'>
+					 	<div class="middle_content">
+					 		<img class="shopcart-img" src="css/img/shop_cart_package.png"></div>
+					 	</div>
+					 </div>
+					<!--<a href="#"><img src="http://appimg.teambuy.com.cn/upload/2015/06/11/025858_93843.jpg" /></a>-->
 					<!--<iframe class="iframe-show" scrolling="yes"  frameBorder="0" src="shopcart.html" ></iframe>-->
 				</div>
 				<div class="mui-slider-item">
@@ -269,7 +277,6 @@
 		mui('#left-menu').on('tap','div',function(e){
 			var cup=this.getAttribute('value');
 			current_left_item=this.getAttribute('id');
-			console.log(current_left_item,befor_left_item);
 			getRightCatFromDb(cup);
 			changeleftcss(current_left_item,befor_left_item);
 		});
