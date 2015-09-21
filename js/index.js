@@ -104,6 +104,8 @@ function showleftfromnet(data) {
 	console.log("netht:" + ht);
 	$("#left-menu").empty();
 	$("#left-menu").append(ht);
+	$("#left-menu").children('div').eq(0).removeClass('category-left-menu-item');
+	$("#left-menu").children('div').eq(0).addClass('category-left-menu-item2');
 	showrightfromnet(data); //从网上加载数据以后了，显示右边的，分类
 }
 
@@ -136,6 +138,8 @@ function showleftview(data) { //results.rows.item(i).name
 		 console.log("dbht:"+ht);
 		$("#left-menu").empty();
 		$("#left-menu").append(ht);
+		$("#left-menu").children('div').eq(0).removeClass('category-left-menu-item');
+		$("#left-menu").children('div').eq(0).addClass('category-left-menu-item2');
 		getRightCatFromDb(category_big);
 
 	}
@@ -179,9 +183,10 @@ function changeleftcss() {
 	console.log("jj"+current_left_item+','+befor_left_item);
 	//console.log(nowposition==beforepostion);
 	if (current_left_item!= befor_left_item) {
-		
-		$("#left-menu").children('div').eq(0).toggleClass('category-left-menu-item');
-		$("#left-menu").children('div').eq(1).toggleClass('category-left-menu-item2');
+		$("#left-menu").children('div').eq(Number(befor_left_item)).removeClass('category-left-menu-item2');
+		$("#left-menu").children('div').eq(Number(befor_left_item)).addClass('category-left-menu-item');
+		$("#left-menu").children('div').eq(Number(current_left_item)).removeClass('category-left-menu-item');
+		$("#left-menu").children('div').eq(Number(current_left_item)).addClass('category-left-menu-item2');
 		// console.log($('#left-menu').children()[1].text()); 
 		befor_left_item=current_left_item;
 		//console.log("hehe:"+current_left_item+','+befor_left_item);
