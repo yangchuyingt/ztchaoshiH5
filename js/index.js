@@ -35,7 +35,7 @@ function loadcategory() {
 	$.post(url, {}, function(result) {
 		putResultTodb(result);
 		showleftfromnet(result);
-	  //console.log("ttt:"+JSON.stringify(result));
+	  console.log("ttt:"+JSON.stringify(result));
 	}, "json");
 }
 
