@@ -122,13 +122,15 @@ function showleftview(data){//results.rows.item(i).name
  * 从数据库获取又不的分类；
  * 
  * 
- *//
+ */
 function getRightCatFromDb(cup){
-	var db = openDatabase('teambuy', '1.0', 'Test DB', 5 * 1024 * 1024);
-	var right_sql = 'select _id,_lbname,_icon from tm_category where cup=?';
+	console.log("right-category");
+	var db = openDatabase('teambuy', '1.0', 'Test DB', 5* 1024 * 1024);
+	var right_sql = 'select _id,_lbname,_icon from tm_category where _cup=?';
 	db.transaction(function(tx){
 		tx.executeSql(right_sql,[cup],function(tx,result){
 			var rightHt='';
+			console.log('rightlength:'+result.rows.length+'cup:'+cup);
 			for(var i=0;i<result.rows.length;i++){
 				rightHt+='<div value="'+result.rows.item(i)._id+'" class="right-cat-item"><img class="right-catgory-img" src="'+result.rows.item(i)._icon+'"/><div class="right-catgory-text">'+result.rows.item(i)._lbname+'</div></div>';
 			}
