@@ -312,8 +312,9 @@
 	
 }
 .user-three-item{
-	width: 33%;
+	width: 33.333%;
 	height: 2.8125em;
-	display: inline;
-	background-color: #0062CC;
+	text-align: center;
+	float: left;
+	color: #fff;
 }
