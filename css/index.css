@@ -343,13 +343,123 @@
 	width: 100%;
 	height: 44px;
 	background-color: #fff;
+
 	line-height: 44px;
+	vertical-align: middle;
 }
 .me-myorder-img{
 	background-image: url(img/me_myorder.png);
 	background-size: 100%;
     background-repeat: no-repeat;
-    width: 40px;
-    height: 40px;
-    
+    margin-left: 15px;
+    width: 20px;
+    height: 20px;
+    margin-top: 13px;
+    float: left;
   }
+  .me-myasset{
+  	background-image: url(img/zichan.png);
+	background-size: 100%;
+    background-repeat: no-repeat;
+    margin-left: 15px;
+    width: 20px;
+    height: 20px;
+    margin-top: 13px;
+    float: left;
+  }
+.me-myorder-text{
+	width: auto;
+	height: 100%;
+	line-height: 44px;
+	font-size: 15px;
+    float:left;
+	margin-left: 10px;
+}
+
+.me-check-all-order{
+	width: auto;
+	height: 100%;
+	line-height: 2.75em;
+	float: right;
+	font-size: 15px;
+}
+.me-order-right-arraw{
+	width: 10px;
+	height: 20px;
+	margin-top: 13px;
+	background-image: url(img/brand_more.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	float: right;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+.me-devide-line{
+	width: 94%;
+    margin-left: 3%;
+    margin-right: 3%;
+    height: 1px;
+    background-color: #9B9B9B;
+}
+.white-bg{
+	width: 100%;
+	height: auto;
+    background-color: #fff;
+}
+.kinds-order-msg{
+	width: 100%;
+	height: 3.75em;
+}
+.kind-order-item{
+	width: 25%;
+	height: 100%;
+	text-align: center;
+	float: left;
+	color: #858585;
+	background: #fff;
+}
+.kind-order-item-img{
+	width: 20px;
+	height: 20px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	margin: auto;
+	
+	margin-top: 8px;
+	
+}
+.kind-order-item-img1{
+	background-image: url(img/daifukuan.png);
+	
+}
+.kind-order-item-img2{
+	background-image: url(img/daishouhuo.png);
+}
+.kind-order-item-img3{
+	background-image: url(img/daipingjia.png);
+}
+.kind-order-item-img4{
+	background-image: url(img/shouhou.png);
+}
+.my-asset{
+	width: 100%;
+	height: 2.75em;
+	background-color: #fff;
+	margin-top: 0.625em;
+}
+.me-zt-coupon{
+	width: 25%;
+	height: 100%;
+	float: left;
+	text-align: center;
+}
+.me-fankui{
+	background-image: url(img/fankui.png);
+	background-size: 100%;
+    background-repeat: no-repeat;
+    margin-left: 15px;
+    width: 20px;
+    height: 20px;
+    margin-top: 13px;
+    float: left;
+}
