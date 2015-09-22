@@ -30,8 +30,6 @@
 				var showguide = plus.storage.getItem("firstin");
 				if (!showguide) {
 					//console.log('diyici');
-					
-					
 					plus.navigator.closeSplashscreen();
 					plus.navigator.setFullscreen(false);
 					plus.storage.setItem("firstin", "true");
@@ -208,27 +206,47 @@
 					</div>
 					<div class='shop-cart-content-without-order'>
 						<div class="middle_content">
-							<div class="shopcart-img" > <!--src="css/img/shop_cart_package.png"-->
+							<div class="shopcart-img">
+								<!--src="css/img/shop_cart_package.png"-->
 							</div>
-							<div  class="shopcart-text-no-production">您的购物车暂时没有商品</div>
-						   <div id='continue-shoping' class="continue-shopping">继续逛逛</div>
+							<div class="shopcart-text-no-production">您的购物车暂时没有商品</div>
+							<div id='continue-shoping' class="continue-shopping">继续逛逛</div>
 						</div>
 					</div>
 					<!--<a href="#"><img src="http://appimg.teambuy.com.cn/upload/2015/06/11/025858_93843.jpg" /></a>-->
 					<!--<iframe class="iframe-show" scrolling="yes"  frameBorder="0" src="shopcart.html" ></iframe>-->
 				</div>
 				<div class="mui-slider-item">
-                    <div class="category-header">
+					<div class="category-header">
 						<div class="category-text">我的</div>
 						<div class="me-header-left"></div>
 						<div class="me-header-right"></div>
 					</div>
 					<div class='me-main-content'>
+						
 						<div class="top-user-msg-bg">
+							<div class='user-header-protrait'></div>
+							<div class="user-account-name">游客</div>
 							<div class='img-buttom-show'>
-								<div class="user-three-item"></div>
+
+								<div class="user-three-item">
+								<div >0</div>
+								<div> 收藏商品</div>
+								</div>
+								<div class="user-three-item">
+								<div >0</div>
+								<div>收藏商家</div>
+								</div>
+								<div class="user-three-item">
+								<div >0</div>
+								<div>浏览记录</div>
+								</div>
+
 							</div>
 						</div>
+					<div class="me-order-show">
+						<div clas="me-myorder-img"></div>
+					</div>
 					</div>
 					<!--<a href="#"><img src="http://appimg.teambuy.com.cn/upload/2015/06/11/105212_82189.jpg" /></a>-->
 					<!--<iframe class="iframe-show" scrolling="yes"  frameBorder="0" src="me.html" ></iframe>-->
@@ -265,11 +283,11 @@
 		</table>
 	</body>
 	<script>
-		var currentposition = '0';//底部四个按钮的记录
-		var beforposition = '0';//底部以前的
-		var category_big='1';
-		var current_left_item='0';//左边item当前位置
-		var befor_left_item='0';
+		var currentposition = '0'; //底部四个按钮的记录
+		var beforposition = '0'; //底部以前的
+		var category_big = '1';
+		var current_left_item = '0'; //左边item当前位置
+		var befor_left_item = '0';
 		 //创建数据库表
 		mui('.buttom-show').on('tap', 'td', function(e) {
 			currentposition = this.getAttribute('value');
@@ -279,22 +297,22 @@
 			gallery.slider().gotoItem(Number(currentposition));
 			//gallery.slider().gotoItem(2);
 		});
-		//主页最底部下面的四个按钮的点击事件
+		 //主页最底部下面的四个按钮的点击事件
 		document.querySelector('.mui-slider').addEventListener('slide', function(event) {
 			console.log("你正在看第" + (event.detail.slideNumber) + "张图片");
 			currentposition = event.detail.slideNumber;
 			changetabs();
 		});
-		//左边菜单的点击事件
-		mui('#left-menu').on('tap','div',function(e){
-			var cup=this.getAttribute('value');
-			current_left_item=this.getAttribute('id');
+		 //左边菜单的点击事件
+		mui('#left-menu').on('tap', 'div', function(e) {
+			var cup = this.getAttribute('value');
+			current_left_item = this.getAttribute('id');
 			getRightCatFromDb(cup);
-			changeleftcss(current_left_item,befor_left_item);
+			changeleftcss(current_left_item, befor_left_item);
 		});
-		//右边小类的点击事件
-		mui("#right-catagory").on('tap','.right-cat-item',function(){
-			var  lbid=this.getAttribute('value');
+		 //右边小类的点击事件
+		mui("#right-catagory").on('tap', '.right-cat-item', function() {
+			var lbid = this.getAttribute('value');
 			toCategorylist(lbid);
 		});
 		 //主页面部分的js代码
@@ -309,8 +327,8 @@
 		getproduct(0);
 		addmiddleadvlistener();
 		addlistlistener();
-		//购物车部分代码
-		document.querySelector('#continue-shoping').addEventListener('tap',function(){
+		 //购物车部分代码
+		document.querySelector('#continue-shoping').addEventListener('tap', function() {
 			var gallery = mui('.viewpager-main');
 			gallery.slider().gotoItem(0);
 		});
