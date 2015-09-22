@@ -209,16 +209,28 @@
 					<div class='shop-cart-content-without-order'>
 						<div class="middle_content">
 							<div class="shopcart-img" > <!--src="css/img/shop_cart_package.png"-->
-
 							</div>
+							<div  class="shopcart-text-no-production">您的购物车暂时没有商品</div>
+						   <div id='continue-shoping' class="continue-shopping">继续逛逛</div>
 						</div>
 					</div>
 					<!--<a href="#"><img src="http://appimg.teambuy.com.cn/upload/2015/06/11/025858_93843.jpg" /></a>-->
 					<!--<iframe class="iframe-show" scrolling="yes"  frameBorder="0" src="shopcart.html" ></iframe>-->
 				</div>
 				<div class="mui-slider-item">
-
-					<a href="#"><img src="http://appimg.teambuy.com.cn/upload/2015/06/11/105212_82189.jpg" /></a>
+                    <div class="category-header">
+						<div class="category-text">我的</div>
+						<div class="me-header-left"></div>
+						<div class="me-header-right"></div>
+					</div>
+					<div class='me-main-content'>
+						<div class="top-user-msg-bg">
+							<div class='img-buttom-show'>
+								<div clas="user-three-item"></div>
+							</div>
+						</div>
+					</div>
+					<!--<a href="#"><img src="http://appimg.teambuy.com.cn/upload/2015/06/11/105212_82189.jpg" /></a>-->
 					<!--<iframe class="iframe-show" scrolling="yes"  frameBorder="0" src="me.html" ></iframe>-->
 				</div>
 			</div>
@@ -297,6 +309,11 @@
 		getproduct(0);
 		addmiddleadvlistener();
 		addlistlistener();
+		//购物车部分代码
+		document.querySelector('#continue-shoping').addEventListener('tap',function(){
+			var gallery = mui('.viewpager-main');
+			gallery.slider().gotoItem(0);
+		});
 	</script>
 
 </html>
