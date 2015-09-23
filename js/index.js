@@ -215,3 +215,8 @@ function loadUserCouponmsg(){
 		//console.log("ttt:"+JSON.stringify(result));
 	}, "json");
 }
+function setuserpatrait(){
+	 plus.gallery.pick( function(path){
+	 		console.log(path);
+	 }, function(){console.log("失败")}, {filter:"image"});
+}
