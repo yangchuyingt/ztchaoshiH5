@@ -432,13 +432,13 @@
 		document.querySelector('.me-order-show').addEventListener('tap',function(){
 			myAllOrderpage.show();
 		})
-//		mui('#order-things').on('tap','div',function(e){
-//		 var seestatus=this.getAttribute('value');
-//		 	mui.fire(page, 'getflag', {
-//		 		pagestatus:seestatus;
-//			});
-//		 waitpaypage.show();
-//		});
+		mui('#order-things').on('tap','div',function(e){
+		 var seestatus=this.getAttribute('value');
+		 	mui.fire(waitpaypage, 'getflag', {
+		 		pagestatus:seestatus
+			});
+		 waitpaypage.show();
+		});
 	</script>
 
 </html>
