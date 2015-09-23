@@ -1,0 +1,54 @@
+.me-setting-header{
+	width:100%;
+	height: 2.75em;
+	background: #F5F5F5;
+	position:  relative;
+	color: #D52722;
+	padding-left: 44%;
+	line-height: 44px;
+	margin-bottom: 1px;
+	}
+	.body-bg{
+		width: 100%;
+		height: 100%;
+		background-image: url(img/near_background.png);
+		background-size: 100%;
+		background-repeat: no-repeat;
+	}
+  .setting-item{
+  	width: 100%;
+  	height: 2.75em;
+  	background-color: #fff;
+  	line-height: 2.75em;
+  	padding-left: 0.625em;
+  }
+  .divide-line{
+  	width: 100%;
+  	height: 0.0625em;
+  	background-color: #9B9B9B;
+  	
+  	
+  	
+  }
+  .right-arraw{
+  	width:0.625em;
+  	height: 1.875em;
+  	background-image: url(img/brand_more.png);
+  	background-repeat: no-repeat;
+  	background-size: 100%;
+  	float: right;
+  	margin-right: 0.9375em;
+  	margin-top: 0.75em;
+  }
+.exit-login{
+	margin-top: 1.875em;
+	margin-left: auto;
+	margin-right: auto;
+	background-image: url(img/btn_me_quite.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	color: #fff;
+	text-align: center;
+	width: 60%;
+	height: 2.5em;
+}

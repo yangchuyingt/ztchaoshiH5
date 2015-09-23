@@ -13,6 +13,9 @@
 		<link rel="stylesheet" href="css/mainpage.css" />
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" charset="utf-8">
+		var mesettingpage;
+		var myAllOrderpage;
+		var waitpaypage;
 			mui.init({
 				pullRefresh: {
 					container: '#refreshContainer',
@@ -44,6 +47,36 @@
 						}
 					});
 				}
+			
+			   setTimeout(function(){
+			   	mesettingpage = mui.preload({
+						url: 'examples/me/meSetting.html',
+						id: 'meSetting',
+//						extras: {
+//							"pagenameid": "congsigneeaddress"
+//						},
+						styles: {},
+						show: {
+							aniShow: 'none'
+						}
+					});
+						myAllOrderpage = mui.preload({
+						url: 'examples/me/myAllOrder.html',
+						id: 'myAllOrder',
+						styles: {},
+						show: {
+							aniShow: 'none'
+						}
+					});
+					waitpaypage=mui.preload({
+						url: 'examples/me/waitpay.html',
+						id: 'waitpay.html',
+						show: {
+							aniShow: 'none'
+						}
+					});
+			   },800);
+			
 			});
 		</script>
 	</head>
@@ -225,7 +258,8 @@
 					<div class='me-main-content'>
 
 						<div class="top-user-msg-bg">
-							<div class='user-header-protrait'></div>
+								<div class='user-header-protrait'></div>
+							
 							<div class="user-account-name">游客</div>
 							<div class='img-buttom-show'>
 
@@ -254,20 +288,20 @@
 
 							</div>
 							<div class="me-devide-line"></div>
-							<div class="kinds-order-msg">
-								<div class="kind-order-item">
+							<div  id="order-things" class="kinds-order-msg">
+								<div value="0" class="kind-order-item">
 									<div class="kind-order-item-img kind-order-item-img1"></div>
 									待付款
 								</div>
-								<div class="kind-order-item">
+								<div value="1" class="kind-order-item">
 									<div class="kind-order-item-img kind-order-item-img2"></div>
 									待收货
 								</div>
-								<div class="kind-order-item">
+								<div value="2" class="kind-order-item">
 									<div class="kind-order-item-img kind-order-item-img3"></div>
 									待评价
 								</div>
-								<div class="kind-order-item">
+								<div value="3" class="kind-order-item">
 									<div class="kind-order-item-img kind-order-item-img4"></div>
 									退换/售后
 								</div>
@@ -306,7 +340,6 @@
 							<div>优惠券</div>
 						</div>-->
 							</div>
->>>>>>> 8769effb26ea15012977203cf8ebb983d5a35634
 					</div>
 					<!--<a href="#"><img src="http://appimg.teambuy.com.cn/upload/2015/06/11/105212_82189.jpg" /></a>-->
 					<!--<iframe class="iframe-show" scrolling="yes"  frameBorder="0" src="me.html" ></iframe>-->
@@ -392,6 +425,20 @@
 			var gallery = mui('.viewpager-main');
 			gallery.slider().gotoItem(0);
 		});
+		//我的部分代码
+		document.querySelector('.me-header-left').addEventListener('tap',function(){
+			mesettingpage.show();
+		});
+		document.querySelector('.me-order-show').addEventListener('tap',function(){
+			myAllOrderpage.show();
+		})
+//		mui('#order-things').on('tap','div',function(e){
+//		 var seestatus=this.getAttribute('value');
+//		 	mui.fire(page, 'getflag', {
+//		 		pagestatus:seestatus;
+//			});
+//		 waitpaypage.show();
+//		});
 	</script>
 
 </html>
