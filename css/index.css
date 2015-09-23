@@ -322,12 +322,12 @@
 	width: 3.125em;
 	height: 3.125em;
 	border-radius: 1.5625em;
-	background-color: #0062CC;
+	
 	position: absolute;
 	top: 15%;
 	left: 43%;
 	background-repeat: no-repeat;
-	background-size: 100;
+	background-size: 100%;
 	
 }
 .user-account-name{

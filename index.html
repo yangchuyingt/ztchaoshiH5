@@ -16,6 +16,7 @@
 		var mesettingpage;
 		var myAllOrderpage;
 		var waitpaypage;
+		var logpage;
 			mui.init({
 				pullRefresh: {
 					container: '#refreshContainer',
@@ -70,11 +71,12 @@
 					});
 					waitpaypage=mui.preload({
 						url: 'examples/me/waitpay.html',
-						id: 'waitpay.html',
+						id: 'waitpay',
 						show: {
 							aniShow: 'none'
 						}
 					});
+				
 			   },800);
 			
 			});
@@ -321,11 +323,11 @@
 							<div class="me-devide-line"></div>
 							<div class="kinds-order-msg">
 								<div class="kind-order-item">
-									<div>0</div>
-									<div>优惠券</div>
+									<div id='tuanbi-num'>0</div>
+									<div>中团币</div>
 								</div>
 								<div class="kind-order-item">
-									<div>0</div>
+									<div id='coupon-num'>0</div>
 									<div>优惠券</div>
 								</div>
 							</div>
@@ -441,8 +443,9 @@
 		});
 		mui.plusReady(function (){
 			showUserMsgInMe();
+			
 		})
-		loadUserCouponmsg();
+	
 	</script>
 
 </html>

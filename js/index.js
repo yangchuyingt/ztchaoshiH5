@@ -26,6 +26,7 @@ function loadtabsmsg() {
 		case '2':
 			break;
 		case '3':
+		  loadUserCouponmsg();
 			break;
 	}
 }
@@ -193,8 +194,9 @@ function changeleftcss() {
 }
 function showUserMsgInMe(){
 	var avator=plus.storage.getItem("avatar");
+	console.log(avator);
 	//$("#img" + i).css("background-image", "url(" + url + ")");
-	$('#user-protrait').css('background-imge',"url(" + avator + ")");
+	$('#user-protrait').css('background-image',"url(" + avator + ")");
 	
 }
 function loadUserCouponmsg(){
@@ -206,6 +208,10 @@ function loadUserCouponmsg(){
 		"sessid": sessid
 	}, function(result) {
 		console.log("jj:"+JSON.stringify(result));
+		if(result.ret==1){
+			$("#tuanbi-num").text(result.data.tbmoney);
+			$('#coupon-num').text(result.data.quan);
+		}
 		//console.log("ttt:"+JSON.stringify(result));
 	}, "json");
 }
