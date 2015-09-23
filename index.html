@@ -16,7 +16,7 @@
 		var mesettingpage;
 		var myAllOrderpage;
 		var waitpaypage;
-		var logpage;
+		var loginpages;
 			mui.init({
 				pullRefresh: {
 					container: '#refreshContainer',
@@ -73,6 +73,17 @@
 						url: 'examples/me/waitpay.html',
 						id: 'waitpay',
 						show: {
+							aniShow: 'none'
+						}
+					});
+					loginpages=mui.preload({
+						url:'examples/me/login.html'
+						id:'login',
+						extras: {
+							"pagenameid": "index"
+						},
+
+						show:{
 							aniShow: 'none'
 						}
 					});
@@ -447,6 +458,16 @@
 		})
 	    document.querySelector("#user-protrait").addEventListener('tap',function(){
 	    	setuserpatrait();
+	    	 
+	    });
+	    document.querySelector('.me-header-right').addEventListener('tap',function(){
+	    	 loginpages.show();
+	    	 console.log('denglu');
+	    });
+	    window.addEventListener("finishlogin",function(){
+	     showUserMsgInMe();
+	     loadUserCouponmsg();
+   	    	 // console.log()
 	    });
 	</script>
 
