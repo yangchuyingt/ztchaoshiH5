@@ -258,7 +258,7 @@
 					<div class='me-main-content'>
 
 						<div class="top-user-msg-bg">
-								<div class='user-header-protrait'></div>
+								<div id="user-protrait" class='user-header-protrait'></div>
 							
 							<div class="user-account-name">游客</div>
 							<div class='img-buttom-show'>
@@ -439,6 +439,10 @@
 			});
 		 waitpaypage.show();
 		});
+		mui.plusReady(function (){
+			showUserMsgInMe();
+		})
+		loadUserCouponmsg();
 	</script>
 
 </html>

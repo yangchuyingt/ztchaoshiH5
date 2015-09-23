@@ -33,6 +33,8 @@ function login(user, password, pagenameid) {
 		if (result.ret == "0") {
 			mui.toast("密码错误!");
 		} else if (result.ret == "1") {
+			//console.log("fanhui:"+JSON.stringify(result));
+		    plus.storage.setItem('avatar',result.data.avatar);
 			plus.storage.setItem("username", result.data.mobile);
 			console.log("resluttoken:"+result.sessid);
 			plus.storage.setItem("token", result.data.acctoken);
@@ -43,7 +45,7 @@ function login(user, password, pagenameid) {
 			});
 			
 		//	console.log("pagenameid:"+pagenameid);
-			console.log("token:"+result.sessid);
+			//console.log("token:"+result.sessid);
 			mui.back();
 		}
 	}, "json");

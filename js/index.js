@@ -191,3 +191,21 @@ function changeleftcss() {
 		//console.log("hehe:"+current_left_item+','+befor_left_item);
 	}
 }
+function showUserMsgInMe(){
+	var avator=plus.storage.getItem("avatar");
+	//$("#img" + i).css("background-image", "url(" + url + ")");
+	$('#user-protrait').css('background-imge',"url(" + avator + ")");
+	
+}
+function loadUserCouponmsg(){
+	var url = "http://app.teambuy.com.cn/apnc/m/my/a/getmyinfo";
+	var token = plus.storage.getItem("token");
+	var sessid = plus.storage.getItem("sessid");
+	$.post(url, {
+		acctoken: token,
+		"sessid": sessid
+	}, function(result) {
+		console.log("jj:"+JSON.stringify(result));
+		//console.log("ttt:"+JSON.stringify(result));
+	}, "json");
+}
