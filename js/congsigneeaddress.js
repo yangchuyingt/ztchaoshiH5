@@ -74,6 +74,7 @@ function getaddressmsg(loginpage,notnet){
 		tx.executeSql(sql, [], function(tx, result) { //results.rows.item(i).name
 			if(result.rows.length<=0){
 				if(!notnet){
+					console.log('联网加载地址');
 				loadaddressmsg(loginpage);
 				}else{
 					return ;
