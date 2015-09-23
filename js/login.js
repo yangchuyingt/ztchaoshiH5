@@ -40,7 +40,14 @@ function login(user, password, pagenameid) {
 			plus.storage.setItem("token", result.data.acctoken);
 			plus.storage.setItem("sessid",result.sessid);
 			console.log("pagenameid:"+pagenameid);
-			var page= plus.webview.getWebviewById(pagenameid);
+			var page;
+			if(pagenameid=='index'){
+				
+				page=plus.webview.getLaunchWebview();
+			}else{
+				
+			page= plus.webview.getWebviewById(pagenameid);
+			}
 			mui.fire(page, 'finishlogin', {
 			});
 			
