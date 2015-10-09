@@ -171,7 +171,6 @@ function addlistlistener(){
 			url: 'examples/mainpage/productDetial.html',
 			id: 'productDetial',
 			styles: {
-				
 			},
 			extras: {
 				"tmid": tmid,

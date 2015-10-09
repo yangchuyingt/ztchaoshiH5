@@ -177,6 +177,11 @@ function getRightCatFromDb(cup) {
 
 function toCategorylist(lbid) {
 	console.log("类别id有：" + lbid);
+	productlistPage.show();
+	var page=plus.webview.getWebviewById("production_list");
+	mui.fire(page,'postlbid',{
+		"lbid":lbid
+	})
 }
 
 function changeleftcss() {
@@ -217,4 +222,12 @@ function setuserpatrait(){
 	 plus.gallery.pick( function(path){
 	 		console.log(path);
 	 }, function(){console.log("失败")}, {filter:"image"});
+}
+function loadshopcartmsg() {
+	var token = plus.storage.getItem("token");
+	var sessid = plus.storage.getItem("sessid");
+	var url = "http://app.teambuy.com.cn/apnc/m/tmord/a/getcart"";
+	$.post(url, {}, function(result) {
+		console.log('shopcart:'+JSON.stringify(result));
+	}, "json");
 }

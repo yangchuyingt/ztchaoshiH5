@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script type="text/javascript" src="../../js/mui.min.js" ></script>
+    <script type="text/javascript" src="../../js/production-list.js" ></script>
+    <script type="text/javascript" src="../../js/jquery.js" ></script>
+    <link rel="stylesheet" href="../../css/mui.min.css" />
+    <link rel="stylesheet" href="../../css/production-list.css" />
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+</head>
+<body>
+	 <header class="product-list-header">
+	  <div class='left-return mui-action-back'></div>
+	  <div class='middle-title'>
+	  <div class="middle-title-plus"></div>输入商家分类，或商圈
+	   
+	  </div>
+	 <div class="right-bar">筛选</div>
+	 </header>
+	 <div class="devide-line"></div>
+	 <div class="product-list-order-by">
+	 	<div class="product-list-order-by-item">综合</div>
+	 	<div class="product-list-order-by-item">销量</div>
+	 	<div class="product-list-order-by-item">价格</div>
+	 </div>
+	 <div class="devide-line"></div>
+	 <table id="table-product-list" class="table-product-list">
+                    
+	 </table>
+</body>
+<script >
+    var lbid;
+	window.addEventListener('postlbid',function(event){
+		 console.log("go on ");
+		 lbid = event.detail.lbid;
+		// getdatafromdb();
+		 getdatafromnet();
+	});
+</script>
+</html>
