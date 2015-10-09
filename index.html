@@ -17,6 +17,7 @@
 		var myAllOrderpage;
 		var waitpaypage;
 		var loginpages;
+		var productlistPage;
 			mui.init({
 				pullRefresh: {
 					container: '#refreshContainer',
@@ -87,6 +88,13 @@
 							aniShow: 'none'
 						}
 					});
+					productlistPage=mui.preload({
+						url:'examples/mainpage/production_list.html',
+						id:'production_list',
+						show:{
+							aniShow :'none'
+						}
+					});
 				
 			   },800);
 			
@@ -103,7 +111,7 @@
 							<div class="city-name">广州</div>
 							<div class="city-name-img"></div>
 						</div>
-						<div class="center-title">中团易购</div>
+						<div class="center-title">中团超市</div>
 					</header>
 					<!--下拉刷新容器-->
 					<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
@@ -257,6 +265,28 @@
 							</div>
 							<div class="shopcart-text-no-production">您的购物车暂时没有商品</div>
 							<div id='continue-shoping' class="continue-shopping">继续逛逛</div>
+						</div>
+					</div>
+					<div class='shop-cart-content-have-order'>
+						<div class='shop-cart-content-have-order-item'>
+							<div class="divide-line-without-margin"></div>
+							<div class='shopcart-shopname'>品牌家居专卖店</div>
+							<div class="divide-line-without-margin"></div>
+							<div class='product-items'>
+								<div class='product-items-select'>
+									<img src="css/img/product_unselect.png"   class="img-select"/>
+								</div>
+								<div class="shopcart-product-img"></div>
+								<div calss='shopcart-product-msg'>
+									<div class='shopcart-production-text'> 泰国进口纯天然乳胶弹簧床垫</div>
+									<div class='px-13'> ￥1880.00</div>
+									<div class='change-buy-num'>
+									 <div class='shopcart-buy-num-sub'></div>
+									 <div class='shopcart-buy-num-show'>1</div>
+									 <div class='shopcart-buy-num-add'></div>
+								    </div>
+								</div>
+							</div>
 						</div>
 					</div>
 					<!--<a href="#"><img src="http://appimg.teambuy.com.cn/upload/2015/06/11/025858_93843.jpg" /></a>-->
@@ -457,7 +487,7 @@
 			
 		})
 	    document.querySelector("#user-protrait").addEventListener('tap',function(){
-	    	setuserpatrait();
+	    	 setuserpatrait();
 	    	 
 	    });
 	    document.querySelector('.me-header-right').addEventListener('tap',function(){
