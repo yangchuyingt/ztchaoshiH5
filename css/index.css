@@ -1,6 +1,6 @@
 .body-ind{
     width: 100%;
-    height: 100%;
+    min-height: 100%;
    /* background-color: #D52722;*/
 }
 .buttom-show{
@@ -464,11 +464,13 @@
 }
 .shop-cart-content-have-order{
 	width: 100%;
-	height: 100%;
+	height: 50%;
+	overflow: scroll;
 }
 .shop-cart-content-have-order-item{
 	width: 100%;
-	height: auto;
+	height: 8.125em;
+	
 }
 .divide-line-without-margin{
 	width: 100%;
