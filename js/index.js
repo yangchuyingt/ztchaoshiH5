@@ -103,7 +103,7 @@ function showleftfromnet(data) {
 		ht += '<div id ="' + j + '" value="' + data.data[i].lbid + '" class="category-left-menu-item">' + data.data[i].lbname + '</div>';
 		j++;
 	}
-	console.log("netht:" + ht);
+	//console.log("netht:" + ht);
 	$("#left-menu").empty();
 	$("#left-menu").append(ht);
 	$("#left-menu").children('div').eq(0).removeClass('category-left-menu-item');
@@ -243,7 +243,7 @@ function loadshopcartmsg() {
 			function(result) {
 				if (result.ret == '1') {
 					shopcartmsgjson = result.data;
-					document.getElementById('.shop-cart-content-without-order').style.display = "none";
+					$('.shop-cart-content-without-order').hide();
 					dealshopcartmsg();
 				}
 				console.log('shopcart:' + JSON.stringify(result));
@@ -255,15 +255,16 @@ function loadshopcartmsg() {
 	 */
 
 function dealshopcartmsg() {
-	var str;
+	var str="";
 	if (shopcartmsgjson) {
-		for (var i = 0; i++; i < shopcartmsgjson.length) {
-			str += '<div value="' + shopcartmsgjson[i] + '" class="shop-cart-content-have-order-item"><div class="divide-line-without-margin"></div><div class="shopcart-shopname">' + shopcartmsgjson[i].shopname + '</div><div class="divide-line-without-margin"></div><div class="product-items"><div class="product-items-select"><img src="css/img/product_unselect.png"   class="img-select"/></div><div class="shopcart-product-img"></div><div calss="shopcart-product-msg"><div class="shopcart-production-text">' + shopcartmsgjson[i].cpmc + '</div><div class="px-13">￥' + shopcartmsgjson[i].je + '</div><div class="change-buy-num"><div class="shopcart-buy-num-sub"></div><div class="shopcart-buy-num-show">1</div><div class="shopcart-buy-num-add"></div></div></div></div></div>';
+		for (var i = 0; i <shopcartmsgjson.length;i++) {
+			str+= '<div value="' + " "+ '" class="shop-cart-content-have-order-item"><div class="divide-line-without-margin"></div><div class="shopcart-shopname">' + shopcartmsgjson[i].shopname + '</div><div class="divide-line-without-margin"></div><div class="product-items"><div class="product-items-select"><img src="css/img/product_unselect.png"   class="img-select"/></div><div class="shopcart-product-img"></div><div calss="shopcart-product-msg"><div class="shopcart-production-text">' + shopcartmsgjson[i].cpmc + '</div><div class="px-13">￥' + shopcartmsgjson[i].je + '</div><div class="change-buy-num"><div class="shopcart-buy-num-sub"></div><div class="shopcart-buy-num-show">1</div><div class="shopcart-buy-num-add"></div></div></div></div></div>';
 		}
-		$("#shop-cart-content-have-order").empty();
-		$("#shop-cart-content-have-order").append(str);
+		console.log(shopcartmsgjson.length+","+str);
+		$(".shop-cart-content-have-order").empty();
+		$(".shop-cart-content-have-order").append(str);
 
 	} else {
-
+       console.log("没数据");
 	}
 }
