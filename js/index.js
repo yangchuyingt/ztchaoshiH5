@@ -226,8 +226,8 @@ function setuserpatrait(){
 function loadshopcartmsg() {
 	var token = plus.storage.getItem("token");
 	var sessid = plus.storage.getItem("sessid");
-	var url = "http://app.teambuy.com.cn/apnc/m/tmord/a/getcart"";
-	$.post(url, {}, function(result) {
+	var url = "http://app.teambuy.com.cn/apnc/m/tmord/a/getcart";
+	$.post(url, {}, function(result){
 		console.log('shopcart:'+JSON.stringify(result));
 	}, "json");
 }
