@@ -464,7 +464,7 @@
 }
 .shop-cart-content-have-order{
 	width: 100%;
-	height: 100%;
+	height: auto;
 }
 .shop-cart-content-have-order-item{
 	width: 100%;
