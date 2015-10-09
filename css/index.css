@@ -1,10 +1,7 @@
 .body-ind{
     width: 100%;
     height: 100%;
-  //  background-color: #D52722;
-  
-    
-	
+   /* background-color: #D52722;*/
 }
 .buttom-show{
 	position: absolute;
@@ -367,7 +364,6 @@
     height: 20px;
     margin-top: 13px;
     float: left;
->>>>>>> 8769effb26ea15012977203cf8ebb983d5a35634
   }
 .me-myorder-text{
 	width: auto;
