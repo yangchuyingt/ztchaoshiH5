@@ -24,9 +24,10 @@ function loadtabsmsg() {
 			loadcategory();
 			break;
 		case '2':
+			loadshopcartmsg();
 			break;
 		case '3':
-		  loadUserCouponmsg();
+			loadUserCouponmsg();
 			break;
 	}
 }
@@ -136,7 +137,7 @@ function showleftview(data) { //results.rows.item(i).name
 			}
 			ht += '<div id="' + i + '" value="' + data.rows.item(i)._id + '" class="category-left-menu-item">' + data.rows.item(i)._lbname + '</div>';
 		}
-		 console.log("dbht:"+ht);
+		console.log("dbht:" + ht);
 		$("#left-menu").empty();
 		$("#left-menu").append(ht);
 		$("#left-menu").children('div').eq(0).removeClass('category-left-menu-item');
@@ -178,32 +179,34 @@ function getRightCatFromDb(cup) {
 function toCategorylist(lbid) {
 	console.log("类别id有：" + lbid);
 	productlistPage.show();
-	var page=plus.webview.getWebviewById("production_list");
-	mui.fire(page,'postlbid',{
-		"lbid":lbid
+	var page = plus.webview.getWebviewById("production_list");
+	mui.fire(page, 'postlbid', {
+		"lbid": lbid
 	})
 }
 
 function changeleftcss() {
 	//document.querySelector('#left-menu').className =''
 	//console.log(nowposition==beforepostion);
-	if (current_left_item!= befor_left_item) {
+	if (current_left_item != befor_left_item) {
 		$("#left-menu").children('div').eq(Number(befor_left_item)).removeClass('category-left-menu-item2');
 		$("#left-menu").children('div').eq(Number(befor_left_item)).addClass('category-left-menu-item');
 		$("#left-menu").children('div').eq(Number(current_left_item)).removeClass('category-left-menu-item');
 		$("#left-menu").children('div').eq(Number(current_left_item)).addClass('category-left-menu-item2');
 		// console.log($('#left-menu').children()[1].text()); 
-		befor_left_item=current_left_item;
+		befor_left_item = current_left_item;
 		//console.log("hehe:"+current_left_item+','+befor_left_item);
 	}
 }
-function showUserMsgInMe(){
-	var avator=plus.storage.getItem("avatar");
+
+function showUserMsgInMe() {
+	var avator = plus.storage.getItem("avatar");
 	//$("#img" + i).css("background-image", "url(" + url + ")");
-	$('#user-protrait').css('background-image',"url(" + avator + ")");
-	
+	$('#user-protrait').css('background-image', "url(" + avator + ")");
+
 }
-function loadUserCouponmsg(){
+
+function loadUserCouponmsg() {
 	var url = "http://app.teambuy.com.cn/apnc/m/my/a/getmyinfo";
 	var token = plus.storage.getItem("token");
 	var sessid = plus.storage.getItem("sessid");
@@ -211,23 +214,56 @@ function loadUserCouponmsg(){
 		acctoken: token,
 		"sessid": sessid
 	}, function(result) {
-		if(result.ret==1){
+		if (result.ret == 1) {
 			$("#tuanbi-num").text(result.data.tbmoney);
 			$('#coupon-num').text(result.data.quan);
 		}
 		//console.log("ttt:"+JSON.stringify(result));
 	}, "json");
 }
-function setuserpatrait(){
-	 plus.gallery.pick( function(path){
-	 		console.log(path);
-	 }, function(){console.log("失败")}, {filter:"image"});
+
+function setuserpatrait() {
+	plus.gallery.pick(function(path) {
+		console.log(path);
+	}, function() {
+		console.log("失败")
+	}, {
+		filter: "image"
+	});
 }
+
 function loadshopcartmsg() {
-	var token = plus.storage.getItem("token");
-	var sessid = plus.storage.getItem("sessid");
-	var url = "http://app.teambuy.com.cn/apnc/m/tmord/a/getcart";
-	$.post(url, {}, function(result){
-		console.log('shopcart:'+JSON.stringify(result));
-	}, "json");
+		var token = plus.storage.getItem("token");
+		var sessid = plus.storage.getItem("sessid");
+		var url = "http://app.teambuy.com.cn/apnc/m/tmord/a/getcart";
+		$.post(url, {
+				acctoken: token,
+				"sessid": sessid
+			},
+			function(result) {
+				if (result.ret == '1') {
+					shopcartmsgjson = result.data;
+					document.getElementById('.shop-cart-content-without-order').style.display = "none";
+					dealshopcartmsg();
+				}
+				console.log('shopcart:' + JSON.stringify(result));
+			}, "json");
+	}
+	/*
+	 * 处理购物车的显示
+	 *
+	 */
+
+function dealshopcartmsg() {
+	var str;
+	if (shopcartmsgjson) {
+		for (var i = 0; i++; i < shopcartmsgjson.length) {
+			str += '<div value="' + shopcartmsgjson[i] + '" class="shop-cart-content-have-order-item"><div class="divide-line-without-margin"></div><div class="shopcart-shopname">' + shopcartmsgjson[i].shopname + '</div><div class="divide-line-without-margin"></div><div class="product-items"><div class="product-items-select"><img src="css/img/product_unselect.png"   class="img-select"/></div><div class="shopcart-product-img"></div><div calss="shopcart-product-msg"><div class="shopcart-production-text">' + shopcartmsgjson[i].cpmc + '</div><div class="px-13">￥' + shopcartmsgjson[i].je + '</div><div class="change-buy-num"><div class="shopcart-buy-num-sub"></div><div class="shopcart-buy-num-show">1</div><div class="shopcart-buy-num-add"></div></div></div></div></div>';
+		}
+		$("#shop-cart-content-have-order").empty();
+		$("#shop-cart-content-have-order").append(str);
+
+	} else {
+
+	}
 }
