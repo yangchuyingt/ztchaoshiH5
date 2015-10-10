@@ -334,6 +334,9 @@ function allProductInShopCart() {
 			}
 			console.log("changdu:" + shopcartmsgjson.length);
 			sl = shopcartmsgjson.length;
+			for(var i=0;i<shopcartmsgjson.length;i++){
+				shopcartpositlist[i]=i;
+			}
 		} else {
 			console.log('true');
 			isseletallproduct = false;

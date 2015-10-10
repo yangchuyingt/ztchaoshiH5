@@ -38,3 +38,51 @@
 	background-size: 100%;
 	
 }
+.shop-cart-content-have-order-item{
+	width: 100%;
+	height: 8.125em;
+}
+.divide-line-without-margin{
+	width: 100%;
+	height: 1px;
+	background-color: #9B9B9B;
+}
+.shopcart-shopname{
+  width: 100%;
+  height: 2.5em;
+  background-color: #fff;
+  padding-left: 2.8125em;
+  font-size: 0.875em;
+  line-height: 2.5em;
+}
+.divide-line-without-margin{
+	width: 100%;
+	height: 1px;
+	background-color: #9B9B9B;
+}
+.product-items{
+	width: 100%;
+	height: 5.625em;
+	background-color: #fff;
+	display: inline-block;
+}
+.shopcart-product-img{
+	width: 4.375em;
+	height: 4.375em;
+	margin-top: 0.625em;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-color: #2AC845;
+	float: left;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+.shopcart-product-msg{
+	width: auto;
+	height: 100%;
+	float: left;
+}
+.shopcart-production-text{
+	font-size: 0.815em;
+	padding-top: 0.4375em;
+}

@@ -12,24 +12,38 @@
 			mui.init();
 			var allorder;
 			var positionlist;
-			mui.plusReady(function(){
-				var webview =plus.webview.getWebviewById('list');
-				allorder=webview.ordermsg;
-				positionlist=webview.positionlist;
+			mui.plusReady(function() {
+				var webview = plus.webview.getWebviewById('shopcartOrderMsg');
+				allorder = webview.ordermsg;
+				positionlist = webview.positionlist;
 			});
 		</script>
 	</head>
+
 	<body class="bg-body">
 		<div class="header">
 			<div class="mui-action-back left-bar"></div>
 			<div class='middle-title'>订单信息</div>
 		</div>
+		<div class='shop-cart-content-have-order-item'>
+			<div class="divide-line-without-margin"></div>
+			<div class='shopcart-shopname'>品牌家居专卖店</div>
+			<div class="divide-line-without-margin"></div>
+			<div class='product-items'>
+				<div class="shopcart-product-img"></div>
+				<div calss='shopcart-product-msg'>
+					<div class='shopcart-production-text'>泰国进口纯天然乳胶弹簧床垫</div>
+				</div>
+			</div>
+		</div>
+		</div>
 		<div class='bottom-part'></div>
 	</body>
-  <script>
-  document.querySelector('.bottom-part').addEventListener('tap',function(){
-  	console.log("ordermsg:"+JSON.stringify(allorder));
-  	console.log("positions:"+positionlist);
-  });
-  </script>
+	<script>
+		document.querySelector('.bottom-part').addEventListener('tap', function() {
+			console.log("ordermsg:" + JSON.stringify(allorder));
+			console.log("positions:" + positionlist);
+		});
+	</script>
+
 </html>
