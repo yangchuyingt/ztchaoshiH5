@@ -13,11 +13,11 @@
 		<link rel="stylesheet" href="css/mainpage.css" />
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" charset="utf-8">
-		var mesettingpage;
-		var myAllOrderpage;
-		var waitpaypage;
-		var loginpages;
-		var productlistPage;
+			var mesettingpage;
+			var myAllOrderpage;
+			var waitpaypage;
+			var loginpages;
+			var productlistPage;
 			mui.init({
 				pullRefresh: {
 					container: '#refreshContainer',
@@ -49,20 +49,19 @@
 						}
 					});
 				}
-			
-			   setTimeout(function(){
-			   	mesettingpage = mui.preload({
+				setTimeout(function() {
+					mesettingpage = mui.preload({
 						url: 'examples/me/meSetting.html',
 						id: 'meSetting',
-//						extras: {
-//							"pagenameid": "congsigneeaddress"
-//						},
+						//						extras: {
+						//							"pagenameid": "congsigneeaddress"
+						//						},
 						styles: {},
 						show: {
 							aniShow: 'none'
 						}
 					});
-						myAllOrderpage = mui.preload({
+					myAllOrderpage = mui.preload({
 						url: 'examples/me/myAllOrder.html',
 						id: 'myAllOrder',
 						styles: {},
@@ -70,36 +69,32 @@
 							aniShow: 'none'
 						}
 					});
-					waitpaypage=mui.preload({
+					waitpaypage = mui.preload({
 						url: 'examples/me/waitpay.html',
 						id: 'waitpay',
 						show: {
 							aniShow: 'none'
 						}
 					});
-					loginpages=mui.preload({
-						url:'examples/me/login.html',
-						id:'login',
+					loginpages = mui.preload({
+						url: 'examples/me/login.html',
+						id: 'login',
 						extras: {
 							"pagenameid": "index"
 						},
-
-						show:{
+						show: {
 							aniShow: 'none'
 						}
 					});
-					productlistPage=mui.preload({
-						url:'examples/mainpage/production_list.html',
-						id:'production_list',
-						show:{
-							aniShow :'none'
+					productlistPage = mui.preload({
+						url: 'examples/mainpage/production_list.html',
+						id: 'production_list',
+						show: {
+							aniShow: 'none'
 						}
 					});
-				
-			   },800);
-			
+				}, 800);
 			});
-			
 		</script>
 	</head>
 
@@ -292,13 +287,13 @@
 					</div>
 					<div class='shopcart-jie-suan'>
 						<div id="select-all" class='select-all-p'>
-						<div id='all-select-img' class='all-select-img img-unselect'></div>
-						 &nbsp全选
+							<div id='all-select-img' class='all-select-img img-unselect'></div>
+							&nbsp全选
 						</div>
 						<div class="jiesuan-bottom">结算（0）</div>
 						<div class='heji-price'>￥0</div>
 						<div class='heji-text'>合计：</div>
-						
+
 					</div>
 					<!--<a href="#"><img src="http://appimg.teambuy.com.cn/upload/2015/06/11/025858_93843.jpg" /></a>-->
 					<!--<iframe class="iframe-show" scrolling="yes"  frameBorder="0" src="shopcart.html" ></iframe>-->
@@ -312,8 +307,8 @@
 					<div class='me-main-content'>
 
 						<div class="top-user-msg-bg">
-								<div id="user-protrait" class='user-header-protrait'></div>
-							
+							<div id="user-protrait" class='user-header-protrait'></div>
+
 							<div class="user-account-name">游客</div>
 							<div class='img-buttom-show'>
 
@@ -342,7 +337,7 @@
 
 							</div>
 							<div class="me-devide-line"></div>
-							<div  id="order-things" class="kinds-order-msg">
+							<div id="order-things" class="kinds-order-msg">
 								<div value="0" class="kind-order-item">
 									<div class="kind-order-item-img kind-order-item-img1"></div>
 									待付款
@@ -385,15 +380,15 @@
 							</div>
 
 						</div>
-					 <div class="my-asset">
-								<div class="me-fankui"></div>
-								<div class="me-myorder-text">意见反馈</div>
-								
-								<!--<div class="me-zt-coupon">
+						<div class="my-asset">
+							<div class="me-fankui"></div>
+							<div class="me-myorder-text">意见反馈</div>
+
+							<!--<div class="me-zt-coupon">
 							<div>0</div>
 							<div>优惠券</div>
 						</div>-->
-							</div>
+						</div>
 					</div>
 					<!--<a href="#"><img src="http://appimg.teambuy.com.cn/upload/2015/06/11/105212_82189.jpg" /></a>-->
 					<!--<iframe class="iframe-show" scrolling="yes"  frameBorder="0" src="me.html" ></iframe>-->
@@ -436,8 +431,8 @@
 		var current_left_item = '0'; //左边item当前位置
 		var befor_left_item = '0';
 		var shopcartmsgjson;
-		var shopcartpositlist=new Array();//记录购物车选中的产品
-		var isseletallproduct=false;
+		var shopcartpositlist = new Array(); //记录购物车选中的产品
+		var isseletallproduct = false;
 		 //创建数据库表
 		mui('.buttom-show').on('tap', 'td', function(e) {
 			currentposition = this.getAttribute('value');
@@ -467,103 +462,99 @@
 		});
 		 //主页面部分的js代码
 		function addmiddleadvlistener() {
-			mui("table").on('tap', '#clickmiddleadv', function(event) {
-				var id = this.getAttribute('id');
-				var value = this.getAttribute('value');
-				console.log(id + value);
-			});
-		}
-//		function canscroll(){//rang
-//			mui('.mui-scroll').scroll();
-//		}
-//		canscroll();
+				mui("table").on('tap', '#clickmiddleadv', function(event) {
+					var id = this.getAttribute('id');
+					var value = this.getAttribute('value');
+					console.log(id + value);
+				});
+			}
+			//		function canscroll(){//rang
+			//			mui('.mui-scroll').scroll();
+			//		}
+			//		canscroll();
 		getadv();
 		getproduct(0);
 		addmiddleadvlistener();
 		addlistlistener();
 		 //购物车部分代码
-		 document.querySelector('.jiesuan-bottom').addEventListener('tap',function(){
-		 	gotojisuan();
-		 });
-		document.querySelector('.shop-cart-delete-order').addEventListener('tap',function(){
+		document.querySelector('.jiesuan-bottom').addEventListener('tap', function() {
+			gotojisuan();
+		});
+		document.querySelector('.shop-cart-delete-order').addEventListener('tap', function() {
 			removeshopcartproduct();
 		});
 		document.querySelector('#continue-shoping').addEventListener('tap', function() {
 			var gallery = mui('.viewpager-main');
 			gallery.slider().gotoItem(0);
 		});
-		document.querySelector('#select-all').addEventListener('tap',function(){
+		document.querySelector('#select-all').addEventListener('tap', function() {
 			allProductInShopCart();
 		});
-		mui('.shop-cart-content-have-order').on('tap','.shopcart-buy-num-sub',function(e){
-			var ctidAndSl=this.getAttribute('value');
-			var strs=ctidAndSl.split(",");
+		mui('.shop-cart-content-have-order').on('tap', '.shopcart-buy-num-sub', function(e) {
+			var ctidAndSl = this.getAttribute('value');
+			var strs = ctidAndSl.split(",");
 			//console.log("tt"+strs[1]);
-			var num=strs[1]--;
-			if(num>=1){
-				changebuynum(strs[0],strs[1]);
-				isseletallproduct=true;
-			    allProductInShopCart();
-			}else{
+			var num = strs[1] --;
+			if (num >= 1) {
+				changebuynum(strs[0], strs[1]);
+				isseletallproduct = true;
+				allProductInShopCart();
+			} else {
 				mui.toast('不能再减了');
 			}
-			
 		});
-		mui('.shop-cart-content-have-order').on('tap','.shopcart-buy-num-add',function(e){
-			var ctidAndSl=this.getAttribute('value');
-			var strs=ctidAndSl.split(",");
-			var num=strs[1]++;
-			changebuynum(strs[0],strs[1]);
-			isseletallproduct=true;
+		mui('.shop-cart-content-have-order').on('tap', '.shopcart-buy-num-add', function(e) {
+			var ctidAndSl = this.getAttribute('value');
+			var strs = ctidAndSl.split(",");
+			var num = strs[1] ++;
+			changebuynum(strs[0], strs[1]);
+			isseletallproduct = true;
 			allProductInShopCart();
 		});
-		mui('.shop-cart-content-have-order').on('tap','.product-items-select',function(e){
-			var position=this.getAttribute('value');//该产品在shopcartmsgjson中的下标位置
-			var contain=contains(position);
-			if(contain!=null){//包含此元素
-				shopcartpositlist[contain]=-2;//product_unselect.png
-				this.firstChild.src="css/img/product_unselect.png";
+		mui('.shop-cart-content-have-order').on('tap', '.product-items-select', function(e) {
+			var position = this.getAttribute('value'); //该产品在shopcartmsgjson中的下标位置
+			var contain = contains(position);
+			if (contain != null) { //包含此元素
+				shopcartpositlist[contain] = -2; //product_unselect.png
+				this.firstChild.src = "css/img/product_unselect.png";
 				jisuanallprice();
-			}else{//不包含此元素
+			} else { //不包含此元素
 				shopcartpositlist.push(position);
 				//this.src = "http://bbs.blueidea.com/images/default/jinjin_4409.gif"; 
-				this.firstChild.src="css/img/product_selecet.png";
+				this.firstChild.src = "css/img/product_selecet.png";
 				jisuanallprice();
 			}
 			//console.log("contains:"+shopcartpositlist);
 			//console.log("选中了"+position);
 		});
-		//我的部分代码
-		document.querySelector('.me-header-left').addEventListener('tap',function(){
+		 //我的部分代码
+		document.querySelector('.me-header-left').addEventListener('tap', function() {
 			mesettingpage.show();
 		});
-		document.querySelector('.me-order-show').addEventListener('tap',function(){
+		document.querySelector('.me-order-show').addEventListener('tap', function() {
 			myAllOrderpage.show();
 		})
-		mui('#order-things').on('tap','div',function(e){
-		 var seestatus=this.getAttribute('value');
-		 	mui.fire(waitpaypage, 'getflag', {
-		 		pagestatus:seestatus
+		 mui('#order-things').on('tap', 'div', function(e) {
+			var seestatus = this.getAttribute('value');
+			mui.fire(waitpaypage, 'getflag', {
+				pagestatus: seestatus
 			});
-		 waitpaypage.show();
+			waitpaypage.show();
 		});
-		mui.plusReady(function (){
+		mui.plusReady(function() {
 			showUserMsgInMe();
-			
 		})
-	    document.querySelector("#user-protrait").ad
-	    dEventListener('tap',function(){
-	    	 setuserpatrait();
-	    	 
-	    });
-	    document.querySelector('.me-header-right').addEventListener('tap',function(){
-	    	 loginpages.show();
-	    	 console.log('denglu');
-	    });
-	    window.addEventListener("finishlogin",function(){
-	     showUserMsgInMe();
-	     loadUserCouponmsg();
-	    });
+		 document.querySelector("#user-protrait").addEventListener('tap', function() {
+			setuserpatrait();
+		});
+		document.querySelector('.me-header-right').addEventListener('tap', function() {
+			loginpages.show();
+			console.log('denglu');
+		});
+		window.addEventListener("finishlogin", function() {
+			showUserMsgInMe();
+			loadUserCouponmsg();
+		});
 	</script>
 
 </html>
