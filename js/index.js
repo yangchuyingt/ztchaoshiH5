@@ -302,7 +302,7 @@ function changebuynum(ctid,sl){
 }
 function jisuanallprice(){//shopcartmsgjson
 	var allprice=0;
-	for(var i=0,i<=shopcartpositlist.length;i++){
+	for(var i=0;i<=shopcartpositlist.length;i++){
 		if(shopcartpositlist[i]!=-2){
 			allprice+=shopcartmsgjson[shopcartpositlist[i]].je;
 		}
