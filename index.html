@@ -290,6 +290,16 @@
 							</div>
 						</div>-->
 					</div>
+					<div class='shopcart-jie-suan'>
+						<div id="select-all" class='select-all-p'>
+						<div class='all-select-img'></div>
+						 &nbsp全选
+						</div>
+						<div class="jiesuan-bottom">结算（0）</div>
+						<div class='heji-price'>￥0</div>
+						<div class='heji-text'>合计：</div>
+						
+					</div>
 					<!--<a href="#"><img src="http://appimg.teambuy.com.cn/upload/2015/06/11/025858_93843.jpg" /></a>-->
 					<!--<iframe class="iframe-show" scrolling="yes"  frameBorder="0" src="shopcart.html" ></iframe>-->
 				</div>
@@ -426,6 +436,7 @@
 		var current_left_item = '0'; //左边item当前位置
 		var befor_left_item = '0';
 		var shopcartmsgjson;
+		var shopcartpositlist=new Array();//记录购物车选中的产品
 		 //创建数据库表
 		mui('.buttom-show').on('tap', 'td', function(e) {
 			currentposition = this.getAttribute('value');
@@ -473,6 +484,39 @@
 		document.querySelector('#continue-shoping').addEventListener('tap', function() {
 			var gallery = mui('.viewpager-main');
 			gallery.slider().gotoItem(0);
+		});
+		mui('.shop-cart-content-have-order').on('tap','.shopcart-buy-num-sub',function(e){
+			var ctidAndSl=this.getAttribute('value');
+			var strs=ctidAndSl.split(",");
+			//console.log("tt"+strs[1]);
+			var num=strs[1]--;
+			if(num>=1){
+				changebuynum(strs[0],strs[1]);
+			}else{
+				mui.toast('不能再减了');
+			}
+		});
+		mui('.shop-cart-content-have-order').on('tap','.shopcart-buy-num-add',function(e){
+			var ctidAndSl=this.getAttribute('value');
+			var strs=ctidAndSl.split(",");
+			var num=strs[1]++;
+			changebuynum(strs[0],strs[1]);
+		});
+		mui('.shop-cart-content-have-order').on('tap','.product-items-select',function(e){
+			var position=this.getAttribute('value');//该产品在shopcartmsgjson中的下标位置
+			var contain=contains(position);
+			if(contain!=null){//包含此元素
+				shopcartpositlist[contain]=-2;
+				this.firstChild.src="css/img/product_unselecet.png";
+				jisuanallprice();
+			}else{//不包含此元素
+				shopcartpositlist.push(position);
+				//this.src = "http://bbs.blueidea.com/images/default/jinjin_4409.gif"; 
+				this.firstChild.src="css/img/product_selecet.png";
+				jisuanallprice();
+			}
+			//console.log("contains:"+shopcartpositlist);
+			//console.log("选中了"+position);
 		});
 		//我的部分代码
 		document.querySelector('.me-header-left').addEventListener('tap',function(){

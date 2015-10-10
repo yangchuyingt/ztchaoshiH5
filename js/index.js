@@ -244,6 +244,7 @@ function loadshopcartmsg() {
 				if (result.ret == '1') {
 					shopcartmsgjson = result.data;
 					$('.shop-cart-content-without-order').hide();
+					$('.shopcart-jie-suan').show();
 					dealshopcartmsg();
 				}
 				console.log('shopcart:' + JSON.stringify(result));
@@ -258,7 +259,7 @@ function dealshopcartmsg() {
 	var str="";
 	if (shopcartmsgjson) {
 		for (var i = 0; i <shopcartmsgjson.length;i++) {
-			str+= '<div value="' + " "+ '" class="shop-cart-content-have-order-item"><div class="divide-line-without-margin"></div><div class="shopcart-shopname">' + shopcartmsgjson[i].shopname + '</div><div class="divide-line-without-margin"></div><div class="product-items"><div class="product-items-select"><img src="css/img/product_unselect.png"   class="img-select"/></div><div class="shopcart-product-img"></div><div calss="shopcart-product-msg"><div class="shopcart-production-text">' + shopcartmsgjson[i].cpmc + '</div><div class="px-13">￥' + shopcartmsgjson[i].je + '</div><div class="change-buy-num"><div class="shopcart-buy-num-sub"></div><div class="shopcart-buy-num-show">1</div><div class="shopcart-buy-num-add"></div></div></div></div></div>';
+			str+= '<div  class="shop-cart-content-have-order-item"><div class="divide-line-without-margin"></div><div class="shopcart-shopname">' + shopcartmsgjson[i].shopname + '</div><div class="divide-line-without-margin"></div><div class="product-items"><div value="'+i+'" class="product-items-select"><img src="css/img/product_unselect.png"   class="img-select"/></div><div class="shopcart-product-img"></div><div calss="shopcart-product-msg"><div class="shopcart-production-text">' + shopcartmsgjson[i].cpmc + '</div><div class="px-13">￥' + shopcartmsgjson[i].je + '</div><div class="change-buy-num"><div value="'+shopcartmsgjson[i].ctid+","+shopcartmsgjson[i].sl+'" class="shopcart-buy-num-sub"></div><div class="shopcart-buy-num-show">'+shopcartmsgjson[i].sl+'</div><div value="'+shopcartmsgjson[i].ctid+","+shopcartmsgjson[i].sl+'" class="shopcart-buy-num-add"></div></div></div></div></div>';
 		}
 		console.log(shopcartmsgjson.length+","+str);
 		$(".shop-cart-content-have-order").empty();
@@ -267,4 +268,45 @@ function dealshopcartmsg() {
 	} else {
        console.log("没数据");
 	}
+}
+/**
+ * 判断数组中是否存在此位置
+ * 
+ */
+ 
+function contains(position){
+	
+	for(var i=0;i<shopcartpositlist.length;i++){
+		console.log("position:"+position+"shopcartpositlist[i]"+shopcartpositlist[i]);
+		if(shopcartpositlist[i]==position){
+			return i;
+		}
+	}
+}
+function changebuynum(ctid,sl){
+	    var token = plus.storage.getItem("token");
+		var sessid = plus.storage.getItem("sessid");
+		var url = "http://app.teambuy.com.cn/apnc/m/tmord/a/editcart";
+		$.post(url, {
+				acctoken: token,
+				"sessid": sessid,
+				"ctid":ctid,
+				"tmsl":sl
+			},
+			function(result) {
+				console.log('changenum:' + JSON.stringify(result));
+				if(result.ret=='1'){
+					loadshopcartmsg();
+				}
+			}, "json");
+}
+function jisuanallprice(){//shopcartmsgjson
+	var allprice=0;
+	for(var i=0,i<=shopcartpositlist.length;i++){
+		if(shopcartpositlist[i]!=-2){
+			allprice+=shopcartmsgjson[shopcartpositlist[i]].je;
+		}
+	}
+	$('.heji-price').text('￥'+allprice);
+	console.log('allprice'+allPrice);
 }

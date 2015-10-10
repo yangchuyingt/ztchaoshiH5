@@ -9,7 +9,7 @@
 	left: 0;
 	right: 0;
 	width: 100%;
-	height: 45px;
+	height: 2.8125em;
 	table-layout:fixed;
 	background-color: #F5F5F5;
 	z-index: 900;
@@ -222,9 +222,6 @@
    position: relative;
    background-image: url(img/near_background.png);
    background-size: 100%;
-   display: none;
-  
-   
 }
 .middle_content{
 	position:absolute;
@@ -464,9 +461,7 @@
 }
 .shop-cart-content-have-order{
 	width: 100%;
-
-	height: 50%;
-	overflow: scroll;
+	height: 100%;
 }
 .shop-cart-content-have-order-item{
 	width: 100%;
@@ -555,4 +550,58 @@
 	text-align: center;
 	line-height: 1.875em;
 	
+}
+.shopcart-jie-suan{
+	width: 100%;
+	height: 2.75em;
+	position: absolute;
+	bottom: 3.125em;
+	left: 0px;
+	background-color: #fff;
+	display: none;
+	
+}
+.select-all-p{
+	width: auto;
+	height: 1.25em;
+	float: left;
+	font-size: 0.8125em;
+	line-height: 2.75em;
+	
+	
+}
+.all-select-img{
+	width: 1.25em;
+	height: 1.25em;
+	background-image: url(img/product_unselect.png);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	margin-top: 0.75em;
+	margin-left: 10px;
+	float: left;
+}
+.heji-text{
+	width: auto;
+	height: 100%;
+	float: right;
+	font-size: 0.8125em;
+	line-height: 2.75em;
+}
+.heji-price{
+	width: auto;
+	height: 100%;
+	font-size: 0.8125em;
+	line-height:2.75em ;
+	float: right;
+}
+.jiesuan-bottom{
+	width: auto;
+	height: 100%;
+	font-size: 1.0625em;
+	line-height: 2em;
+	float: right;
+	padding-left: 0.625em;
+	padding-right: 0.625em;
+	background-color: #D52722;
+	margin-left: 10px;
 }
