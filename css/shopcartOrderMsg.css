@@ -11,8 +11,8 @@
 	background-size: 100%;
 	background-repeat: no-repeat;
 }
-.middle-title{
-	position :absolute;
+.middle-title {
+	position: absolute;
 	width: 20%;
 	height: 100%;
 	line-height: 44px;
@@ -21,52 +21,54 @@
 	left: 40%;
 	top: 0px;
 	text-align: center;
-	
 }
-.bottom-part{
+.bottom-part {
 	width: 100%;
 	height: 2.75em;
 	position: absolute;
 	display: inline-block;
 	border-top: 1px solid #9B9B9B;
-	background-color:  #F5F5F5;
+	background-color: #F5F5F5;
 	bottom: 0px;
 	left: 0px;
-}
-.bg-body{
-	background-image:  url(img/near_background.png);
-	background-size: 100%;
+	padding-left: 10px;
 	
 }
-.shop-cart-content-have-order-item{
+.bg-body {
+	background-image: url(img/near_background.png);
+	background-size: 100%;
+}
+.shop-cart-content-have-order-item {
 	width: 100%;
 	height: 8.125em;
+	position: relative;
 }
-.divide-line-without-margin{
+.divide-line-without-margin {
 	width: 100%;
 	height: 1px;
 	background-color: #9B9B9B;
 }
-.shopcart-shopname{
-  width: 100%;
-  height: 2.5em;
-  background-color: #fff;
-  padding-left: 2.8125em;
-  font-size: 0.875em;
-  line-height: 2.5em;
+.shopcart-shopname {
+	width: 100%;
+	height: 2.5em;
+	background-color: #fff;
+	padding-left: 2.8125em;
+	font-size: 0.875em;
+	line-height: 2.5em;
 }
-.divide-line-without-margin{
+.divide-line-without-margin {
 	width: 100%;
 	height: 1px;
 	background-color: #9B9B9B;
 }
-.product-items{
+.product-items {
 	width: 100%;
 	height: 5.625em;
 	background-color: #fff;
 	display: inline-block;
+	overflow: scroll;
 }
-.shopcart-product-img{
+.shopcart-product-img {
 	width: 4.375em;
 	height: 4.375em;
 	margin-top: 0.625em;
@@ -77,12 +79,34 @@
 	margin-right: 10px;
 	margin-left: 10px;
 }
-.shopcart-product-msg{
+.shopcart-product-msg {
 	width: auto;
 	height: 100%;
 	float: left;
 }
-.shopcart-production-text{
-	font-size: 0.815em;
+.shopcart-production-text {
+	font-size: 0.8125em;
 	padding-top: 0.4375em;
+	padding-right: 10px;
+	width: auto;
+	height: 3.125em;
+	line-height: 1.25em;
+}
+.production-msg {
+	font-size: 0.75em;
+	color: #9B9B9B;
+	width: auto;
+	height: auto;
+	padding-right: 10px;
+}
+.price-shuliang {
+	position: absolute;
+	bottom: 0.625em;
+	right: 0.625em;
+	font-size: 0.75em;
+	padding-right: 10px;
+}
+.product-items{
+	width:100%;
+	height: auto;
 }

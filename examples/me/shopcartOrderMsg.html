@@ -6,8 +6,11 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title></title>
 		<script type="text/javascript" src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/shopcartOrderMsg.js" ></script>
+		<script type="text/javascript" src="../../js/jquery.js" ></script>
 		<link rel="stylesheet" href="../../css/mui.min.css" />
 		<link rel="stylesheet" href="../../css/shopcartOrderMsg.css" />
+		<link rel="stylesheet" href="../../css/postOrder.css" />
 		<script type="text/javascript" charset="utf-8">
 			mui.init();
 			var allorder;
@@ -25,25 +28,59 @@
 			<div class="mui-action-back left-bar"></div>
 			<div class='middle-title'>订单信息</div>
 		</div>
-		<div class='shop-cart-content-have-order-item'>
-			<div class="divide-line-without-margin"></div>
-			<div class='shopcart-shopname'>品牌家居专卖店</div>
-			<div class="divide-line-without-margin"></div>
-			<div class='product-items'>
-				<div class="shopcart-product-img"></div>
-				<div calss='shopcart-product-msg'>
-					<div class='shopcart-production-text'>泰国进口纯天然乳胶弹簧床垫</div>
+		<div class='product-items'>
+			<!--<div class='shop-cart-content-have-order-item'>
+				<div class="divide-line-without-margin"></div>
+				<div class='shopcart-shopname'>品牌家居专卖店</div>
+				<div class="divide-line-without-margin"></div>
+				<div class='product-items'>
+					<div class="shopcart-product-img"></div>
+					<div calss='shopcart-product-msg'>
+						<div class='shopcart-production-text'>泰国进口纯天然乳胶弹簧床垫，泰国进口纯天然乳胶弹簧床垫</div>
+						<div class='production-msg'>产品信息：</div>
+						<div class='price-shuliang'>￥0&nbsp x 1</div>
+					</div>
 				</div>
+			</div>-->
+		</div>
+			<div id="hava-defult-address" class="select-address">
+			
+				<div class="congsignee-msg">
+					收货信息
+				</div>
+				<div id="name-and-tell" class="address-name">不是地址 18672734515</div>
+				<div id="detial-address" class="address-name">中国广东省广州市</div>
+			
+		</div>
+		<div id="no-defult-address" class="no-address color2">
+				请新建收货地址以确保商品顺利到达
+				<div class="select-address_arraw"></div>
 			</div>
+		
+		<div class="slect-coupon margin-top10">
+			<div class="select-use-coupon color2">选择使用优惠券</div>
+			<div class="arrw-right"></div>
+			<div class="coupon-price">优惠券金额</div>
+
 		</div>
+		<div class="slect-coupon margin-top3">
+			<div class="select-use-coupon color3">团币</div>
+			<div class="tuanbi-switch"></div>
+			<div class="coupon-price">可使用0团币</div>
+
 		</div>
-		<div class='bottom-part'></div>
+		<!--<div class="order-post">
+			
+		</div>-->
+		<div class='bottom-part'>
+			<div id="all-nums" class="all-num">共1件,</div>
+			<div id="all-price" class="all-price color3"> ￥99</div>
+			<div class="bt-buy-at-once">立刻购买</div></div>
 	</body>
 	<script>
-		document.querySelector('.bottom-part').addEventListener('tap', function() {
-			console.log("ordermsg:" + JSON.stringify(allorder));
-			console.log("positions:" + positionlist);
-		});
+	mui.plusReady(function(){
+		showpayordermsg();
+	});
 	</script>
 
 </html>
