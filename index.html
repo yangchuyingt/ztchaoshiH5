@@ -292,7 +292,7 @@
 					</div>
 					<div class='shopcart-jie-suan'>
 						<div id="select-all" class='select-all-p'>
-						<div class='all-select-img'></div>
+						<div id='all-select-img' class='all-select-img img-unselect'></div>
 						 &nbsp全选
 						</div>
 						<div class="jiesuan-bottom">结算（0）</div>
@@ -437,6 +437,7 @@
 		var befor_left_item = '0';
 		var shopcartmsgjson;
 		var shopcartpositlist=new Array();//记录购物车选中的产品
+		var isseletallproduct=false;
 		 //创建数据库表
 		mui('.buttom-show').on('tap', 'td', function(e) {
 			currentposition = this.getAttribute('value');
@@ -481,9 +482,18 @@
 		addmiddleadvlistener();
 		addlistlistener();
 		 //购物车部分代码
+		 document.querySelector('.jiesuan-bottom').addEventListener('tap',function(){
+		 	gotojisuan();
+		 });
+		document.querySelector('.shop-cart-delete-order').addEventListener('tap',function(){
+			removeshopcartproduct();
+		});
 		document.querySelector('#continue-shoping').addEventListener('tap', function() {
 			var gallery = mui('.viewpager-main');
 			gallery.slider().gotoItem(0);
+		});
+		document.querySelector('#select-all').addEventListener('tap',function(){
+			allProductInShopCart();
 		});
 		mui('.shop-cart-content-have-order').on('tap','.shopcart-buy-num-sub',function(e){
 			var ctidAndSl=this.getAttribute('value');
@@ -492,22 +502,27 @@
 			var num=strs[1]--;
 			if(num>=1){
 				changebuynum(strs[0],strs[1]);
+				isseletallproduct=true;
+			    allProductInShopCart();
 			}else{
 				mui.toast('不能再减了');
 			}
+			
 		});
 		mui('.shop-cart-content-have-order').on('tap','.shopcart-buy-num-add',function(e){
 			var ctidAndSl=this.getAttribute('value');
 			var strs=ctidAndSl.split(",");
 			var num=strs[1]++;
 			changebuynum(strs[0],strs[1]);
+			isseletallproduct=true;
+			allProductInShopCart();
 		});
 		mui('.shop-cart-content-have-order').on('tap','.product-items-select',function(e){
 			var position=this.getAttribute('value');//该产品在shopcartmsgjson中的下标位置
 			var contain=contains(position);
 			if(contain!=null){//包含此元素
-				shopcartpositlist[contain]=-2;
-				this.firstChild.src="css/img/product_unselecet.png";
+				shopcartpositlist[contain]=-2;//product_unselect.png
+				this.firstChild.src="css/img/product_unselect.png";
 				jisuanallprice();
 			}else{//不包含此元素
 				shopcartpositlist.push(position);
@@ -536,7 +551,8 @@
 			showUserMsgInMe();
 			
 		})
-	    document.querySelector("#user-protrait").addEventListener('tap',function(){
+	    document.querySelector("#user-protrait").ad
+	    dEventListener('tap',function(){
 	    	 setuserpatrait();
 	    	 
 	    });

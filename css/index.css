@@ -573,12 +573,17 @@
 .all-select-img{
 	width: 1.25em;
 	height: 1.25em;
-	background-image: url(img/product_unselect.png);
 	background-size: 100%;
 	background-repeat: no-repeat;
 	margin-top: 0.75em;
 	margin-left: 10px;
 	float: left;
+}
+.img-unselect{
+	background-image: url(img/product_unselect.png);
+}
+.img-selected{
+	background-image: url(img/product_selecet.png);
 }
 .heji-text{
 	width: auto;

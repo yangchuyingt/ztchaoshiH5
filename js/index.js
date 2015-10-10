@@ -256,57 +256,138 @@ function loadshopcartmsg() {
 	 */
 
 function dealshopcartmsg() {
-	var str="";
-	if (shopcartmsgjson) {
-		for (var i = 0; i <shopcartmsgjson.length;i++) {
-			str+= '<div  class="shop-cart-content-have-order-item"><div class="divide-line-without-margin"></div><div class="shopcart-shopname">' + shopcartmsgjson[i].shopname + '</div><div class="divide-line-without-margin"></div><div class="product-items"><div value="'+i+'" class="product-items-select"><img src="css/img/product_unselect.png"   class="img-select"/></div><div class="shopcart-product-img"></div><div calss="shopcart-product-msg"><div class="shopcart-production-text">' + shopcartmsgjson[i].cpmc + '</div><div class="px-13">￥' + shopcartmsgjson[i].je + '</div><div class="change-buy-num"><div value="'+shopcartmsgjson[i].ctid+","+shopcartmsgjson[i].sl+'" class="shopcart-buy-num-sub"></div><div class="shopcart-buy-num-show">'+shopcartmsgjson[i].sl+'</div><div value="'+shopcartmsgjson[i].ctid+","+shopcartmsgjson[i].sl+'" class="shopcart-buy-num-add"></div></div></div></div></div>';
-		}
-		console.log(shopcartmsgjson.length+","+str);
-		$(".shop-cart-content-have-order").empty();
-		$(".shop-cart-content-have-order").append(str);
+		var str = "";
+		if (shopcartmsgjson) {
+			for (var i = 0; i < shopcartmsgjson.length; i++) {
+				str += '<div  class="shop-cart-content-have-order-item"><div class="divide-line-without-margin"></div><div class="shopcart-shopname">' + shopcartmsgjson[i].shopname + '</div><div class="divide-line-without-margin"></div><div class="product-items"><div value="' + i + '" class="product-items-select"><img src="css/img/product_unselect.png"   class="img-select"/></div><div class="shopcart-product-img"></div><div calss="shopcart-product-msg"><div class="shopcart-production-text">' + shopcartmsgjson[i].cpmc + '</div><div class="px-13">￥' + shopcartmsgjson[i].je + '</div><div class="change-buy-num"><div value="' + shopcartmsgjson[i].ctid + "," + shopcartmsgjson[i].sl + '" class="shopcart-buy-num-sub"></div><div class="shopcart-buy-num-show">' + shopcartmsgjson[i].sl + '</div><div value="' + shopcartmsgjson[i].ctid + "," + shopcartmsgjson[i].sl + '" class="shopcart-buy-num-add"></div></div></div></div></div>';
+			}
+			console.log(shopcartmsgjson.length + "," + str);
+			$(".shop-cart-content-have-order").empty();
+			$(".shop-cart-content-have-order").append(str);
 
-	} else {
-       console.log("没数据");
+		} else {
+			console.log("没数据");
+		}
 	}
-}
-/**
- * 判断数组中是否存在此位置
- * 
- */
- 
-function contains(position){
-	
-	for(var i=0;i<shopcartpositlist.length;i++){
-		console.log("position:"+position+"shopcartpositlist[i]"+shopcartpositlist[i]);
-		if(shopcartpositlist[i]==position){
+	/**
+	 * 判断数组中是否存在此位置
+	 *
+	 */
+
+function contains(position) {
+
+	for (var i = 0; i < shopcartpositlist.length; i++) {
+		console.log("position:" + position + "shopcartpositlist[i]" + shopcartpositlist[i]);
+		if (shopcartpositlist[i] == position) {
 			return i;
 		}
 	}
 }
-function changebuynum(ctid,sl){
-	    var token = plus.storage.getItem("token");
-		var sessid = plus.storage.getItem("sessid");
-		var url = "http://app.teambuy.com.cn/apnc/m/tmord/a/editcart";
-		$.post(url, {
-				acctoken: token,
-				"sessid": sessid,
-				"ctid":ctid,
-				"tmsl":sl
-			},
-			function(result) {
-				console.log('changenum:' + JSON.stringify(result));
-				if(result.ret=='1'){
-					loadshopcartmsg();
-				}
-			}, "json");
+
+function changebuynum(ctid, sl) {
+	var token = plus.storage.getItem("token");
+	var sessid = plus.storage.getItem("sessid");
+	var url = "http://app.teambuy.com.cn/apnc/m/tmord/a/editcart";
+	$.post(url, {
+			acctoken: token,
+			"sessid": sessid,
+			"ctid": ctid,
+			"tmsl": sl
+		},
+		function(result) {
+			console.log('changenum:' + JSON.stringify(result));
+			if (result.ret == '1') {
+				loadshopcartmsg();
+			}
+		}, "json");
 }
-function jisuanallprice(){//shopcartmsgjson
-	var allprice=0;
-	for(var i=0;i<=shopcartpositlist.length;i++){
-		if(shopcartpositlist[i]!=-2){
-			allprice+=shopcartmsgjson[shopcartpositlist[i]].je;
+
+function jisuanallprice() { //shopcartmsgjson
+	var allprice = 0;
+	var sl = 0;
+	//console.log("shopca:"+shopcartpositlist)
+	for (var i = 0; i < shopcartpositlist.length; i++) {
+		if (shopcartpositlist[i] != -2) {
+			sl++;
+			//	console.log('i:'+i);
+			//console.log('shopcartpositlist[]:'+shopcartpositlist[i]);
+			//	console.log('obj:'+JSON.stringify(shopcartmsgjson[shopcartpositlist[i]]));
+			allprice += Number(shopcartmsgjson[shopcartpositlist[i]].je);
 		}
 	}
-	$('.heji-price').text('￥'+allprice);
-	console.log('allprice'+allPrice);
+	$('.heji-price').text('￥' + allprice);
+	$('.jiesuan-bottom').text('结算（' + sl + '）');
+	console.log('allprice:' + allprice);
+}
+
+function allProductInShopCart() {
+		var allprice = 0;
+		var sl = 0;
+		if (!isseletallproduct) {
+			isseletallproduct = true;
+			$('#all-select-img').removeClass('img-unselect');
+			$('#all-select-img').addClass('img-selected');
+			//$('.shop-cart-content-have-order').find('img').src='css/img/product_selecet.png';
+			$('.shop-cart-content-have-order').find('img').attr("src", "css/img/product_selecet.png");
+			for (var i = 0; i < shopcartmsgjson.length; i++) {
+				allprice += Number(shopcartmsgjson[i].je);
+			}
+			console.log("changdu:" + shopcartmsgjson.length);
+			sl = shopcartmsgjson.length;
+		} else {
+			console.log('true');
+			isseletallproduct = false;
+			$('#all-select-img').removeClass('img-selected');
+			$('#all-select-img').addClass('img-unselect'); //$("#img1").attr("src","Imges/test.jpg");
+			$('.shop-cart-content-have-order').find('img').attr("src", "css/img/product_unselect.png") //src='css/img/product_unselecet.png';
+			shopcartpositlist = new Array();
+			sl = 0;
+		}
+		$('.heji-price').text('￥' + allprice);
+		$('.jiesuan-bottom').text('结算（' + sl + '）');
+
+	}
+	/**
+	 * *移除购物车内的产品
+	 *
+	 */
+
+function removeshopcartproduct() {
+	console.log('删除订单');
+	var ctids = '';
+	for (var i = 0; i < shopcartpositlist.length; i++) {
+		if (shopcartpositlist[i] != -2) {
+			ctids += shopcartmsgjson[shopcartpositlist[i]].ctid + ',';
+			//allprice+=Number(shopcartmsgjson[shopcartpositlist[i]].je);
+		}
+		ctids = ctids.substr(0, ctids.length - 1);
+	}
+	var token = plus.storage.getItem("token");
+	var sessid = plus.storage.getItem("sessid");
+	var url = "http://app.teambuy.com.cn/apnc/m/tmord/a/delcart";
+	$.post(url, {
+			acctoken: token,
+			"sessid": sessid,
+			"ctid": ctids,
+		},
+		function(result) {
+			console.log('changenum:' + JSON.stringify(result));
+			if (result.ret == '1') {
+				shopcartpositlist = new Array();
+				loadshopcartmsg();
+				isseletallproduct = true;
+				allProductInShopCart();
+			}
+		}, "json");
+}
+
+function gotojisuan() {
+	mui.openWindow({
+		url: 'examples/me/shopcartOrderMsg.html',
+		id: 'shopcartOrderMsg',
+		extras: {
+			"ordermsg": shopcartmsgjson,
+			"positionlist":shopcartpositlist
+		},
+	});
 }
