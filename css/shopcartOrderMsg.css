@@ -37,6 +37,8 @@
 .bg-body {
 	background-image: url(img/near_background.png);
 	background-size: 100%;
+	position: relative;
+	padding-bottom: 2.8125em;
 }
 .shop-cart-content-have-order-item {
 	width: 100%;
