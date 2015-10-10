@@ -264,7 +264,14 @@ function dealshopcartmsg() {
 			console.log(shopcartmsgjson.length + "," + str);
 			$(".shop-cart-content-have-order").empty();
 			$(".shop-cart-content-have-order").append(str);
-
+            	// var imgs=$('.shop-cart-content-have-order').find('.shopcart-product-img');
+             var items= $('.shop-cart-content-have-order .shopcart-product-img');
+            	 for(var i=0;i<shopcartmsgjson.length;i++){
+            	 	//console.log(imgs[i]);
+            	 	//var item1 = $('li.item-1')[0];
+                $('.shop-cart-content-have-order .shopcart-product-img').find( items[i] ).css('background-image', "url(" + shopcartmsgjson[i].cppic + ")");
+            	 	//imgs[i].css('background-image', "url(" + shopcartmsgjson[i].cppic + ")");
+            	 }
 		} else {
 			console.log("没数据");
 		}
