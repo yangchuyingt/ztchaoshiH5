@@ -444,7 +444,7 @@
 		});
 		 //主页最底部下面的四个按钮的点击事件
 		document.querySelector('.mui-slider').addEventListener('slide', function(event) {
-			console.log("你正在看第" + (event.detail.slideNumber) + "张图片");
+			//console.log("你正在看第" + (event.detail.slideNumber) + "张图片");
 			currentposition = event.detail.slideNumber;
 			changetabs();
 		});
@@ -549,7 +549,7 @@
 		});
 		document.querySelector('.me-header-right').addEventListener('tap', function() {
 			loginpages.show();
-			console.log('denglu');
+			//console.log('denglu');
 		});
 		window.addEventListener("finishlogin", function() {
 			showUserMsgInMe();

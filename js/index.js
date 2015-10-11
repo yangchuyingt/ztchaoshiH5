@@ -247,7 +247,7 @@ function loadshopcartmsg() {
 					$('.shopcart-jie-suan').show();
 					dealshopcartmsg();
 				}
-				console.log('shopcart:' + JSON.stringify(result));
+				//console.log('shopcart:' + JSON.stringify(result));
 			}, "json");
 	}
 	/*
@@ -261,16 +261,14 @@ function dealshopcartmsg() {
 			for (var i = 0; i < shopcartmsgjson.length; i++) {
 				str += '<div  class="shop-cart-content-have-order-item"><div class="divide-line-without-margin"></div><div class="shopcart-shopname">' + shopcartmsgjson[i].shopname + '</div><div class="divide-line-without-margin"></div><div class="product-items"><div value="' + i + '" class="product-items-select"><img src="css/img/product_unselect.png"   class="img-select"/></div><div class="shopcart-product-img"></div><div calss="shopcart-product-msg"><div class="shopcart-production-text">' + shopcartmsgjson[i].cpmc + '</div><div class="px-13">￥' + shopcartmsgjson[i].je + '</div><div class="change-buy-num"><div value="' + shopcartmsgjson[i].ctid + "," + shopcartmsgjson[i].sl + '" class="shopcart-buy-num-sub"></div><div class="shopcart-buy-num-show">' + shopcartmsgjson[i].sl + '</div><div value="' + shopcartmsgjson[i].ctid + "," + shopcartmsgjson[i].sl + '" class="shopcart-buy-num-add"></div></div></div></div></div>';
 			}
-			console.log(shopcartmsgjson.length + "," + str);
+			//console.log(shopcartmsgjson.length + "," + str);
 			$(".shop-cart-content-have-order").empty();
 			$(".shop-cart-content-have-order").append(str);
-            	// var imgs=$('.shop-cart-content-have-order').find('.shopcart-product-img');
-             var items= $('.shop-cart-content-have-order .shopcart-product-img');
+             var  items= $('.shop-cart-content-have-order .shopcart-product-img');
+             //console.log("items"+items);
             	 for(var i=0;i<shopcartmsgjson.length;i++){
-            	 	//console.log(imgs[i]);
-            	 	//var item1 = $('li.item-1')[0];
-                $('.shop-cart-content-have-order .shopcart-product-img').find( items[i] ).css('background-image', "url(" + shopcartmsgjson[i].cppic + ")");
-            	 	//imgs[i].css('background-image', "url(" + shopcartmsgjson[i].cppic + ")");
+            	 $('.shop-cart-content-have-order').find(items[i]).css('background-image', "url(" + shopcartmsgjson[i].cppic + ")");
+            	  //console.log("item["+i+']'+ $('.shop-cart-content-have-order').find(items[i]).length);
             	 }
 		} else {
 			console.log("没数据");
@@ -339,7 +337,7 @@ function allProductInShopCart() {
 			for (var i = 0; i < shopcartmsgjson.length; i++) {
 				allprice += Number(shopcartmsgjson[i].je);
 			}
-			console.log("changdu:" + shopcartmsgjson.length);
+			//console.log("changdu:" + shopcartmsgjson.length);
 			sl = shopcartmsgjson.length;
 			for(var i=0;i<shopcartmsgjson.length;i++){
 				shopcartpositlist[i]=i;
@@ -349,6 +347,7 @@ function allProductInShopCart() {
 			isseletallproduct = false;
 			$('#all-select-img').removeClass('img-selected');
 			$('#all-select-img').addClass('img-unselect'); //$("#img1").attr("src","Imges/test.jpg");
+		
 			$('.shop-cart-content-have-order').find('img').attr("src", "css/img/product_unselect.png") //src='css/img/product_unselecet.png';
 			shopcartpositlist = new Array();
 			sl = 0;

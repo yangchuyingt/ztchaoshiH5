@@ -7,4 +7,14 @@ function showpayordermsg(){//var allorder var positionlist;
 	}
 	$('.product-items').empty();
 	$('.product-items').append(str);
+	var  items= $('.product-items .shopcart-product-img');
+	var j=0;
+	for(var i=0;i<positionlist.length;i++){
+		if(positionlist[i]!=-2){
+		$('.product-items').find(items[j]).css('background-image', "url(" + allorder[j].cppic + ")");
+		j++;
+		}
+	}
+	console.log("items:"+items.length);
+	
 }
