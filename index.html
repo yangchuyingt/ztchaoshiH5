@@ -435,6 +435,7 @@
 		var isseletallproduct = false;
 		var allprice = 0;//要支付的订单的总价是
 	    var sl = 0;//要支付的产品数量是
+	    var currentcup;//当前的大类；
 		 //创建数据库表
 		mui('.buttom-show').on('tap', 'td', function(e) {
 			currentposition = this.getAttribute('value');
@@ -454,6 +455,7 @@
 		 //左边菜单的点击事件
 		mui('#left-menu').on('tap', 'div', function(e) {
 			var cup = this.getAttribute('value');
+			currentcup＝cup;
 			current_left_item = this.getAttribute('id');
 			getRightCatFromDb(cup);
 			changeleftcss(current_left_item, befor_left_item);
@@ -461,6 +463,7 @@
 		 //右边小类的点击事件
 		mui("#right-catagory").on('tap', '.right-cat-item', function() {
 			var lbid = this.getAttribute('value');
+			console.log('lbid:'+lbid);
 			toCategorylist(lbid);
 		});
 		 //主页面部分的js代码

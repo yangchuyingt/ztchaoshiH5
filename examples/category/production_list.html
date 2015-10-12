@@ -61,5 +61,18 @@
 		// getdatafromdb();
 		 getdatafromnet();
 	});
+	mui("#table-product-list").on('tap','td',function(event){
+		var tmid=this.getAttribute('value');
+		//console.log("tmid:"+tmid);
+		mui.openWindow({
+			url: '../mainpage/productDetial.html',
+			id: 'productDetial',
+			styles: {
+			},
+			extras: {
+				"tmid": tmid,
+			},
+		});
+	});
 </script>
 </html>

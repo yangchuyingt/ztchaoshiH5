@@ -116,7 +116,9 @@ function showrightfromnet(data) {
 	for (var i = 0; i < data.data.length; i++) {
 
 		if (data.data[i].cup == category_big) {
-			ht += '<div value="' + data.data[i].cup + '" class="right-cat-item"><img class="right-catgory-img" src="' + data.data[i].icon + '"/><div class="right-catgory-text">' + data.data[i].lbname + '</div></div>';
+			
+			
+			ht += '<div value="' + data.data[i].lbid + '" class="right-cat-item"><img class="right-catgory-img" src="' + data.data[i].icon + '"/><div class="right-catgory-text">' + data.data[i].lbname + '</div></div>';
 		}
 
 	}
