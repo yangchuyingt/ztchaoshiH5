@@ -30,6 +30,7 @@ function loadtabsmsg() {
 			loadUserCouponmsg();
 			break;
 	}
+	befor_left_item='0';
 }
 
 function loadcategory() {
@@ -98,9 +99,10 @@ function showleftfromnet(data) {
 		}
 		if (!flag) {
 			category_big = data.data[i].lbid;
+			currentcup=category_big;
 			flag = true;
 		}
-		ht += '<div id ="' + j + '" value="' + data.data[i].cup + '" class="category-left-menu-item">' + data.data[i].lbname + '</div>';
+		ht += '<div id ="' + j + '" value="' + data.data[i].lbid + '" class="category-left-menu-item">' + data.data[i].lbname + '</div>';
 		j++;
 	}
 	//console.log("netht:" + ht);
@@ -135,6 +137,7 @@ function showleftview(data) { //results.rows.item(i).name
 		for (var i = 0; i < data.rows.length; i++) { //<div class="category-left-menu-item">女装</div>
 			if (!flag) {
 				category_big = data.rows.item(i)._id;
+				currentcup=category_big;
 				flag = true;
 			}
 			ht += '<div id="' + i + '" value="' + data.rows.item(i)._id + '" class="category-left-menu-item">' + data.rows.item(i)._lbname + '</div>';
@@ -144,6 +147,7 @@ function showleftview(data) { //results.rows.item(i).name
 		$("#left-menu").append(ht);
 		$("#left-menu").children('div').eq(0).removeClass('category-left-menu-item');
 		$("#left-menu").children('div').eq(0).addClass('category-left-menu-item2');
+		//console.log("category_big"+category_big);
 		getRightCatFromDb(category_big);
 
 	}
@@ -183,7 +187,8 @@ function toCategorylist(lbid) {
 	productlistPage.show();
 	var page = plus.webview.getWebviewById("production_list");
 	mui.fire(page, 'postlbid', {
-		"lbid": lbid
+		"lbid": lbid,
+		"cup":category_big
 	})
 }
 

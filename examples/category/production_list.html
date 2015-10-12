@@ -31,33 +31,16 @@
 	 </div>
 	 <div class="devide-line"></div>
 	 <table id="table-product-list" class="table-product-list">
-	 <td >
-	     	 	<div class="td-product-item">
-	     	 		<div id="product-img-item1" class="td-product-item-img"></div>
-	     	 		<div class="td-product-item-title">路华折叠桌，路华折叠桌，路华折叠</div>
-	     	 		<div class="td-product-item-price">
-	     	 			<div class="td-product-item-nowprice">￥79</div>
-	     	 			<div class="td-product-item-beforprice">￥179</div>
-	     	 		</div>
-	     	 	</div>
-	     	 </td>
-	     	  <td ><div class="td-product-item">
-	     	 		<div id="product-img-item2" class="td-product-item-img"></div>
-	     	 		<div class="td-product-item-title">路华折叠桌，路华折叠桌，路华折叠</div>
-	     	 		<div class="td-product-item-price">
-	     	 			<div class="td-product-item-nowprice">￥79</div>
-	     	 			<div class="td-product-item-beforprice">￥179</div>
-	     	 		</div>
-	     	 	</div>
-	     	  </td>
-	     	</tr>
+	 
 	 </table>
 </body>
 <script >
     var lbid;
+    var cup;
 	window.addEventListener('postlbid',function(event){
 		 console.log("go on ");
 		 lbid = event.detail.lbid;
+		 cup=event.detail.cup;
 		// getdatafromdb();
 		 getdatafromnet();
 	});
