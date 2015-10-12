@@ -20,7 +20,7 @@ function getdatafromnet() {
 	}, function(result) {
 		console.log("加载分类：" + JSON.stringify(result));
 		if (result.ret == '1') {
-			categoryProductshow(receivetime.data, 0);
+			categoryProductshow(result.data, 0);
 		}
 	}, "json");
 }
