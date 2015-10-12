@@ -8,24 +8,55 @@
 		<script type="text/javascript" src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/shopcartOrderMsg.js" ></script>
 		<script type="text/javascript" src="../../js/jquery.js" ></script>
-		<link rel="stylesheet" href="../../css/mui.min.css" />
+        <script type="text/javascript" src="../../js/postorder.js" ></script>
+        <link rel="stylesheet" href="../../css/mui.min.css" />
 		<link rel="stylesheet" href="../../css/shopcartOrderMsg.css" />
 		<link rel="stylesheet" href="../../css/postOrder.css" />
 		<script type="text/javascript" charset="utf-8">
 			mui.init();
 			var allorder;
 			var positionlist;
+			var allprice=0;
+			var sl=0;
+			var paymoneypage;
+			var loginpage;
 			mui.plusReady(function() {
 				var webview = plus.webview.getWebviewById('shopcartOrderMsg');
 				allorder = webview.ordermsg;
 				positionlist = webview.positionlist;
+				allprice=webview.je;
+				sl=webview.sl;
+				setTimeout(function() {
+					paymoneypage = mui.preload({
+						url: '../mainpage/paymoney.html',
+						id: 'paymoney',
+						/*extras: {
+							"allprice": allPrice
+						},*/
+						styles: {},
+						show: {
+							aniShow: 'none'
+						}
+					});
+					loginpage = mui.preload({
+						url: '../me/login.html',
+						id: 'login',
+						extras: {
+							"pagenameid": "postorder"
+						},
+						styles: {},
+						show: {
+							aniShow: 'none'
+						}
+					});
+				}, 200);
 			});
 		</script>
 	</head>
 
 	<body class="bg-body">
 		<div class="header">
-			<div class="mui-action-back left-bar"></div>
+			<div class=" left-bar"></div>
 			<div class='middle-title'>订单信息</div>
 		</div>
 		<div class='product-items'>
@@ -78,9 +109,36 @@
 			<div class="bt-buy-at-once">立刻购买</div></div>
 	</body>
 	<script>
+	var addressid;
+	var send_way;
+	var ctids='';
 	mui.plusReady(function(){
 		showpayordermsg();
+		dealAddressMsg();//获取收货地址信息
 	});
+	window.addEventListener('selectedaddress', function(event) {//finishlogin此方法暂时不用
+				//loadaddressmsg();
+				 addressid = event.detail.address_id;
+				 send_way=event.detail.send_way;
+				 console.log("send_way");
+				 dealAddressMsg(addressid);
+				 console.log("用户自定义事件已经执行"+addressid);
+				//loadaddressmsg(loginpage);
+			})
+	document.querySelector('.select-address').addEventListener('tap', function() {
+				gotoaddresspage2();
+			});
+			document.querySelector('.no-address').addEventListener('tap',function(){
+				gotoaddresspage2();
+			});
+			document.querySelector('.bt-buy-at-once').addEventListener('tap',function(){
+				posterorderfromcart();
+			});
+			document.querySelector('.left-bar').addEventListener('tap',function(){
+				mui.back();
+				var mainpage=plus.webview.getLaunchWebview();
+				mui.fire(mainpage,'freshshopcart',{});
+			});
 	</script>
 
 </html>

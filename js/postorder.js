@@ -73,7 +73,9 @@ function gotoaddresspage() {
 		mui.openWindow({
 			url: 'congsigneeaddress.html',
 			id: 'congsigneeaddress',
-			styles: {}
+			styles: {
+				
+			},
 		});
 	}
 	/*
@@ -138,12 +140,13 @@ function saveaddressmsg(result) {
 	}
 	/*
 	 * 将默认地址信息显示到订单上
+	 * @uaid true 选择指定的地址，false 选择默认地址
 	 *
 	 * */
 
 function dealAddressMsg(uaid) {
 	var db = openDatabase('teambuy', '1.0', 'Test DB', 5 * 1024 * 1024);
-	var sql1 = "select _address,_tel,_truename from ADDRESS_MSG where _isdef=1";
+	var sql1 = "select _id,_address,_tel,_truename from ADDRESS_MSG where _isdef=1";
 	var sql2 = "select _address,_tel,_truename from ADDRESS_MSG where  _id=?"
 	if (!uaid) {
 		db.transaction(function(tx) {
@@ -160,6 +163,7 @@ function dealAddressMsg(uaid) {
 
 				$("#name-and-tell").text(result.rows.item(0)._truename + "  " + result.rows.item(0)._tel);
 				$("#detial-address").text(result.rows.item(0)._address);
+				addressid=result.rows.item(0)._id;
 			}, function(tx, error) {
 				$("#no-defult-address").show();
 				$("#hava-defult-address").hide();
@@ -237,10 +241,6 @@ function posterordermethod(id, sl, cm, addressid, sendm, shopmess, allPrice) {
 					loginpage.show();
 				}
 			}, "json");
-
-
-
-
 		}, function(tx, error) {
 			console.log(error.message);
 		}, null);

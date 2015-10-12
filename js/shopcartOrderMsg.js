@@ -12,9 +12,48 @@ function showpayordermsg(){//var allorder var positionlist;
 	for(var i=0;i<positionlist.length;i++){
 		if(positionlist[i]!=-2){
 		$('.product-items').find(items[j]).css('background-image', "url(" + allorder[j].cppic + ")");
+		ctids+=allorder[j].ctid+",";
 		j++;
 		}
 	}
+	ctids=ctids.substr(0,ctids.length-1);
 	console.log("items:"+items.length);
-	
+	$('#all-nums').text("共"+sl+"件");
+	$('#all-price').text("￥"+allprice);
+}
+function gotoaddresspage2() {
+		mui.openWindow({
+			url: '../mainpage/congsigneeaddress.html',
+			id: 'congsigneeaddress',
+			styles: {
+			},
+		});
+	}
+/*
+ * 从购物车下单
+ * */
+function posterorderfromcart(){
+	       var token = plus.storage.getItem("token");
+		    var sessid = plus.storage.getItem("sessid");
+		    var url='http://app.teambuy.com.cn/apnc/m/tmord/a/cartorder';
+		    console.log("ctids:"+ctids);
+		    $.post(url,{
+		      	"acctoken": token,
+				"sessid": sessid,
+		    	   "addrid":addressid,
+		    	   lngo:"",
+		    	   lato:"",
+		    	   "ctid":ctids,
+		    	   "ctmess":"",
+		    	   "sendm":send_way,
+		    	   "fapiao":""
+		    },function(result){
+		    	  console.log(JSON.stringify(result));
+		    	  if(result.ret==1){
+				var orderno =result.data.ordno;
+				showpaymoneypage(paymoneypage,allprice,orderno);
+				}else if(result.ret==-2){
+					loginpage.show();
+				}
+		    },"json")
 }

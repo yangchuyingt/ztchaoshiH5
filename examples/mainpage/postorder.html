@@ -97,6 +97,7 @@
 			var paymoneypage;
 			var tmid;
 			var loginpage;
+			var addressid;
 		mui.plusReady(function() {
 				var pagelast = plus.webview.currentWebview();
 				tmid = pagelast.tmid;
@@ -179,7 +180,7 @@
 					$("#all-price").text("￥" + allPrice);
 				}
 			});
-			var addressid;
+			
 			var send_way;
 			window.addEventListener('selectedaddress', function(event) {//finishlogin此方法暂时不用
 				//loadaddressmsg();

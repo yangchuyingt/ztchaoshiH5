@@ -100,7 +100,7 @@ function showleftfromnet(data) {
 			category_big = data.data[i].lbid;
 			flag = true;
 		}
-		ht += '<div id ="' + j + '" value="' + data.data[i].lbid + '" class="category-left-menu-item">' + data.data[i].lbname + '</div>';
+		ht += '<div id ="' + j + '" value="' + data.data[i].cup + '" class="category-left-menu-item">' + data.data[i].lbname + '</div>';
 		j++;
 	}
 	//console.log("netht:" + ht);
@@ -116,7 +116,7 @@ function showrightfromnet(data) {
 	for (var i = 0; i < data.data.length; i++) {
 
 		if (data.data[i].cup == category_big) {
-			ht += '<div value="' + data.data[i].lbid + '" class="right-cat-item"><img class="right-catgory-img" src="' + data.data[i].icon + '"/><div class="right-catgory-text">' + data.data[i].lbname + '</div></div>';
+			ht += '<div value="' + data.data[i].cup + '" class="right-cat-item"><img class="right-catgory-img" src="' + data.data[i].icon + '"/><div class="right-catgory-text">' + data.data[i].lbname + '</div></div>';
 		}
 
 	}
@@ -247,7 +247,7 @@ function loadshopcartmsg() {
 					$('.shopcart-jie-suan').show();
 					dealshopcartmsg();
 				}
-				//console.log('shopcart:' + JSON.stringify(result));
+				console.log('shopcart:' + JSON.stringify(result));
 			}, "json");
 	}
 	/*
@@ -308,8 +308,8 @@ function changebuynum(ctid, sl) {
 }
 
 function jisuanallprice() { //shopcartmsgjson
-	var allprice = 0;
-	var sl = 0;
+	 allprice = 0;
+	 sl = 0;
 	//console.log("shopca:"+shopcartpositlist)
 	for (var i = 0; i < shopcartpositlist.length; i++) {
 		if (shopcartpositlist[i] != -2) {
@@ -326,8 +326,8 @@ function jisuanallprice() { //shopcartmsgjson
 }
 
 function allProductInShopCart() {
-		var allprice = 0;
-		var sl = 0;
+		 allprice = 0;
+		 sl = 0;
 		if (!isseletallproduct) {
 			isseletallproduct = true;
 			$('#all-select-img').removeClass('img-unselect');
@@ -396,7 +396,9 @@ function gotojisuan() {
 		id: 'shopcartOrderMsg',
 		extras: {
 			"ordermsg": shopcartmsgjson,
-			"positionlist":shopcartpositlist
+			"positionlist":shopcartpositlist,
+			"je":allprice,
+			"sl":sl
 		},
 	});
 }

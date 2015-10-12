@@ -33,9 +33,12 @@
 		<script>
 			var loginpage;
 			var addresspage;
+			var page;//此参数确定地址来自哪个页面
 			mui.plusReady(function() {
 				var pagelast = plus.webview.currentWebview();
 				var tmid = pagelast.tmid;
+				 page=plus.webview.currentWebview();
+				//pagefrom=page.pagename;
 				setTimeout(function() {
 					loginpage = mui.preload({
 						url: '../me/login.html',

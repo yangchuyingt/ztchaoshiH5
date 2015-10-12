@@ -87,7 +87,7 @@
 						}
 					});
 					productlistPage = mui.preload({
-						url: 'examples/mainpage/production_list.html',
+						url: 'examples/category/production_list.html',
 						id: 'production_list',
 						show: {
 							aniShow: 'none'
@@ -433,6 +433,8 @@
 		var shopcartmsgjson;
 		var shopcartpositlist = new Array(); //记录购物车选中的产品
 		var isseletallproduct = false;
+		var allprice = 0;//要支付的订单的总价是
+	    var sl = 0;//要支付的产品数量是
 		 //创建数据库表
 		mui('.buttom-show').on('tap', 'td', function(e) {
 			currentposition = this.getAttribute('value');
@@ -448,6 +450,7 @@
 			currentposition = event.detail.slideNumber;
 			changetabs();
 		});
+		 // 分类部分的代码
 		 //左边菜单的点击事件
 		mui('#left-menu').on('tap', 'div', function(e) {
 			var cup = this.getAttribute('value');
@@ -554,6 +557,13 @@
 		window.addEventListener("finishlogin", function() {
 			showUserMsgInMe();
 			loadUserCouponmsg();
+		});
+		window.addEventListener('freshshopcart',function(){
+			$('.shop-cart-content-without-order').show();
+			$('.shopcart-jie-suan').hide();
+			shopcartpositlist=new Array();
+			jisuanallprice();
+			loadshopcartmsg();
 		});
 	</script>
 
