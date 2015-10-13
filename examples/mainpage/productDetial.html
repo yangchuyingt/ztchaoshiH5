@@ -10,6 +10,7 @@
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link href="../../css/productDetial.css" rel="stylesheet" />
 		<script type="text/javascript" src="../../js/sqlOpeate.js" ></script>
+		<script type="text/javascript" src="../../js/jquery.js" ></script>
 		<script type="text/javascript" charset="utf-8">
 		
 		</script>
@@ -29,6 +30,7 @@
 		</div>
 		<script>
 			var tmid;
+			var loginpage;
 			//console.log("yyy");
 			mui.plusReady(function() {
 				var self = plus.webview.currentWebview();
@@ -47,6 +49,16 @@
 						}
 					}]
 				});
+				setTimeout(function(){
+					loginpage = mui.preload({
+						url: '../me/login.html',
+						id: 'login',
+						
+						show: {
+							aniShow: 'none'
+						}
+					});
+				},200);
 			});
 			document.querySelector('.buy-at-once').addEventListener('tap', function() {
 				gotoorderpostpage(tmid);
@@ -55,6 +67,13 @@
 			});
 			document.querySelector('.add-to-factory').addEventListener('tap', function() {
 				console.log("加入购物车：" + tmid);
+				addtoshopcart(tmid);
+			});
+			document.querySelector('.shopcart-img').addEventListener('tap',function(){
+				mui.back();
+				page=plus.webview.getLaunchWebview();
+				page.show();
+				mui.fire(page,'gotoshopcart',{});
 			});
 		</script>
 	</body>

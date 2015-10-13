@@ -37,10 +37,12 @@
 <script >
     var lbid;
     var cup;
+   
 	window.addEventListener('postlbid',function(event){
 		 console.log("go on ");
 		 lbid = event.detail.lbid;
 		 cup=event.detail.cup;
+		  $("#table-product-list").empty();
 		// getdatafromdb();
 		 getdatafromnet();
 	});

@@ -96,4 +96,28 @@ function gotoorderpostpage(tmid){
 					},
 				});
 }
-
+function addtoshopcart(tmid){
+	var url="http://app.teambuy.com.cn/apnc/m/tmord/a/addcart";
+	var token = plus.storage.getItem("token");
+	var sessid = plus.storage.getItem("sessid");
+	console.log('tmid:'+tmid);
+	$.post(url,{
+		'acctoken': token,
+		"sessid": sessid,
+		'tmid':tmid,
+		 tmsl:1,
+		 'btimes':'0',
+		 'bnums':'0'
+	},function(result){
+		console.log('加入购物车：'+JSON.stringify(result));
+		console.log(result.ret);
+		if(result.ret=='-2'){
+			gotologn();
+		}else {
+			//弹出toast
+		}
+	},'json');
+}
+function gotologn(){
+	loginpage.show();
+}

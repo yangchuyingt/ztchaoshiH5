@@ -8,7 +8,19 @@
     <link rel="stylesheet" href="../../css/mui.min.css" />
     <link rel="stylesheet" href="../../css/myAllOrder.css" />
     <script type="text/javascript" charset="utf-8">
-      	mui.init();
+      	mui.init({
+					subpages: [{
+						id: 'waitpay-sub',
+						url: 'waitpay-sub.html',
+						styles: {
+							top: '44px',
+							bottom: 0,
+							bounce: 'vertical'
+						},
+						
+					}]
+				});
+			
     </script>
 </head>
 <body class="body-bg">
@@ -20,4 +32,8 @@
 		</div>
 		</div>
 </body>
+<script>
+  var page=plus.webview.getWebviewById('waitpay-sub');
+   mui.fire(page,'pagefrom',{'pagestatus':'0'});
+</script>
 </html>

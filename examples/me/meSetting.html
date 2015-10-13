@@ -15,8 +15,8 @@
 
 	<body>
 		<div class="me-setting-header">
-		<div class="mui-action-back me-header-left">
-		 </div>
+			<div class="mui-action-back me-header-left">
+			</div>
 			设置
 		</div>
 		<div class="body-bg">
@@ -43,5 +43,26 @@
 			<div class="exit-login">退出登陆</div>
 		</div>
 	</body>
+	<script>
+		var loginpage;
+		mui.plusReady(function() {
+			loginpage = mui.preload({
+				url: 'login.html',
+				id: 'login',
+				styles: {},
+				show: {
+					aniShow: 'none'
+				}
+			});
+		})
+		//document.querySelector(".login-btn").addEventListener("tap",function(){
+		document.querySelector('.exit-login').addEventListener('tap', function() {
+			console.log('点击事件');
+			plus.storage.setItem("token", " ");
+			plus.storage.setItem("sessid", " ");
+			loginpage.show();
+			//	loginpage.show();
+		});
+	</script>
 
 </html>

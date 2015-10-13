@@ -1,13 +1,14 @@
 function changetabs() {
 	//document.querySelector('#setdefult-address').className='defult-image-select2';
 	if (beforposition != currentposition) {
-		//console.log('buxiangdeng');
+		loadtabsmsg();
+		console.log('buxiangdeng');
 		document.querySelector('#tab' + beforposition).className = 'img' + beforposition + '2';
 		document.querySelector('#text' + beforposition).className = 'text-not-select';
 		document.querySelector('#tab' + currentposition).className = 'img' + currentposition;
 		document.querySelector('#text' + currentposition).className = 'bootom-item-text';
 		beforposition = currentposition;
-		loadtabsmsg();
+		
 	} else {
 		//console.log('xiangdeng'+beforposition+','+currentposition);
 	}
@@ -15,7 +16,7 @@ function changetabs() {
 
 function loadtabsmsg() {
 	//console.log("hhhhh" + currentposition);
-	switch (currentposition) {
+	switch (currentposition+'') {
 		case '0':
 			break;
 		case '1':
@@ -24,10 +25,15 @@ function loadtabsmsg() {
 			loadcategory();
 			break;
 		case '2':
+		 //  console.log('走了，，');
 			loadshopcartmsg();
 			break;
 		case '3':
 			loadUserCouponmsg();
+			loadUserordermsg();
+			break;
+			default:
+			console.log("哪个位置也不是");
 			break;
 	}
 	befor_left_item='0';
@@ -56,7 +62,6 @@ function putResultTodb(results) {
 						//Sconsole.log("ycy"+JSON.stringify(result));
 					});
 				}
-
 			}, function(tx, result) {
 				console.log("shanchu:" + JSON.stringify(result));
 			})
@@ -240,6 +245,7 @@ function setuserpatrait() {
 }
 
 function loadshopcartmsg() {
+	// console.log('从服务器端请求数据');
 		var token = plus.storage.getItem("token");
 		var sessid = plus.storage.getItem("sessid");
 		var url = "http://app.teambuy.com.cn/apnc/m/tmord/a/getcart";
@@ -382,7 +388,7 @@ function removeshopcartproduct() {
 	var sessid = plus.storage.getItem("sessid");
 	var url = "http://app.teambuy.com.cn/apnc/m/tmord/a/delcart";
 	$.post(url, {
-			acctoken: token,
+			'acctoken': token,
 			"sessid": sessid,
 			"ctid": ctids,
 		},
@@ -408,4 +414,25 @@ function gotojisuan() {
 			"sl":sl
 		},
 	});
+}
+/*
+ *加载用户订单信息
+ * */
+function loadUserordermsg(){
+	console.log('zoule');
+	var url="http://app.teambuy.com.cn/apnc/m/my/a/getmytmord";
+	var token = plus.storage.getItem("token");
+	var sessid = plus.storage.getItem("sessid");
+	$.post(url,{
+		'acctoken': token,
+		"sessid": sessid
+	},function(result){
+		console.log("所有的订单："+JSON.stringify(result));
+		page=plus.webview.getWebviewById('waitpay-sub');
+			mui.fire(page,'getallorders',{
+			   'orders':result
+			});
+	},'json');
+	
+	
 }
