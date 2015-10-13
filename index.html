@@ -547,6 +547,8 @@
 		});
 		document.querySelector('.me-order-show').addEventListener('tap', function() {
 			myAllOrderpage.show();
+			var page=plus.webview.getWebviewById('waitpay-sub');
+            mui.fire(page,'pagefrom',{'pagestatus':'0'});
 		})
 		 mui('#order-things').on('tap', 'div', function(e) {
 			var seestatus = this.getAttribute('value');
