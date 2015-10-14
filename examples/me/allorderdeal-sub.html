@@ -12,7 +12,6 @@
 		<link rel="stylesheet" href="../../css/myAllOrder.css" />
 		<script type="text/javascript" charset="utf-8">
 			mui.init();
-		
 		</script>
 	</head>
 
@@ -65,43 +64,7 @@
 		</div>-->
 	</body>
 	<script>
-		var allorders ;//所有的订单
-		     var retcode='';//请求订单的返回码
-		     var pagefrom='';//来自哪个页面；0：来自全部订单
-		     var allorderdeal;
-		    	mui.plusReady(function(){
-				allorderdeal = mui.preload({
-						url: 'allorderdeal.html',
-						id: 'allorderdeal',
-						show: {
-							aniShow: 'none'
-						}
-					});
-			});
-			 window.addEventListener('getallorders',function(event){
-			 	
-			 	allorders=event.detail.orders.data;
-			 	retcode=event.detail.orders.ret;
-			 	displayorder();
-			 });
-			 window.addEventListener('pagefrom',function(event){
-			 	pagefrom=event.detail.pagestatus+'';
-			 	displayorder();
-			 });
-			 mui('.parent-add').on('tap','.order-button1',function(){//从左往右数第二个
-			 	console.log("从左往右数第二个");
-			 	var parentorder =this.getAttribute("value");
-			 	console.log("parentorder:"+parentorder);
-			 	onbotton2click(parentorder);
-			 	
-			 });
-			 mui('.parent-add').on('tap','.order-button2',function(){//从左往右数第一个
-			 	console.log("从左往右数第一个");
-			 	//allorderdeal.show();
-			 	var parentorder=this.getAttribute("value");
-			 	console.log("parentorder:"+parentorder);
-			 	onbotton1click(parentorder);
-			 });
+		
 	</script>
 
 </html>

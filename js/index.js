@@ -307,7 +307,7 @@ function changebuynum(ctid, sl) {
 	var sessid = plus.storage.getItem("sessid");
 	var url = "http://app.teambuy.com.cn/apnc/m/tmord/a/editcart";
 	$.post(url, {
-			acctoken: token,
+			"acctoken": token,
 			"sessid": sessid,
 			"ctid": ctid,
 			"tmsl": sl

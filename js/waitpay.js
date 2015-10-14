@@ -94,14 +94,14 @@ function showWaitOrders() {
 				dj = getdj(allorders[key]);
 				console.log(allorders[key].cpmx.length);
 				if (allorders[key].cpmx.length == 1) {
-					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + allorders[key].fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + allorders[key].ordsl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div id="order-button1" value="'+allorders[key].orderno+'" class="order-button">付款</div><div id="order-button2" value="'+allorders[key].orderno+'" class="order-button">取消订单</div></div></div>';
+					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + allorders[key].fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + allorders[key].ordsl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="'+allorders[key].ordno+'" class="order-button1">付款</div><div  value="'+allorders[key].ordno+'" class="order-button2">取消订单</div></div></div>';
 				} else { //从购物车下单里边有很多商品的时候
 					orderstatus = dealorderstatus(allorders[key].ordzt);
 					var imgpic = '';
 					for (var j = 0; j < allorders[key].cpmx.length; j++) {
 						imgpic += '<div class="imgs-product"></div>';
 					}
-					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div></div><div class="divide-line-without-margin"></div><div class="order-img-show">' + imgpic + '</div><div class="divide-line-without-margin"></div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div id="order-button1" value="'+allorders[key].orderno+'" class="order-button">付款</div><div id="order-button2" value="'+allorders[key].orderno+'" class="order-button">取消订单</div></div></div>';
+					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div></div><div class="divide-line-without-margin"></div><div class="order-img-show">' + imgpic + '</div><div class="divide-line-without-margin"></div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="'+allorders[key].ordno+'" class="order-button1">付款</div><div  value="'+allorders[key].ordno+'" class="order-button2">取消订单</div></div></div>';
 				}
 			}
 		}
@@ -127,14 +127,14 @@ function showWaitReceiveOrders() {
 				dj = getdj(allorders[key]);
 				console.log(allorders[key].cpmx.length);
 				if (allorders[key].cpmx.length == 1) {
-					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + allorders[key].fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + allorders[key].ordsl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div id="order-button1" value="'+allorders[key].orederno+'" class="order-button">确认收货</div><div id="order-button2" value="'+allorders[key].orderno+'" class="order-button">查看物流</div></div></div>';
+					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + allorders[key].fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + allorders[key].ordsl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="'+allorders[key].orederno+'" class="order-button1">确认收货</div><div  value="'+allorders[key].ordno+'" class="order-button2">查看物流</div></div></div>';
 				} else { //从购物车下单里边有很多商品的时候
 					orderstatus = dealorderstatus(allorders[key].ordzt);
 					var imgpic = '';
 					for (var j = 0; j < allorders[key].cpmx.length; j++) {
 						imgpic += '<div class="imgs-product"></div>';
 					}
-					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div></div><div class="divide-line-without-margin"></div><div class="order-img-show">' + imgpic + '</div><div class="divide-line-without-margin"></div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div id="order-button1" value="'+allorders[key].orderno+'" class="order-button">付款</div><div id="order-button2" value="'+allorders[key].orderno+'" class="order-button">取消订单</div></div></div>';
+					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div></div><div class="divide-line-without-margin"></div><div class="order-img-show">' + imgpic + '</div><div class="divide-line-without-margin"></div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="'+allorders[key].ordno+'" class="order-button1">付款</div><div  value="'+allorders[key].ordno+'" class="order-button2">取消订单</div></div></div>';
 				}
 			}
 		}
@@ -160,14 +160,14 @@ function showWaitEvaluteOrders() {
 				dj = getdj(allorders[key]);
 				console.log(allorders[key].cpmx.length);
 				if (allorders[key].cpmx.length == 1) {
-					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + allorders[key].fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + allorders[key].ordsl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  id="order-button1" value="'+allorders[key].orderno+'" class="order-button">付款</div><div id="order-button2" value="'+allorders[key].orderno+'" class="order-button">取消订单</div></div></div>';
+					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + allorders[key].fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + allorders[key].ordsl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div   value="'+allorders[key].ordno+'" class="order-button1">去评价</div></div></div>';
 				} else { //从购物车下单里边有很多商品的时候
 					orderstatus = dealorderstatus(allorders[key].ordzt);
 					var imgpic = '';
 					for (var j = 0; j < allorders[key].cpmx.length; j++) {
 						imgpic += '<div class="imgs-product"></div>';
 					}
-					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div></div><div class="divide-line-without-margin"></div><div class="order-img-show">' + imgpic + '</div><div class="divide-line-without-margin"></div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div id="order-button1" value="'+allorders[key].orderno+'" class="order-button">付款</div><div id="order-button2" value="'+allorders[key].orderno+'"  class="order-button">取消订单</div></div></div>';
+					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div></div><div class="divide-line-without-margin"></div><div class="order-img-show">' + imgpic + '</div><div class="divide-line-without-margin"></div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="'+allorders[key].ordno+'" class="order-button1">去评价</div></div></div>';
 				}
 			}
 		}
@@ -194,14 +194,14 @@ function showSellAfterOrders() {
 				dj = getdj(allorders[key]);
 				console.log(allorders[key].cpmx.length);
 				if (allorders[key].cpmx.length == 1) {
-					strs+= '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + allorders[key].fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + allorders[key].ordsl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div id="order-button1" value="'+allorders[key].orderno+'" class="order-button">申请退款</div></div></div>';
+					strs+= '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + allorders[key].fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + allorders[key].ordsl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="'+allorders[key].ordno+'" class="order-button1">申请退款</div></div></div>';
 				} else { //从购物车下单里边有很多商品的时候
 					orderstatus = dealorderstatus(allorders[key].ordzt);
 					var imgpic = '';
 					for (var j = 0; j < allorders[key].cpmx.length; j++) {
 						imgpic += '<div class="imgs-product"></div>';
 					}
-					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div></div><div class="divide-line-without-margin"></div><div class="order-img-show">' + imgpic + '</div><div class="divide-line-without-margin"></div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div id="order-button1" value="'+allorders[key].orderno+'" class="order-button">申请退款</div></div></div>';
+					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div></div><div class="divide-line-without-margin"></div><div class="order-img-show">' + imgpic + '</div><div class="divide-line-without-margin"></div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="'+allorders[key].ordno+'" class="order-button1">申请退款</div></div></div>';
 				}
 			}
 		}
@@ -323,4 +323,76 @@ function loadsellafterpictures(){
 		}
 	}
 }
-
+/**
+ * 从左往右数第二个按钮被点击的时候的事件
+ * */
+function onbotton2click(parentorder){
+	//allorderdeal.show();
+	switch(pagefrom){
+		case "1"://付款
+		break;
+		case "2"://确认收获
+		break;
+		
+	}
+}
+/**
+ * *从左往右数第一个按钮被点击的时候的事件
+ * */
+function onbotton1click(parentorder){
+	allorderdeal.show();
+	switch(pagefrom){
+		case "1"://取消订单
+//		var allorderdealpage=plus.webview.getWebviewById('allorderdeal');
+//		var allorderdealsubpage=plus.webview.getWebviewById("allorderdeal-sub");
+//		var orderobj=allorders[parentorder];
+//		mui.fire(allorderdealpage,'chengetitle',{
+//			"pagefromfunction":"concelOrder"
+//		});
+//		mui.fire(allorderdealsubpage,"getshopcartorder",{
+//			"orderobj":orderobj,
+//			"pagefromfunction":"concelOrder"
+//		});
+        deleteorder(parentorder);
+		break;
+		case "2"://查看物流
+		break;
+		
+	}
+}
+/**
+ * 
+ *  删除订单
+* */
+function deleteorder(order){
+	mui.toast("请稍后");//修改东西
+	var url="http://app.teambuy.com.cn/apnc/m/tmord/a/ordscancel";
+	var token = plus.storage.getItem("token");
+	var sessid = plus.storage.getItem("sessid");
+	$.post(url,{
+		"acctoken": token,
+		"sessid": sessid,
+		"ordnos":order
+	},function(result){
+		console.log("删除订单的结果:"+JSON.stringify(result)+",order"+order);
+		if(result.ret=="1"){
+			var mainpage=plus.webview.getLaunchWebview();
+			mui.fire(mainpage,"refreshmyOrder",{});
+		}else if(result.ret=="-2"){
+			mui.toast("未知错误");
+		}
+	},"json");
+	
+}
+/***
+ * *
+ * 订单二级页面的头
+ * 
+ */
+function changemidtitle(){
+	switch(doWhat){
+		case "concelOrder": //取消订单
+	     $('.me-header-title').text("全部订单");
+		break;
+	}
+}

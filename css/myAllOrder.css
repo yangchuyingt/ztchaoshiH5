@@ -128,7 +128,18 @@
     overflow: hidden;
     
   }
-.order-button{
+.order-button1{
+	width: auto;
+	height: 80%;
+	font-size: 0.8125em;
+	margin-right: 1.25em;
+	background-color: #D52722;
+	color: #fff;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	float: right;
+}
+.order-button2{
 	width: auto;
 	height: 80%;
 	font-size: 0.8125em;
