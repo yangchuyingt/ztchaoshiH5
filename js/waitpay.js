@@ -340,7 +340,7 @@ function onbotton2click(parentorder){
  * *从左往右数第一个按钮被点击的时候的事件
  * */
 function onbotton1click(parentorder){
-	allorderdeal.show();
+	//allorderdeal.show();
 	switch(pagefrom){
 		case "1"://取消订单
 //		var allorderdealpage=plus.webview.getWebviewById('allorderdeal');
