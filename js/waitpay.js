@@ -2,19 +2,23 @@ function showtitlenme() {
 		console.log("df:" + pagestatus)
 		switch (pagestatus) {
 			case '0':
-				console.log(0);
-				$('.me-header-title').text("待付款");
+			console.log(0);
+				$('.me-header-title').text("全部订单");
 				break;
 			case '1':
 				console.log(1);
-				$('.me-header-title').text("待收货");
+				$('.me-header-title').text("待付款");
 				break;
 			case '2':
 				console.log(2);
-				$('.me-header-title').text("待评价");
+				$('.me-header-title').text("待收货");
 				break;
 			case '3':
 				console.log(3);
+				$('.me-header-title').text("待评价");
+				break;
+			case '4':
+				console.log(4);
 				$('.me-header-title').text("售后");
 				break;
 		}
@@ -100,6 +104,7 @@ function showWaitOrders() {
 	$('.parent-add').empty();
 	$('.parent-add').append(strs);
 	console.log("strs2:"+strs);
+	loadwaitpaypictures();
 }
 
 function dealorderstatus(orderstatus) {

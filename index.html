@@ -338,19 +338,19 @@
 							</div>
 							<div class="me-devide-line"></div>
 							<div id="order-things" class="kinds-order-msg">
-								<div value="0" class="kind-order-item">
+								<div value="1" class="kind-order-item">
 									<div class="kind-order-item-img kind-order-item-img1"></div>
 									待付款
 								</div>
-								<div value="1" class="kind-order-item">
+								<div value="2" class="kind-order-item">
 									<div class="kind-order-item-img kind-order-item-img2"></div>
 									待收货
 								</div>
-								<div value="2" class="kind-order-item">
+								<div value="3" class="kind-order-item">
 									<div class="kind-order-item-img kind-order-item-img3"></div>
 									待评价
 								</div>
-								<div value="3" class="kind-order-item">
+								<div value="4" class="kind-order-item">
 									<div class="kind-order-item-img kind-order-item-img4"></div>
 									退换/售后
 								</div>
@@ -546,18 +546,22 @@
 			mesettingpage.show();
 		});
 		document.querySelector('.me-order-show').addEventListener('tap', function() {
-			myAllOrderpage.show();
+//			myAllOrderpage.show();
+            mui.fire(waitpaypage, 'getflag', {
+				'pagestatus': '0'
+			});
 			var page=plus.webview.getWebviewById('waitpay-sub');
             mui.fire(page,'pagefrom',{'pagestatus':'0'});
+            waitpaypage.show();
 		})
 		 mui('#order-things').on('tap', 'div', function(e) {
 			var seestatus = this.getAttribute('value');
 			mui.fire(waitpaypage, 'getflag', {
-				pagestatus: seestatus
+				'pagestatus': seestatus
 			});
-			var pagefroms=Number(seestatus)+1;
+//			var pagefroms=Number(seestatus)+1;
 			var page=plus.webview.getWebviewById('waitpay-sub');
-            mui.fire(page,'pagefrom',{'pagestatus':pagefroms});
+            mui.fire(page,'pagefrom',{'pagestatus':seestatus});
 			waitpaypage.show();
 		});
 		mui.plusReady(function() {
