@@ -242,7 +242,7 @@ function dealorderstatus(orderstatus) {
 }
 
 function getdj(order) {
-		var je = Number(order.payje);
+		var je = Number(order.ordje);
 		var sl = Number(order.ordsl);
 		return je / sl;
 	}
@@ -330,8 +330,19 @@ function onbotton2click(parentorder){
 	//allorderdeal.show();
 	switch(pagefrom){
 		case "1"://付款
+		showpaymoneypage(paymoneypage,allorders[parentorder].ordje,parentorder);
 		break;
 		case "2"://确认收获
+		var allorderdealpage=plus.webview.getWebviewById('allorderdeal');
+		var allorderdealsubpage=plus.webview.getWebviewById("allorderdeal-sub");
+		var orderobj=allorders[parentorder];
+		mui.fire(allorderdealpage,'chengetitle',{
+			"pagefromfunction":"ensurepackage"
+		});
+		mui.fire(allorderdealsubpage,"getshopcartorder",{
+			"orderobj":orderobj,
+			"pagefromfunction":"ensurepackage"
+		});
 		break;
 		
 	}
@@ -391,8 +402,33 @@ function deleteorder(order){
  */
 function changemidtitle(){
 	switch(doWhat){
-		case "concelOrder": //取消订单
-	     $('.me-header-title').text("全部订单");
+		case "ensurepackage": //确认收货
+	     $('.me-header-title').text("代收货订单");
 		break;
 	}
+}
+/**
+ * *跳转到付款的页面
+ * 
+ * */
+function showpaymoneypage(paymoneypage,allPrice,orderno) {
+	//var paymoneyPage = plus.webview.getWebviewById('paymoney');
+	paymoneypage.show();
+	mui.fire(paymoneypage, 'getprice', {
+		aa: allPrice,
+		ordno:orderno
+	});
+}
+function showOneShopCartOrder(){
+	var strs='';
+	var orderstatus;
+	var dj;
+	console.log("订单"+JSON.stringify(orderobj));
+	for(var i=0;i<orderobj.cpmx.length;i++){
+		orderstatus = dealorderstatus(orderobj.ordzt);
+		dj = getdj(orderobj);
+		strs+= '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + orderobj.ordno + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + orderobj.fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + orderobj.ordsl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + orderobj.payje + '</div><div  value="'+orderobj.ordno+'" class="order-button1">确认收货</div><div  value="'+orderobj.ordno+'" class="order-button2">查看物流</div></div></div>';
+	}
+	$('.parent-add').empty();
+	$('.parent-add').append(strs);
 }

@@ -64,7 +64,13 @@
 		</div>-->
 	</body>
 	<script>
-		
+	   var orderobj;
+	   var pagefromfunction;
+		window.addEventListener('getshopcartorder',function(event){
+			orderobj=event.detail.orderobj;
+			pagefromfunction=event.detail.pagefromfunction;
+			showOneShopCartOrder();
+		});
 	</script>
 
 </html>
