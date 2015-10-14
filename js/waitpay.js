@@ -194,7 +194,7 @@ function showSellAfterOrders() {
 				dj = getdj(allorders[key]);
 				console.log(allorders[key].cpmx.length);
 				if (allorders[key].cpmx.length == 1) {
-					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + allorders[key].fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + allorders[key].ordsl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div id="order-button1" value="'allorders[key].orderno'" class="order-button">申请退款</div></div></div>';
+					strs+= '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + allorders[key].fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + allorders[key].ordsl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div id="order-button1" value="'+allorders[key].orderno+'" class="order-button">申请退款</div></div></div>';
 				} else { //从购物车下单里边有很多商品的时候
 					orderstatus = dealorderstatus(allorders[key].ordzt);
 					var imgpic = '';
