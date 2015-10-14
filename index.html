@@ -555,6 +555,9 @@
 			mui.fire(waitpaypage, 'getflag', {
 				pagestatus: seestatus
 			});
+			var pagefroms=Number(seestatus)+1;
+			var page=plus.webview.getWebviewById('waitpay-sub');
+            mui.fire(page,'pagefrom',{'pagestatus':pagefroms});
 			waitpaypage.show();
 		});
 		mui.plusReady(function() {
