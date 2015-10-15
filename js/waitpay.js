@@ -441,7 +441,7 @@ function showOneShopCartOrder(){
 /**
  * *如果这个产品已经收获了，则让他不可点
  */
-function(){
+function changebottomcolor(){
     var items=	$('.parent-add .order-button1');
 	for(var i=0;i<orderobj.cpmx.length;i++){
 		if(orderobj.cpmx[i].ordzt==2||orderobj.cpmx[i].ordzt==3){
