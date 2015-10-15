@@ -499,7 +499,7 @@ function ensurGetPackage(orderno,elements){
 		"acctoken": token,
 		"sessid": sessid,
 		"ordno":bigOrdno,
-		"onox":smallOrdno;
+		"onox":smallOrdno
 	},function(result){
 		console.log("确认收获："+JSON.stringify(result));
 		if(result.ret=='1'){
