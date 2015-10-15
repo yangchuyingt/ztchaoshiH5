@@ -139,6 +139,17 @@
 	padding-right: 0.5em;
 	float: right;
 }
+.order-button1-unvisiable{
+	width: auto;
+	height: 80%;
+	font-size: 0.8125em;
+	margin-right: 1.25em;
+	background-color: #9B9B9B;
+	color: #fff;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	float: right;
+}
 .order-button2{
 	width: auto;
 	height: 80%;

@@ -75,7 +75,10 @@
 		 mui('.parent-add').on('tap','.order-button1',function(){//从左向右数第二个，//	确认收货
 			console.log("从左向右数第二个，"+pagefromfunction);
 			var orderno=this.getAttribute('value');
-			onclickButton1(orderno);
+			
+			console.log("this 1:"+this.getAttribute("class"));
+			//this.setAttribute("class","order-button1-unvisiable");
+			onclickButton1(orderno,this);
 		});
 		 mui('.parent-add').on('tap','.order-button2',function(){//从左向右数第一个,查看物流
 			onclickbutton2(ordrno);

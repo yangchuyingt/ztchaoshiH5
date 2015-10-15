@@ -436,6 +436,19 @@ function showOneShopCartOrder(){
 	$('.parent-add').empty();
 	$('.parent-add').append(strs);
 	loadpicture2();
+	changebottomcolor();
+}
+/**
+ * *如果这个产品已经收获了，则让他不可点
+ */
+function(){
+    var items=	$('.parent-add .order-button1');
+	for(var i=0;i<orderobj.cpmx.length;i++){
+		if(orderobj.cpmx[i].ordzt==2||orderobj.cpmx[i].ordzt==3){
+			$('.parent-add').find(imgs[j]).removeClass("order-button1");
+			$('.parent-add').find(imgs[j]).addClass('order-button1-unvisiable');
+		}
+	}
 }
 function getdj2(orderobj,i){
 	var je = Number(orderobj.cpmx[i].oje);
@@ -453,14 +466,14 @@ function getdj2(orderobj,i){
 				$('.parent-add').find(imgs[j]).css('background-image', "url(" + orderobj.cpmx[j].cppic + ")");
 			}
  }
-function onclickButton1(orderno){
+function onclickButton1(orderno,element){
 	
 	switch(pagefromfunction){
 		case "ensurepackage":
 		var btnArray = ['确定', '取消'];
 		mui.confirm("是否确认收货？","提示",btnArray,function(e){
 			if(e.index==0){
-				ensurGetPackage(orderno);
+				ensurGetPackage(orderno,element);
 			}else if(e.index==1){
 				
 			}
@@ -472,7 +485,7 @@ function onclickButton1(orderno){
 function onclickButton2(){
 	
 }
-function ensurGetPackage(orderno){
+function ensurGetPackage(orderno,elements){
 	console.log("gogo"+orderno);
 	var token = plus.storage.getItem("token");
 	var sessid = plus.storage.getItem("sessid");
@@ -483,5 +496,14 @@ function ensurGetPackage(orderno){
 		"ordno":orderno
 	},function(result){
 		console.log("确认收获："+JSON.stringify(result));
+		if(result.ret=='1'){
+          mui.toast('确认收获成功');
+         // console.log("this"+JSON.stringify(this));
+         //this.style.display="none";
+         // this.setAttribute("display","none");
+          var mainpage=plus.webview.getLaunchWebview();
+          elements.setAttribute("class","order-button1-unvisiable");
+          mui.fire(mainpage,"refreshmyOrder",{});
+		}
 	},"json");
 }
