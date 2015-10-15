@@ -38,8 +38,8 @@
 				<div class="divide-line-without-margin"></div>
 				<div class="price-show">
 					<div class="real-pay">实付款：￥0</div>
-					<div class='order-button'>付款</div>
-					<div class='order-button'>取消订单</div>
+					<div class='order-button1'>付款</div>
+					<div class='order-button2'>取消订单</div>
 				</div>
 			</div>
 			<div class="order-msg-items">
@@ -65,11 +65,21 @@
 	</body>
 	<script>
 	   var orderobj;
-	   var pagefromfunction;
+	   var pagefromfunction;//1.ensurepackage 确认收货
 		window.addEventListener('getshopcartorder',function(event){
 			orderobj=event.detail.orderobj;
 			pagefromfunction=event.detail.pagefromfunction;
 			showOneShopCartOrder();
+		});
+		
+		 mui('.parent-add').on('tap','.order-button1',function(){//从左向右数第二个，//	确认收货
+			console.log("从左向右数第二个，"+pagefromfunction);
+			var orderno=this.getAttribute('value');
+			onclickButton1(orderno);
+		});
+		 mui('.parent-add').on('tap','.order-button2',function(){//从左向右数第一个,查看物流
+			onclickbutton2(ordrno);
+			console.log("从左向右数第一个，");
 		});
 	</script>
 

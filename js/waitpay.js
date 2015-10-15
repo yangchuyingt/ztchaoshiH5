@@ -134,7 +134,7 @@ function showWaitReceiveOrders() {
 					for (var j = 0; j < allorders[key].cpmx.length; j++) {
 						imgpic += '<div class="imgs-product"></div>';
 					}
-					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div></div><div class="divide-line-without-margin"></div><div class="order-img-show">' + imgpic + '</div><div class="divide-line-without-margin"></div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="'+allorders[key].ordno+'" class="order-button1">付款</div><div  value="'+allorders[key].ordno+'" class="order-button2">取消订单</div></div></div>';
+					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div></div><div class="divide-line-without-margin"></div><div class="order-img-show">' + imgpic + '</div><div class="divide-line-without-margin"></div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="'+allorders[key].ordno+'" class="order-button1">确认收货</div><div  value="'+allorders[key].ordno+'" class="order-button2">查看物流</div></div></div>';
 				}
 			}
 		}
@@ -420,16 +420,68 @@ function showpaymoneypage(paymoneypage,allPrice,orderno) {
 		ordno:orderno
 	});
 }
+/**
+ * * 二级页面订单的显示
+ */
 function showOneShopCartOrder(){
 	var strs='';
 	var orderstatus;
 	var dj;
-	console.log("订单"+JSON.stringify(orderobj));
+	//console.log("订单"+JSON.stringify(orderobj));
 	for(var i=0;i<orderobj.cpmx.length;i++){
 		orderstatus = dealorderstatus(orderobj.ordzt);
-		dj = getdj(orderobj);
-		strs+= '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + orderobj.ordno + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + orderobj.fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + orderobj.ordsl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + orderobj.payje + '</div><div  value="'+orderobj.ordno+'" class="order-button1">确认收货</div><div  value="'+orderobj.ordno+'" class="order-button2">查看物流</div></div></div>';
+		dj = getdj2(orderobj,i);
+		strs+= '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + orderobj.ordno + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + orderobj.fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + orderobj.cpmx[i].osl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + orderobj.payje + '</div><div  value="'+orderobj.cpmx[i].ordnox+'" class="order-button1">确认收货</div><div  value="'+orderobj.cpmx[i].ordnox+'" class="order-button2">查看物流</div></div></div>';
 	}
 	$('.parent-add').empty();
 	$('.parent-add').append(strs);
+	loadpicture2();
+}
+function getdj2(orderobj,i){
+	var je = Number(orderobj.cpmx[i].oje);
+	var sl = Number(orderobj.cpmx[i].osl);
+	return je / sl;
+	
+}
+/***
+ * 二级页面图片的加载
+ * 
+ */
+ function loadpicture2(){
+ 	var imgs = $(".parent-add .imgs-product");
+ 	for (var j = 0; j < orderobj.cpmx.length; j++) {
+				$('.parent-add').find(imgs[j]).css('background-image', "url(" + orderobj.cpmx[j].cppic + ")");
+			}
+ }
+function onclickButton1(orderno){
+	
+	switch(pagefromfunction){
+		case "ensurepackage":
+		var btnArray = ['确定', '取消'];
+		mui.confirm("是否确认收货？","提示",btnArray,function(e){
+			if(e.index==0){
+				ensurGetPackage(orderno);
+			}else if(e.index==1){
+				
+			}
+		});
+		break;
+	}
+	
+}
+function onclickButton2(){
+	
+}
+function ensurGetPackage(orderno){
+	console.log("gogo");
+	var token = plus.storage.getItem("token");
+	var sessid = plus.storage.getItem("sessid");
+	var url="http://app.teambuy.com.cn/apnc/m/tmord/a/ordrecgoods";
+	$.post(url,{
+		"acctoken": token,
+		"sessid": sessid,
+		"ordno":orderno
+	},function(result){
+		JSON.stringify("确认收获："+JSON.stringify(result));
+	},"json");
 }
