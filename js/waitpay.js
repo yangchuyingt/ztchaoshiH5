@@ -473,7 +473,7 @@ function onclickButton2(){
 	
 }
 function ensurGetPackage(orderno){
-	console.log("gogo");
+	console.log("gogo"+orderno);
 	var token = plus.storage.getItem("token");
 	var sessid = plus.storage.getItem("sessid");
 	var url="http://app.teambuy.com.cn/apnc/m/tmord/a/ordrecgoods";
@@ -482,6 +482,6 @@ function ensurGetPackage(orderno){
 		"sessid": sessid,
 		"ordno":orderno
 	},function(result){
-		JSON.stringify("确认收获："+JSON.stringify(result));
+		console.log("确认收获："+JSON.stringify(result));
 	},"json");
 }
