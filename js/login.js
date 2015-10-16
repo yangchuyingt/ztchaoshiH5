@@ -3,7 +3,7 @@ function checkusername(pagenameid) {
 	var password = $("#password").val();
 	var regEx = !!user.match(/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/);
 	if (user) {
-		mui.toast("用户名不能为空");
+		//mui.toast("用户名不能为空");
 	}
 	if (!regEx) {
 		console.log("错误");

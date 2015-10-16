@@ -81,9 +81,10 @@
 			pagefromfunction=event.detail.pagefromfunction;
 			showOneShopCartOrder();
 		});
-		
+		var  cilckedbuton;//记录当前点击的按钮
 		 mui('.parent-add').on('tap','.order-button1',function(){//从左向右数第二个，//	确认收货
 			console.log("从左向右数第二个，"+pagefromfunction);
+			cilckedbuton=this;
 			var orderno=this.getAttribute('value');
 			console.log("this 1:"+this.getAttribute("class"));
 			//this.setAttribute("class","order-button1-unvisiable");
@@ -92,6 +93,12 @@
 		 mui('.parent-add').on('tap','.order-button2',function(){//从左向右数第一个,查看物流
 			onclickbutton2(ordrno);
 			console.log("从左向右数第一个，");
+		});
+		/**
+		 * *在删除订单成功后，将次订单的“申请售后” 按钮置为不可点
+		 */
+		window.addEventListener("",function(){
+			cilckedbuton.setAttribute("class","order-button1-unvisiable");
 		});
 	</script>
 

@@ -5,7 +5,8 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title></title>
-		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/mui.min.js" ></script>
+		<script type="text/javascript" src="../../js/refund.js" ></script>
 		<script type="text/javascript" src="../../js/jquery.js" ></script>
 		<link rel="stylesheet" href="../../css/refund.css" />
 		<script type="text/javascript" charset="utf-8">
@@ -35,28 +36,28 @@
 			<div class="order-refund-reason">为了帮我们做的更好，请提交退款原因，至少一项</div>
 			<div class=divide-line-without-margin></div>
 			<div class='refund-reason-select'>
-				<div class="refund-reason-select-item">
-					<div class="selet-img"></div>&nbsp;&nbsp;预约不上
+				<div value="0" class="refund-reason-select-item">
+					<div  class="selet-img"></div>&nbsp;&nbsp;预约不上
 				</div>
-				<div class="refund-reason-select-item">
-					<div class="selet-img"></div>&nbsp;&nbsp;去过了，不太满意
+				<div value="1" class="refund-reason-select-item">
+					<div  class="selet-img"></div>&nbsp;&nbsp;去过了，不太满意
 				</div>
-				<div class="refund-reason-select-item">
+				<div value="2" class="refund-reason-select-item">
 					<div class="selet-img"></div>&nbsp;&nbsp;朋友网上评价不好
 				</div>
-				<div class="refund-reason-select-item">
+				<div value="3" class="refund-reason-select-item">
 					<div class="selet-img"></div>&nbsp;&nbsp;买多了/买错了
 				</div>
-				<div class="refund-reason-select-item">
+				<div value="4" class="refund-reason-select-item">
 					<div class="selet-img"></div>&nbsp;&nbsp;计划有变，没时间消费
 				</div>
-				<div class="refund-reason-select-item">
+				<div value="5" class="refund-reason-select-item">
 					<div class="selet-img"></div>&nbsp;&nbsp;后悔了，不想要了
 				</div>
-				<div class="refund-reason-select-item">
+				<div value="6" class="refund-reason-select-item">
 					<div class="selet-img"></div>&nbsp;&nbsp;商家说可以以团购价到店消费
 				</div>
-				<div class="refund-reason-select-item">
+				<div value="7" class="refund-reason-select-item">
 					<div class="selet-img"></div>&nbsp;&nbsp;其他
 				</div>
 				<textarea class="textarea-sytle" rows="3" placeholder="请输入退款原因,最多不超过200字"></textarea>
@@ -70,12 +71,36 @@
 	</body>
 	<script>
 	var refundobj;
+	var selectArray=new Array();
+	var orderno;
 	window.addEventListener('refundmsg',function(event){
 		console.log("自定义事件执行了");
 		refundobj=event.detail.refundobj;
+		orderno=event.detail.orderno;
 		console.log("refundobj:"+refundobj);
 		showrefundmsg();
 	})
+	mui(".refund-reason-select").on("tap",'.refund-reason-select-item',function(){
+		var clickposition =this.getAttribute("value");
+		var node=(this.childNodes)[1];
+		var classname=node.getAttribute("class");
+		console.log("classname:"+classname);
+		if(classname=="selet-img"){
+			node.setAttribute("class","selet-img1");
+			selectArray[clickposition]=clickposition+'';
+			
+			//selectArray.push(clickposition);
+		}else{
+			node.setAttribute("class","selet-img");
+			selectArray[clickposition]="";
+		}
+		console.log("selectArray:"+selectArray+"***长度："+selectArray.length);
+	});
+	document.querySelector(".post-refund-botton").addEventListener("tap",function(){
+		var MessageChannel=$('.textarea-sytle').val();
+		buildmessmsg(MessageChannel);
+		
+	});
 	</script>
 
 </html>

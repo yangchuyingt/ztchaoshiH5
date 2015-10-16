@@ -579,19 +579,21 @@ function onclickButton1(orderno, element) {
 		  console.log("申请售后"+element);
            refundpage.show();
            var smallorder=orderno.split(",");
-            console.log("smallorder:"+smallorder);
+            console.log("smallorder:"+smallorder[1]);
            var refundobj;
            for(var i=0;i<orderobj.cpmx.length;i++){
-           	if(orderobj.cpmx[i].ordernox==smallorder[1]){
+           	 console.log("order1:"+orderobj.cpmx[i].ordnox+"order2:"+smallorder[1]);
+           	if(orderobj.cpmx[i].ordnox==smallorder[1]){
            		refundobj=orderobj.cpmx[i];
            		break;
            	}
            }
            var refundpages=plus.webview.getWebviewById("refund-sub");
            mui.fire(refundpages,"refundmsg",{
-           	"refund-obj":refundobj
+           	"refundobj":refundobj,
+           	"orderno":orderno
            })
-           console.log("heheeh");
+           console.log("heheeh:"+refundpages);
 			break;
 	}
 

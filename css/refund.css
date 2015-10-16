@@ -128,7 +128,16 @@
 	margin-top: 0.625em;
 	
 }
-
+.selet-img1{
+	width: 1.25em;
+	height: 1.25em;
+	background-image:url(img/product_selecet.png);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	float: left;
+	margin-top: 0.625em;
+	
+}
 .textarea-sytle{
 	width: 80%;
 	border-style: 2px solid ; 
