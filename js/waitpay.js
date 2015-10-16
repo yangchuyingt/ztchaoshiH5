@@ -94,14 +94,14 @@ function showWaitOrders() {
 				dj = getdj(allorders[key]);
 				console.log(allorders[key].cpmx.length);
 				if (allorders[key].cpmx.length == 1) {
-					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + allorders[key].fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + allorders[key].ordsl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="'+allorders[key].ordno+'" class="order-button1">付款</div><div  value="'+allorders[key].ordno+'" class="order-button2">取消订单</div></div></div>';
+					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + allorders[key].fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + allorders[key].ordsl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="' + allorders[key].ordno + '" class="order-button1">付款</div><div  value="' + allorders[key].ordno + '" class="order-button2">取消订单</div></div></div>';
 				} else { //从购物车下单里边有很多商品的时候
 					orderstatus = dealorderstatus(allorders[key].ordzt);
 					var imgpic = '';
 					for (var j = 0; j < allorders[key].cpmx.length; j++) {
 						imgpic += '<div class="imgs-product"></div>';
 					}
-					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div></div><div class="divide-line-without-margin"></div><div class="order-img-show">' + imgpic + '</div><div class="divide-line-without-margin"></div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="'+allorders[key].ordno+'" class="order-button1">付款</div><div  value="'+allorders[key].ordno+'" class="order-button2">取消订单</div></div></div>';
+					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div></div><div class="divide-line-without-margin"></div><div class="order-img-show">' + imgpic + '</div><div class="divide-line-without-margin"></div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="' + allorders[key].ordno + '" class="order-button1">付款</div><div  value="' + allorders[key].ordno + '" class="order-button2">取消订单</div></div></div>';
 				}
 			}
 		}
@@ -121,20 +121,20 @@ function showWaitReceiveOrders() {
 		var orderstatus = '';
 		var dj = '0';
 		for (var key in allorders) {
-			if (allorders[key].ordzt == '1'||allorders[key].ordzt == '4') {
+			if (allorders[key].ordzt == '1' || allorders[key].ordzt == '4') {
 				console.log("订单状态：" + allorders[key].ordzt);
 				orderstatus = dealorderstatus(allorders[key].ordzt);
 				dj = getdj(allorders[key]);
 				console.log(allorders[key].cpmx.length);
 				if (allorders[key].cpmx.length == 1) {
-					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + allorders[key].fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + allorders[key].ordsl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="'+allorders[key].ordno+'" class="order-button1">确认收货</div><div  value="'+allorders[key].ordno+'" class="order-button2">查看物流</div></div></div>';
+					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + allorders[key].fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + allorders[key].ordsl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="' + allorders[key].ordno + '" class="order-button1">确认收货</div><div  value="' + allorders[key].ordno + '" class="order-button2">查看物流</div></div></div>';
 				} else { //从购物车下单里边有很多商品的时候
 					orderstatus = dealorderstatus(allorders[key].ordzt);
 					var imgpic = '';
 					for (var j = 0; j < allorders[key].cpmx.length; j++) {
 						imgpic += '<div class="imgs-product"></div>';
 					}
-					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div></div><div class="divide-line-without-margin"></div><div class="order-img-show">' + imgpic + '</div><div class="divide-line-without-margin"></div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="'+allorders[key].ordno+'" class="order-button1">确认收货</div><div  value="'+allorders[key].ordno+'" class="order-button2">查看物流</div></div></div>';
+					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div></div><div class="divide-line-without-margin"></div><div class="order-img-show">' + imgpic + '</div><div class="divide-line-without-margin"></div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="' + allorders[key].ordno + '" class="order-button1">确认收货</div><div  value="' + allorders[key].ordno + '" class="order-button2">查看物流</div></div></div>';
 				}
 			}
 		}
@@ -150,24 +150,24 @@ function showWaitReceiveOrders() {
 	 * */
 
 function showWaitEvaluteOrders() {
-        var strs = '';
+		var strs = '';
 		var orderstatus = '';
 		var dj = '0';
 		for (var key in allorders) {
-			if (allorders[key].ordzt == '2'||allorders[key].ordzt == '7') {
+			if (allorders[key].ordzt == '2' || allorders[key].ordzt == '7') {
 				console.log("订单状态：" + allorders[key].ordzt);
 				orderstatus = dealorderstatus(allorders[key].ordzt);
 				dj = getdj(allorders[key]);
 				console.log(allorders[key].cpmx.length);
 				if (allorders[key].cpmx.length == 1) {
-					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + allorders[key].fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + allorders[key].ordsl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div   value="'+allorders[key].ordno+'" class="order-button1">去评价</div></div></div>';
+					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + allorders[key].fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + allorders[key].ordsl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div   value="' + allorders[key].ordno + '" class="order-button1">去评价</div></div></div>';
 				} else { //从购物车下单里边有很多商品的时候
 					orderstatus = dealorderstatus(allorders[key].ordzt);
 					var imgpic = '';
 					for (var j = 0; j < allorders[key].cpmx.length; j++) {
 						imgpic += '<div class="imgs-product"></div>';
 					}
-					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div></div><div class="divide-line-without-margin"></div><div class="order-img-show">' + imgpic + '</div><div class="divide-line-without-margin"></div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="'+allorders[key].ordno+'" class="order-button1">去评价</div></div></div>';
+					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div></div><div class="divide-line-without-margin"></div><div class="order-img-show">' + imgpic + '</div><div class="divide-line-without-margin"></div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="' + allorders[key].ordno + '" class="order-button1">去评价</div></div></div>';
 				}
 			}
 		}
@@ -176,7 +176,7 @@ function showWaitEvaluteOrders() {
 		$('.parent-add').empty();
 		$('.parent-add').append(strs);
 		loadwaitEvalutepictures();
-		
+
 	}
 	/***
 	 * *售后订单
@@ -184,33 +184,51 @@ function showWaitEvaluteOrders() {
 	 */
 
 function showSellAfterOrders() {
-	 var strs = '';
-		var orderstatus = '';
-		var dj = '0';
-		for (var key in allorders) {
-			if (allorders[key].ordzt == '1'||allorders[key].ordzt == '2'||allorders[key].ordzt == '4'||allorders[key].ordzt == '5'||allorders[key].ordzt == '6') {
-				console.log("订单状态：" + allorders[key].ordzt);
+	var strs = '';
+	var orderstatus = '';
+	var dj = '0';
+	for (var key in allorders) {
+		if (allorders[key].ordzt == '1' || allorders[key].ordzt == '2' || allorders[key].ordzt == '4' || allorders[key].ordzt == '5' || allorders[key].ordzt == '6' || allorders[key].ordzt == '8' || allorders[key].ordzt == '9') {
+			console.log("订单状态：" + allorders[key].ordzt);
+			orderstatus = dealorderstatus(allorders[key].ordzt);
+			dj = getdj(allorders[key]);
+			console.log(allorders[key].cpmx.length);
+			if (allorders[key].cpmx.length == 1) {
+				strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + allorders[key].fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + allorders[key].ordsl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="' + allorders[key].ordno + '" class="order-button1">申请退款</div></div></div>';
+			} else { //从购物车下单里边有很多商品的时候
 				orderstatus = dealorderstatus(allorders[key].ordzt);
-				dj = getdj(allorders[key]);
-				console.log(allorders[key].cpmx.length);
-				if (allorders[key].cpmx.length == 1) {
-					strs+= '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + allorders[key].fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + allorders[key].ordsl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="'+allorders[key].ordno+'" class="order-button1">申请退款</div></div></div>';
-				} else { //从购物车下单里边有很多商品的时候
-					orderstatus = dealorderstatus(allorders[key].ordzt);
-					var imgpic = '';
-					for (var j = 0; j < allorders[key].cpmx.length; j++) {
-						imgpic += '<div class="imgs-product"></div>';
-					}
-					strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div></div><div class="divide-line-without-margin"></div><div class="order-img-show">' + imgpic + '</div><div class="divide-line-without-margin"></div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="'+allorders[key].ordno+'" class="order-button1">申请退款</div></div></div>';
+				var imgpic = '';
+				for (var j = 0; j < allorders[key].cpmx.length; j++) {
+					imgpic += '<div class="imgs-product"></div>';
 				}
+				strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div></div><div class="divide-line-without-margin"></div><div class="order-img-show">' + imgpic + '</div><div class="divide-line-without-margin"></div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="' + allorders[key].ordno + '" class="order-button1">申请退款</div></div></div>';
 			}
 		}
-		//console.log("strs:" + strs)
-		//console.log('wrong:' + $('.parent-add'));
-		$('.parent-add').empty();
-		$('.parent-add').append(strs);
-		loadsellafterpictures();
+	}
+	//console.log("strs:" + strs)
+	//console.log('wrong:' + $('.parent-add'));
+	$('.parent-add').empty();
+	$('.parent-add').append(strs);
+	loadsellafterpictures();
+	controlbutoncolor();
 
+}
+
+function controlbutoncolor() {
+	var i = 0;
+	var imgs = $('.parent-add .order-button1');
+	//console.log("imgs.length:"+imgs.length);
+	for (var key in allorders) {
+		if (allorders[key].ordzt == '1' || allorders[key].ordzt == '2' || allorders[key].ordzt == '4' || allorders[key].ordzt == '5' || allorders[key].ordzt == '6' || allorders[key].ordzt == '8' || allorders[key].ordzt == '9') {
+
+			if (allorders[key].ordzt == '5' || allorders[key].ordzt == '6' || allorders[key].ordzt == '8' || allorders[key].ordzt == '9') {
+				//console.log("变暗的订单："+allorders[key].ordno);
+				$('.parent-add').find(imgs[i]).removeClass("order-button1");
+				$('.parent-add').find(imgs[i]).addClass('order-button1-unvisiable');
+			}
+			i++;
+		}
+	}
 }
 
 function dealorderstatus(orderstatus) {
@@ -251,265 +269,346 @@ function getdj(order) {
 	 */
 
 function loadpictures() {
-	var imgs = $(".parent-add .imgs-product");
-	var i = 0;
-	for (var key in allorders) {
-		for (var j = 0; j < allorders[key].cpmx.length; j++) {
-			$('.parent-add').find(imgs[i]).css('background-image', "url(" + allorders[key].cpmx[j].cppic + ")");
-			i++
+		var imgs = $(".parent-add .imgs-product");
+		var i = 0;
+		for (var key in allorders) {
+			for (var j = 0; j < allorders[key].cpmx.length; j++) {
+				$('.parent-add').find(imgs[i]).css('background-image', "url(" + allorders[key].cpmx[j].cppic + ")");
+				i++
+			}
+
+		}
+	}
+	/*
+	 *加载待支付的图片
+	 * */
+
+function loadwaitpaypictures() {
+		var imgs = $(".parent-add .imgs-product");
+		var i = 0;
+		for (var key in allorders) {
+			if (allorders[key].ordzt == '0') {
+				for (var j = 0; j < allorders[key].cpmx.length; j++) {
+					$('.parent-add').find(imgs[i]).css('background-image', "url(" + allorders[key].cpmx[j].cppic + ")");
+					i++;
+				}
+			}
+		}
+	}
+	/*
+	 *加载待收货的图片
+	 * */
+
+function loadwaitreceivepictures() {
+		var imgs = $(".parent-add .imgs-product");
+		var i = 0;
+		for (var key in allorders) {
+			if (allorders[key].ordzt == '1' || allorders[key].ordzt == '4') {
+				for (var j = 0; j < allorders[key].cpmx.length; j++) {
+					$('.parent-add').find(imgs[i]).css('background-image', "url(" + allorders[key].cpmx[j].cppic + ")");
+					i++;
+				}
+			}
+		}
+	}
+	/**
+	 * *加载待评价的图片
+	 *
+	 */
+
+function loadwaitEvalutepictures() {
+		var imgs = $(".parent-add .imgs-product");
+		var i = 0;
+		for (var key in allorders) {
+			if (allorders[key].ordzt == '2' || allorders[key].ordzt == '7') {
+				for (var j = 0; j < allorders[key].cpmx.length; j++) {
+					$('.parent-add').find(imgs[i]).css('background-image', "url(" + allorders[key].cpmx[j].cppic + ")");
+					i++;
+				}
+			}
+		}
+	}
+	/**
+	 * *加载售后图片
+	 *
+	 */
+
+function loadsellafterpictures() {
+		var imgs = $(".parent-add .imgs-product");
+		var i = 0;
+		for (var key in allorders) {
+			if (allorders[key].ordzt == '1' || allorders[key].ordzt == '2' || allorders[key].ordzt == '4' || allorders[key].ordzt == '5' || allorders[key].ordzt == '6' || allorders[key].ordzt == '8' || allorders[key].ordzt == '9') {
+				for (var j = 0; j < allorders[key].cpmx.length; j++) {
+					$('.parent-add').find(imgs[i]).css('background-image', "url(" + allorders[key].cpmx[j].cppic + ")");
+					i++;
+				}
+			}
+		}
+	}
+	/**
+	 * 从左往右数第二个按钮被点击的时候的事件
+	 * */
+
+function onbotton2click(parentorder) {
+		//allorderdeal.show();
+		switch (pagefrom) {
+			case "1": //付款
+				showpaymoneypage(paymoneypage, allorders[parentorder].ordje, parentorder);
+				break;
+			case "2": //确认收获
+				var allorderdealpage = plus.webview.getWebviewById('allorderdeal');
+				var allorderdealsubpage = plus.webview.getWebviewById("allorderdeal-sub");
+				var orderobj = allorders[parentorder];
+				mui.fire(allorderdealpage, 'chengetitle', {
+					"pagefromfunction": "ensurepackage"
+				});
+				mui.fire(allorderdealsubpage, "getshopcartorder", {
+					"orderobj": orderobj,
+					"pagefromfunction": "ensurepackage"
+				});
+				allorderdeal.show();
+				break;
+			case "3": //去评价
+				var allorderdealpage = plus.webview.getWebviewById('allorderdeal');
+				var allorderdealsubpage = plus.webview.getWebviewById("allorderdeal-sub");
+				var orderobj = allorders[parentorder];
+				mui.fire(allorderdealpage, 'chengetitle', {
+					"pagefromfunction": "goevalute"
+				});
+				mui.fire(allorderdealsubpage, "getshopcartorder", {
+					"orderobj": orderobj,
+					"pagefromfunction": "goevalute"
+				});
+				allorderdeal.show();
+				break;
+			case "4":
+				var allorderdealpage = plus.webview.getWebviewById('allorderdeal');
+				var allorderdealsubpage = plus.webview.getWebviewById("allorderdeal-sub");
+				var orderobj = allorders[parentorder];
+				mui.fire(allorderdealpage, 'chengetitle', {
+					"pagefromfunction": "applySellAfter"
+				});
+				mui.fire(allorderdealsubpage, "getshopcartorder", {
+					"orderobj": orderobj,
+					"pagefromfunction": "applySellAfter"
+				});
+				allorderdeal.show();
+				break;
+
+		}
+	}
+	/**
+	 * *从左往右数第一个按钮被点击的时候的事件
+	 * */
+
+function onbotton1click(parentorder) {
+		//allorderdeal.show();
+		switch (pagefrom) {
+			case "1": //取消订单
+				//		var allorderdealpage=plus.webview.getWebviewById('allorderdeal');
+				//		var allorderdealsubpage=plus.webview.getWebviewById("allorderdeal-sub");
+				//		var orderobj=allorders[parentorder];
+				//		mui.fire(allorderdealpage,'chengetitle',{
+				//			"pagefromfunction":"concelOrder"
+				//		});
+				//		mui.fire(allorderdealsubpage,"getshopcartorder",{
+				//			"orderobj":orderobj,
+				//			"pagefromfunction":"concelOrder"
+				//		});
+				deleteorder(parentorder);
+				break;
+			case "2": //查看物流
+				break;
+
+		}
+	}
+	/**
+	 *
+	 *  删除订单
+	 * */
+
+function deleteorder(order) {
+		mui.toast("请稍后"); //修改东西
+		var url = "http://app.teambuy.com.cn/apnc/m/tmord/a/ordscancel";
+		var token = plus.storage.getItem("token");
+		var sessid = plus.storage.getItem("sessid");
+		$.post(url, {
+			"acctoken": token,
+			"sessid": sessid,
+			"ordnos": order
+		}, function(result) {
+			console.log("删除订单的结果:" + JSON.stringify(result) + ",order" + order);
+			if (result.ret == "1") {
+				var mainpage = plus.webview.getLaunchWebview();
+				mui.fire(mainpage, "refreshmyOrder", {});
+			} else if (result.ret == "-2") {
+				mui.toast("未知错误");
+			}
+		}, "json");
+
+	}
+	/***
+	 * *
+	 * 订单二级页面的头
+	 *
+	 */
+
+function changemidtitle() {
+		switch (doWhat) {
+			case "ensurepackage": //确认收货
+				$('.me-header-title').text("待收货订单");
+				break;
+			case "goevalute":
+				$('.me-header-title').text("待评价订单");
+				break;
+			case "applySellAfter":
+				$('.me-header-title').text("退款订单");
+				break;
+		}
+	}
+	/**
+	 * *跳转到付款的页面
+	 *
+	 * */
+
+function showpaymoneypage(paymoneypage, allPrice, orderno) {
+		//var paymoneyPage = plus.webview.getWebviewById('paymoney');
+		paymoneypage.show();
+		mui.fire(paymoneypage, 'getprice', {
+			aa: allPrice,
+			ordno: orderno
+		});
+	}
+	/**
+	 * * 二级页面订单的显示
+	 */
+
+function showOneShopCartOrder() {
+		var strs = '';
+		var orderstatus;
+		var dj;
+		//console.log("订单"+JSON.stringify(orderobj));
+		for (var i = 0; i < orderobj.cpmx.length; i++) {
+			orderstatus = dealorderstatus(orderobj.cpmx[i].ordzt);
+			dj = getdj2(orderobj, i);
+			if (pagefromfunction == "ensurepackage") {
+				strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + orderobj.cpmx[i].ordnox + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + orderobj.fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + orderobj.cpmx[i].osl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + orderobj.payje + '</div><div  value="' + orderobj.ordno + "," + orderobj.cpmx[i].ordnox + '" class="order-button1">确认收货</div><div  value="' + orderobj.ordno + "," + orderobj.cpmx[i].ordnox + '" class="order-button2">查看物流</div></div></div>';
+
+			} else if (pagefromfunction == "goevalute") {
+				strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + orderobj.cpmx[i].ordnox + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + orderobj.fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + orderobj.cpmx[i].osl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + orderobj.payje + '</div><div  value="' + orderobj.ordno + "," + orderobj.cpmx[i].ordnox + '" class="order-button1">去评价</div></div></div>';
+			} else if (pagefromfunction == "applySellAfter") {
+				strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + orderobj.cpmx[i].ordnox + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + orderobj.fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + orderobj.cpmx[i].osl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + orderobj.payje + '</div><div  value="' + orderobj.ordno + "," + orderobj.cpmx[i].ordnox + '" class="order-button1">申请售后</div></div></div>';
+			}
+		}
+		$('.parent-add').empty();
+		$('.parent-add').append(strs);
+		loadpicture2();
+		if (pagefromfunction == "ensurepackage") {
+			changebottomcolor();
+		} else if (pagefromfunction == "applySellAfter") {
+			changesaleaftercolor();
 		}
 
 	}
-}
-/*
- *加载待支付的图片
- * */
-function loadwaitpaypictures() {
-	var imgs = $(".parent-add .imgs-product");
-	var i = 0;
-	for (var key in allorders) {
-		if (allorders[key].ordzt == '0') {
-			for (var j = 0; j < allorders[key].cpmx.length; j++) {
-				$('.parent-add').find(imgs[i]).css('background-image', "url(" + allorders[key].cpmx[j].cppic + ")");
-				i++;
+	/**
+	 * * 个人中心退换和售后按钮的颜色
+	 *
+	 * */
+
+function changesaleaftercolor() {
+		var imgs = $('.parent-add .order-button1');
+		for (var i = 0; i < orderobj.cpmx.length; i++) {
+			console.log("订单号：" + orderobj.cpmx[i].ordnox + " ，订单状态：" + orderobj.cpmx[i].ordzt);
+			if (orderobj.cpmx[i].ordzt == 5 || orderobj.cpmx[i].ordzt == 6 || orderobj.cpmx[i].ordzt == 8 || orderobj.cpmx[i].ordzt == 9) {
+				$('.parent-add').find(imgs[i]).removeClass("order-button1");
+				$('.parent-add').find(imgs[i]).addClass('order-button1-unvisiable');
 			}
 		}
 	}
-}
-/*
- *加载待收货的图片
- * */
-function loadwaitreceivepictures(){
-	var imgs = $(".parent-add .imgs-product");
-	var i = 0;
-	for (var key in allorders) {
-		if (allorders[key].ordzt == '1'||allorders[key].ordzt=='4') {
-			for (var j = 0; j < allorders[key].cpmx.length; j++) {
-				$('.parent-add').find(imgs[i]).css('background-image', "url(" + allorders[key].cpmx[j].cppic + ")");
-				i++;
-			}
-		}
-	}
-}
-/**
- * *加载待评价的图片
- *
- */
-function loadwaitEvalutepictures(){
-	var imgs = $(".parent-add .imgs-product");
-	var i = 0;
-	for (var key in allorders) {
-		if (allorders[key].ordzt == '2'||allorders[key].ordzt == '7') {
-			for (var j = 0; j < allorders[key].cpmx.length; j++) {
-				$('.parent-add').find(imgs[i]).css('background-image', "url(" + allorders[key].cpmx[j].cppic + ")");
-				i++;
-			}
-		}
-	}
-}
-/**
- * *加载售后图片
- *
- */
-function loadsellafterpictures(){
-	var imgs = $(".parent-add .imgs-product");
-	var i = 0;
-	for (var key in allorders) {
-		if (allorders[key].ordzt == '1'||allorders[key].ordzt == '2'||allorders[key].ordzt == '4'||allorders[key].ordzt == '5'||allorders[key].ordzt == '6') {
-			for (var j = 0; j < allorders[key].cpmx.length; j++) {
-				$('.parent-add').find(imgs[i]).css('background-image', "url(" + allorders[key].cpmx[j].cppic + ")");
-				i++;
-			}
-		}
-	}
-}
-/**
- * 从左往右数第二个按钮被点击的时候的事件
- * */
-function onbotton2click(parentorder){
-	//allorderdeal.show();
-	switch(pagefrom){
-		case "1"://付款
-		showpaymoneypage(paymoneypage,allorders[parentorder].ordje,parentorder);
-		break;
-		case "2"://确认收获
-		var allorderdealpage=plus.webview.getWebviewById('allorderdeal');
-		var allorderdealsubpage=plus.webview.getWebviewById("allorderdeal-sub");
-		var orderobj=allorders[parentorder];
-		mui.fire(allorderdealpage,'chengetitle',{
-			"pagefromfunction":"ensurepackage"
-		});
-		mui.fire(allorderdealsubpage,"getshopcartorder",{
-			"orderobj":orderobj,
-			"pagefromfunction":"ensurepackage"
-		});
-		allorderdeal.show();
-		break;
-		
-	}
-}
-/**
- * *从左往右数第一个按钮被点击的时候的事件
- * */
-function onbotton1click(parentorder){
-	//allorderdeal.show();
-	switch(pagefrom){
-		case "1"://取消订单
-//		var allorderdealpage=plus.webview.getWebviewById('allorderdeal');
-//		var allorderdealsubpage=plus.webview.getWebviewById("allorderdeal-sub");
-//		var orderobj=allorders[parentorder];
-//		mui.fire(allorderdealpage,'chengetitle',{
-//			"pagefromfunction":"concelOrder"
-//		});
-//		mui.fire(allorderdealsubpage,"getshopcartorder",{
-//			"orderobj":orderobj,
-//			"pagefromfunction":"concelOrder"
-//		});
-        deleteorder(parentorder);
-		break;
-		case "2"://查看物流
-		break;
-		
-	}
-}
-/**
- * 
- *  删除订单
-* */
-function deleteorder(order){
-	mui.toast("请稍后");//修改东西
-	var url="http://app.teambuy.com.cn/apnc/m/tmord/a/ordscancel";
-	var token = plus.storage.getItem("token");
-	var sessid = plus.storage.getItem("sessid");
-	$.post(url,{
-		"acctoken": token,
-		"sessid": sessid,
-		"ordnos":order
-	},function(result){
-		console.log("删除订单的结果:"+JSON.stringify(result)+",order"+order);
-		if(result.ret=="1"){
-			var mainpage=plus.webview.getLaunchWebview();
-			mui.fire(mainpage,"refreshmyOrder",{});
-		}else if(result.ret=="-2"){
-			mui.toast("未知错误");
-		}
-	},"json");
-	
-}
-/***
- * *
- * 订单二级页面的头
- * 
- */
-function changemidtitle(){
-	switch(doWhat){
-		case "ensurepackage": //确认收货
-	     $('.me-header-title').text("代收货订单");
-		break;
-	}
-}
-/**
- * *跳转到付款的页面
- * 
- * */
-function showpaymoneypage(paymoneypage,allPrice,orderno) {
-	//var paymoneyPage = plus.webview.getWebviewById('paymoney');
-	paymoneypage.show();
-	mui.fire(paymoneypage, 'getprice', {
-		aa: allPrice,
-		ordno:orderno
-	});
-}
-/**
- * * 二级页面订单的显示
- */
-function showOneShopCartOrder(){
-	var strs='';
-	var orderstatus;
-	var dj;
-	//console.log("订单"+JSON.stringify(orderobj));
-	for(var i=0;i<orderobj.cpmx.length;i++){
-		orderstatus = dealorderstatus(orderobj.cpmx[i].ordzt);
-		dj = getdj2(orderobj,i);
-		strs+= '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + orderobj.cpmx[i].ordnox + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + orderobj.fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + orderobj.cpmx[i].osl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + orderobj.payje + '</div><div  value="'+orderobj.ordno+","+orderobj.cpmx[i].ordnox+'" class="order-button1">确认收货</div><div  value="'+orderobj.ordno+","+orderobj.cpmx[i].ordnox+'" class="order-button2">查看物流</div></div></div>';
-	}
-	$('.parent-add').empty();
-	$('.parent-add').append(strs);
-	loadpicture2();
-	changebottomcolor();
-}
-/**
- * *如果这个产品已经收获了，则让他不可点
- */
-function changebottomcolor(){
-    var imgs=	$('.parent-add .order-button1');
-	for(var i=0;i<orderobj.cpmx.length;i++){
-		console.log("订单号："+ orderobj.cpmx[i].ordnox+" ，订单状态："+orderobj.cpmx[i].ordzt);
-		if(orderobj.cpmx[i].ordzt==2||orderobj.cpmx[i].ordzt==3){
+	/**
+	 * *如果这个产品已经收获了，则让他不可点
+	 */
+
+function changebottomcolor() {
+	var imgs = $('.parent-add .order-button1');
+	for (var i = 0; i < orderobj.cpmx.length; i++) {
+		console.log("订单号：" + orderobj.cpmx[i].ordnox + " ，订单状态：" + orderobj.cpmx[i].ordzt);
+		if (orderobj.cpmx[i].ordzt == 2 || orderobj.cpmx[i].ordzt == 3) {
 			$('.parent-add').find(imgs[i]).removeClass("order-button1");
 			$('.parent-add').find(imgs[i]).addClass('order-button1-unvisiable');
 		}
 	}
 }
-function getdj2(orderobj,i){
-	var je = Number(orderobj.cpmx[i].oje);
-	var sl = Number(orderobj.cpmx[i].osl);
-	return je / sl;
-	
-}
-/***
- * 二级页面图片的加载
- * 
- */
- function loadpicture2(){
- 	var imgs = $(".parent-add .imgs-product");
- 	for (var j = 0; j < orderobj.cpmx.length; j++) {
-				$('.parent-add').find(imgs[j]).css('background-image', "url(" + orderobj.cpmx[j].cppic + ")");
-			}
- }
-function onclickButton1(orderno,element){
-	
-	switch(pagefromfunction){
-		case "ensurepackage":
-		var btnArray = ['确定', '取消'];
-		mui.confirm("是否确认收货？","提示",btnArray,function(e){
-			if(e.index==0){
-				console.log("确认收货订单号："+orderno);
-				ensurGetPackage(orderno,element);
-			}else if(e.index==1){
-			    
-			}
-		});
-		break;
+
+function getdj2(orderobj, i) {
+		var je = Number(orderobj.cpmx[i].oje);
+		var sl = Number(orderobj.cpmx[i].osl);
+		return je / sl;
+
 	}
-	
+	/***
+	 * 二级页面图片的加载
+	 *
+	 */
+
+function loadpicture2() {
+	var imgs = $(".parent-add .imgs-product");
+	for (var j = 0; j < orderobj.cpmx.length; j++) {
+		$('.parent-add').find(imgs[j]).css('background-image', "url(" + orderobj.cpmx[j].cppic + ")");
+	}
 }
-function onclickButton2(){
-	
+
+function onclickButton1(orderno, element) {
+
+	switch (pagefromfunction) {
+		case "ensurepackage":
+			var btnArray = ['确定', '取消'];
+			mui.confirm("是否确认收货？", "提示", btnArray, function(e) {
+				if (e.index == 0) {
+					console.log("确认收货订单号：" + orderno);
+					ensurGetPackage(orderno, element);
+				} else if (e.index == 1) {
+
+				}
+			});
+			break;
+		case "goevalute": //去评价
+
+			break;
+		case "applySellAfter"://售后
+           refundpage.show();
+			break;
+	}
+
 }
-function ensurGetPackage(orderno,elements){
-	console.log("gogo"+orderno);
-	orderno=orderno.split(",");
-	var bigOrdno=orderno[0];
-	var smallOrdno=orderno[1];
+
+function onclickButton2() {
+
+}
+
+function ensurGetPackage(orderno, elements) {
+	console.log("gogo" + orderno);
+	orderno = orderno.split(",");
+	var bigOrdno = orderno[0];
+	var smallOrdno = orderno[1];
 	var token = plus.storage.getItem("token");
 	var sessid = plus.storage.getItem("sessid");
-	var url="http://app.teambuy.com.cn/apnc/m/tmord/a/ordrecgoods";
-	$.post(url,{
+	var url = "http://app.teambuy.com.cn/apnc/m/tmord/a/ordrecgoods";
+	$.post(url, {
 		"acctoken": token,
 		"sessid": sessid,
-		"ordno":bigOrdno,
-		"onox":smallOrdno
-	},function(result){
-		console.log("确认收获："+JSON.stringify(result));
-		if(result.ret=='1'){
-          mui.toast('确认收获成功');
-         // console.log("this"+JSON.stringify(this));
-         //this.style.display="none";
-         // this.setAttribute("display","none");
-          var mainpage=plus.webview.getLaunchWebview();
-          elements.setAttribute("class","order-button1-unvisiable");
-          mui.fire(mainpage,"refreshmyOrder",{});
+		"ordno": bigOrdno,
+		"onox": smallOrdno
+	}, function(result) {
+		console.log("确认收获：" + JSON.stringify(result));
+		if (result.ret == '1') {
+			mui.toast('确认收获成功');
+			// console.log("this"+JSON.stringify(this));
+			//this.style.display="none";
+			// this.setAttribute("display","none");
+			var mainpage = plus.webview.getLaunchWebview();
+			elements.setAttribute("class", "order-button1-unvisiable");
+			mui.fire(mainpage, "refreshmyOrder", {});
 		}
-	},"json");
+	}, "json");
 }

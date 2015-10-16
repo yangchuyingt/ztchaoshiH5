@@ -64,8 +64,18 @@
 		</div>-->
 	</body>
 	<script>
+	  var refundpage;
 	   var orderobj;
-	   var pagefromfunction;//1.ensurepackage 确认收货
+	   var pagefromfunction;//1.ensurepackage 确认收货;goevalute 去评价;applySellAfter 售后
+		 mui.plusReady(function(){
+		 		refundpage = mui.preload({
+						url: 'refund.html',
+						id: 'refund',
+						show: {
+							aniShow: 'none'
+						}
+					});
+		 });
 		window.addEventListener('getshopcartorder',function(event){
 			orderobj=event.detail.orderobj;
 			pagefromfunction=event.detail.pagefromfunction;
@@ -75,7 +85,6 @@
 		 mui('.parent-add').on('tap','.order-button1',function(){//从左向右数第二个，//	确认收货
 			console.log("从左向右数第二个，"+pagefromfunction);
 			var orderno=this.getAttribute('value');
-			
 			console.log("this 1:"+this.getAttribute("class"));
 			//this.setAttribute("class","order-button1-unvisiable");
 			onclickButton1(orderno,this);

@@ -1,0 +1,74 @@
+.body-bg {
+	background-image: url(img/near_background.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+.me-all-header {
+	width: 100%;
+	height: 2.75em;
+	background-color: #F5F5F5;
+	position: relative;
+}
+.me-header-left {
+	width: 2.5em;
+	height: 2.5em;
+	margin-left: 10px;
+	background-image: url(img/header_back.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+.me-header-title {
+	position: absolute;
+	width: auto;
+	height: 100%;
+	left: 40%;
+	top: 0px;
+	line-height: 2.75em;
+	color: #9B9B9B;
+}
+.divide-line-without-margin {
+	width: 100%;
+	height: 1px;
+	background-color: #EEEEEE;
+}
+.refund-content{
+	width: 100%;
+	height: auto;
+	margin-top: 0.625em;
+	border-top: 1px solid #eee;
+    background-color:#fff;	
+	
+}
+.refund-content-title{
+	padding-top: 1em;
+	padding-left: 1em;
+	padding-right: 1em;
+	font-size:0.75em;
+	
+}
+.refund-content-text{
+	padding-left: 1em;
+	padding-right: 1em;
+	padding-bottom: 1em;
+	font-size: 0.75em;
+}
+.body-bg{
+	width: 100%;
+	background-image: url(img/near_background.png);
+	background-size: 100%;
+}
+.refund-price-p{
+	width: 100%;
+	height: 2em;
+	
+}
+.xian-jin{
+	float: left;
+	padding-left: 1em;
+	font-size: 0.75em;
+}
+.refund-price{
+  float: left;
+  font-size: 0.75em;
+  color: #D52722;
+}

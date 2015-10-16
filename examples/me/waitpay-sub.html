@@ -70,6 +70,7 @@
 		     var pagefrom='';//来自哪个页面；0：来自全部订单
 		     var allorderdeal;
 		     var paymoneypage;
+		   
 		    	mui.plusReady(function(){
 				allorderdeal = mui.preload({
 						url: 'allorderdeal.html',
@@ -86,7 +87,8 @@
 							aniShow: 'none'
 						}
 					});
-					},500)
+				
+					},500);
 			});
 			 window.addEventListener('getallorders',function(event){
 			 	
