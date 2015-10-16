@@ -577,6 +577,18 @@ function onclickButton1(orderno, element) {
 			break;
 		case "applySellAfter"://售后
            refundpage.show();
+           var smallorder=element.split(",")[1];
+           var refundobj;
+           for(var i=0;i<orderobj.cpmx.length;i++){
+           	if(orderobj.cpmx[i].ordernox==smallorder){
+           		refundobj=orderobj.cpmx[i];
+           		break;
+           	}
+           }
+           var refundpage=plus.webview.getWebviewById("refund-sub");
+           mui.fire(refundpage,"refund-msg",{
+           	"refund-obj":refundobj;
+           })
 			break;
 	}
 

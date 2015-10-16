@@ -1,27 +1,80 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <title></title>
-    <script src="js/mui.min.js"></script>
-    <link href="css/mui.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="../../css/refund.css" />
-    <script type="text/javascript" charset="utf-8">
-      	mui.init();
-    </script>
-</head>
-<body class='body-bg'>
-	<div class='refund-content'>
-		<div class='refund-content-title'>退款内容：</div>
-		<div class='refund-content-text'>【中团数码】多功能可充电usb数据线</div>
-		<div class="divide-line-without-margin"></div>
-		<div class='refund-price-p'>
-			<div class="xian-jin">
-			现金
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.js" ></script>
+		<link rel="stylesheet" href="../../css/refund.css" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</head>
+
+	<body class='body-bg'>
+		<div class='refund-content'>
+			<div class='refund-content-title'>退款内容：</div>
+			<div class='refund-content-text'>【中团数码】多功能可充电usb数据线</div>
+			<div class="divide-line-without-margin"></div>
+			<div class='refund-price-p'>
+				<div class="xian-jin">
+					现金
+				</div>
+				<div class='refund-price'>￥100.0</div>
+				<div class="refund-position"> 将退至您的支付宝账号</div>
 			</div>
-			<div class='refund-price'>￥100.0</div>	
+
 		</div>
-	</div>
-</body>
+		<div class="refund-reason">
+			<div class="divide-line-without-margin">
+			</div>
+			<div class='refund-reason-text'>退款原因</div>
+			<div class="divide-line-without-margin"></div>
+			<div class="order-refund-reason">为了帮我们做的更好，请提交退款原因，至少一项</div>
+			<div class=divide-line-without-margin></div>
+			<div class='refund-reason-select'>
+				<div class="refund-reason-select-item">
+					<div class="selet-img"></div>&nbsp;&nbsp;预约不上
+				</div>
+				<div class="refund-reason-select-item">
+					<div class="selet-img"></div>&nbsp;&nbsp;去过了，不太满意
+				</div>
+				<div class="refund-reason-select-item">
+					<div class="selet-img"></div>&nbsp;&nbsp;朋友网上评价不好
+				</div>
+				<div class="refund-reason-select-item">
+					<div class="selet-img"></div>&nbsp;&nbsp;买多了/买错了
+				</div>
+				<div class="refund-reason-select-item">
+					<div class="selet-img"></div>&nbsp;&nbsp;计划有变，没时间消费
+				</div>
+				<div class="refund-reason-select-item">
+					<div class="selet-img"></div>&nbsp;&nbsp;后悔了，不想要了
+				</div>
+				<div class="refund-reason-select-item">
+					<div class="selet-img"></div>&nbsp;&nbsp;商家说可以以团购价到店消费
+				</div>
+				<div class="refund-reason-select-item">
+					<div class="selet-img"></div>&nbsp;&nbsp;其他
+				</div>
+				<textarea class="textarea-sytle" rows="3" placeholder="请输入退款原因,最多不超过200字"></textarea>
+
+			</div>
+			<div class="post-refund">
+				<div class="divide-line-without-margin"></div>
+				<div class="post-refund-botton">提交申请</div>
+			</div>
+		</div>
+	</body>
+	<script>
+	var refundobj;
+	window.addEventListener('refund-msg',function(event){
+		refundobj=event.detail.refundobj;
+		console.log("refundobj:"+refundobj);
+		showrefundmsg();
+	})
+	</script>
+
 </html>
