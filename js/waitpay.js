@@ -28,8 +28,8 @@ function showtitlenme() {
 	 * */
 
 function displayorder() {
-	console.log('number1');
-	console.log('recode:' + retcode + ",pagefrom:" + pagefrom);
+	//console.log('number1');
+	//console.log('recode:' + retcode + ",pagefrom:" + pagefrom);
 	if (retcode.length == 0 || pagefrom.length == 0) {
 		return;
 	} else {
@@ -189,10 +189,10 @@ function showSellAfterOrders() {
 	var dj = '0';
 	for (var key in allorders) {
 		if (allorders[key].ordzt == '1' || allorders[key].ordzt == '2' || allorders[key].ordzt == '4' || allorders[key].ordzt == '5' || allorders[key].ordzt == '6' || allorders[key].ordzt == '8' || allorders[key].ordzt == '9') {
-			console.log("订单状态：" + allorders[key].ordzt);
+			//console.log("订单状态：" + allorders[key].ordzt);
 			orderstatus = dealorderstatus(allorders[key].ordzt);
 			dj = getdj(allorders[key]);
-			console.log(allorders[key].cpmx.length);
+			//console.log(allorders[key].cpmx.length);
 			if (allorders[key].cpmx.length == 1) {
 				strs += '<div class="order-msg-items"><div class="orderstatus"><div class="order-number">' + key + '</div><div class="order-status-text">' + orderstatus + '</div> </div><div class="divide-line-without-margin"></div><div class="order-img-one"><div class="imgs-product"></div><div class="right-prodcut-msg">' + allorders[key].fcpmc + '</div><div class="singe-price-num"> ￥' + dj + ' &nbsp;&nbsp;X ' + allorders[key].ordsl + '</div></div><div class="divide-line-without-margin"> </div><div class="price-show"><div class="real-pay">实付款：￥' + allorders[key].payje + '</div><div  value="' + allorders[key].ordno + '" class="order-button1">申请退款</div></div></div>';
 			} else { //从购物车下单里边有很多商品的时候
@@ -518,7 +518,7 @@ function showOneShopCartOrder() {
 function changesaleaftercolor() {
 		var imgs = $('.parent-add .order-button1');
 		for (var i = 0; i < orderobj.cpmx.length; i++) {
-			console.log("订单号：" + orderobj.cpmx[i].ordnox + " ，订单状态：" + orderobj.cpmx[i].ordzt);
+			//console.log("订单号：" + orderobj.cpmx[i].ordnox + " ，订单状态：" + orderobj.cpmx[i].ordzt);
 			if (orderobj.cpmx[i].ordzt == 5 || orderobj.cpmx[i].ordzt == 6 || orderobj.cpmx[i].ordzt == 8 || orderobj.cpmx[i].ordzt == 9) {
 				$('.parent-add').find(imgs[i]).removeClass("order-button1");
 				$('.parent-add').find(imgs[i]).addClass('order-button1-unvisiable');
@@ -576,19 +576,22 @@ function onclickButton1(orderno, element) {
 
 			break;
 		case "applySellAfter"://售后
+		  console.log("申请售后"+element);
            refundpage.show();
-           var smallorder=element.split(",")[1];
+           var smallorder=orderno.split(",");
+            console.log("smallorder:"+smallorder);
            var refundobj;
            for(var i=0;i<orderobj.cpmx.length;i++){
-           	if(orderobj.cpmx[i].ordernox==smallorder){
+           	if(orderobj.cpmx[i].ordernox==smallorder[1]){
            		refundobj=orderobj.cpmx[i];
            		break;
            	}
            }
-           var refundpage=plus.webview.getWebviewById("refund-sub");
-           mui.fire(refundpage,"refund-msg",{
-           	"refund-obj":refundobj;
+           var refundpages=plus.webview.getWebviewById("refund-sub");
+           mui.fire(refundpages,"refundmsg",{
+           	"refund-obj":refundobj
            })
+           console.log("heheeh");
 			break;
 	}
 
