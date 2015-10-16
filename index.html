@@ -575,8 +575,10 @@
 			//console.log('denglu');
 		});
 		window.addEventListener("finishlogin", function() {
+			console.log("finish log 执行了");
 			showUserMsgInMe();
 			loadUserCouponmsg();
+			loadUserordermsg();
 		});
 		window.addEventListener('freshshopcart',function(){
 			$('.shop-cart-content-without-order').show();

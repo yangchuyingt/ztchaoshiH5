@@ -65,12 +65,20 @@
 	</body>
 	<script>
 	  var refundpage;
+	  var checkedwuliupage;
 	   var orderobj;
-	   var pagefromfunction;//1.ensurepackage 确认收货;goevalute 去评价;applySellAfter 售后
+	   var pagefromfunction;//1.ensurepackage 确认收货;goevalute 去评价;applySellAfter 售后;lookforwuliu查看物流
 		 mui.plusReady(function(){
 		 		refundpage = mui.preload({
 						url: 'refund.html',
 						id: 'refund',
+						show: {
+							aniShow: 'none'
+						}
+					});
+					checkedwuliupage = mui.preload({
+						url: 'checkedwuliu.html',
+						id: 'checkedwuliu',
 						show: {
 							aniShow: 'none'
 						}
@@ -97,7 +105,8 @@
 		/**
 		 * *在删除订单成功后，将次订单的“申请售后” 按钮置为不可点
 		 */
-		window.addEventListener("",function(){
+		window.addEventListener("changeBottombg",function(){
+			console.log("执行了");
 			cilckedbuton.setAttribute("class","order-button1-unvisiable");
 		});
 	</script>

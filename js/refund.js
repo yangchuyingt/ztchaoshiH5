@@ -10,7 +10,7 @@ function showrefundmsg(){
 function buildmessmsg(appendmsg){
 	var messlist='';
 	for(var i=0;i<selectArray.length;i++){
-		if(selectArray[i].length>=0){
+		if(selectArray[i]){
 			messlist+=selectArray[i]+'|';
 		}
 	}
@@ -34,7 +34,7 @@ function buildmessmsg(appendmsg){
 		if(result.ret=='1'){
 			mui.toast("订单删除成功！");
 			var mainpage = plus.webview.getLaunchWebview();
-			elements.setAttribute("class", "order-button1-unvisiable");
+			
 			mui.fire(mainpage, "refreshmyOrder", {});
 			var allorderdealSubpage=plus.webview.getWebviewById("allorderdeal-sub");
 			mui.fire(allorderdealSubpage,"changeBottombg",{});

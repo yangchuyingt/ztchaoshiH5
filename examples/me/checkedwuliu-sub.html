@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script type="text/javascript" src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/checkedwuliu.js" ></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</head>
+
+	<body>
+
+	</body>
+	<script>
+	    var ordermsgobj;
+	    var childorder;
+		//window.open("http://app.teambuy.com.cn/webc/m/tmlog/id/114");
+		window.addEventListener('getwuliumsg',function(event){
+			ordermsgobj=event.detail.wuliudanhao;
+			showwuliuordermsg();
+		window.addEventListener("postorderchild",function(event){
+			childorder=event.detail.smallorder;//smallorder
+			console.log("childorder:"+childorder);
+			showwuliuordermsg();
+		});
+	</script>
+
+</html>
