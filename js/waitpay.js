@@ -637,13 +637,14 @@ function onclickButton1(orderno, element) {
 			break;
 		case "lookforwuliu":
 		   // getwuliuordermx();
-			checkedwuliupage.show();
+			
 			var smallorder = orderno.split(",");
-			console.log("ggg:"+).smallorder[1];
+			console.log("ggg:"+smallorder[1]);
 			checkedwuliusubpage=plus.webview.getWebviewById("checkedwuliu-sub");
 			mui.fire(checkedwuliusubpage,"postorderchild",{
 				"smallorder":smallorder[1]
 			});
+			checkedwuliupage.show();
 			break;
 	}
 

@@ -21,11 +21,17 @@
 		//window.open("http://app.teambuy.com.cn/webc/m/tmlog/id/114");
 		window.addEventListener('getwuliumsg',function(event){
 			ordermsgobj=event.detail.wuliudanhao;
+			if(ordermsgobj.ret=='1'){
+				
 			showwuliuordermsg();
+			}
+		});
 		window.addEventListener("postorderchild",function(event){
 			childorder=event.detail.smallorder;//smallorder
 			console.log("childorder:"+childorder);
+			if(ordermsgobj.ret=='1'){
 			showwuliuordermsg();
+			}
 		});
 	</script>
 
