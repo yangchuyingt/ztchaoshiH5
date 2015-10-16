@@ -32,7 +32,7 @@ function buildmessmsg(appendmsg){
 	},function(result){
 		console.log("删除订单返回的结果："+JSON.stringify(result));
 		if(result.ret=='1'){
-			mui.toast("订单删除成功！")；
+			mui.toast("订单删除成功！");
 			var mainpage = plus.webview.getLaunchWebview();
 			elements.setAttribute("class", "order-button1-unvisiable");
 			mui.fire(mainpage, "refreshmyOrder", {});
