@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script type="text/javascript" src="../../js/mui.min.js" ></script>
+		<script type="text/javascript" src="../../js/jquery.js" ></script>
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/refund.css" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</head>
+
+	<body class="body-bg">
+		<div class="me-all-header2">
+			<div class="mui-action-back me-header-left">
+			</div>
+			<div class='me-header-title'>
+				客户反馈
+			</div>
+		</div>
+		<div class="customer-suggest">
+			<div class="sugest-text">请您反馈对中团的意见和建议</div>
+			<textarea class="textarea-sytle" rows="8" placeholder="请提出您的宝贵建议"></textarea>
+		    <div class='suggest-post-button'>提交</div>
+		</div>
+	</body>
+   <script>
+    document.querySelector(".me-header-title").addEventListener("tap",function(){
+    	console.log('ggggg');
+    });
+   	 document.querySelector(".suggest-post-button").addEventListener("tap",function(){
+   	 	 console.log("yyyyy");
+         var suggestion=$("textarea-sytle").val();
+         var url="http://app.teambuy.com.cn/apnc/m/my/a/feedback";
+         var token = plus.storage.getItem("token");
+	     var sessid = plus.storage.getItem("sessid");
+         $.post(url,{
+         	"acctoken": token,
+		    "sessid": sessid,
+		    "feedback":suggestion
+         },function(result){
+         	if(result.ret=='1'){
+         		mui.toast("感谢您的建议")；
+         	}
+         },'json');
+   	 });
+   </script>
+</html>

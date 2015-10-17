@@ -23,12 +23,12 @@
 			<div class='setting-item'>修改密码
 				<div class='right-arraw'></div>
 			</div>
-			<div class='divide-line'></div>
-			<div class='setting-item'>版权声明
+			<div  class='divide-line'></div>
+			<div id="version-declare" class='setting-item'>版权声明
 				<div class='right-arraw'></div>
 			</div>
 			<div class='divide-line'></div>
-			<div class='setting-item'>意见反馈
+			<div id="suggest-to-me" class='setting-item'>意见反馈
 				<div class='right-arraw'></div>
 			</div>
 			<!--<div class='divide-line'></div>
@@ -36,7 +36,7 @@
 				<div class='right-arraw'></div>
 			</div>-->
 			<div class='divide-line'></div>
-			<div class='setting-item'>关于我们
+			<div  id="about-us" class='setting-item'>关于我们
 				<div class='right-arraw'></div>
 			</div>
 			<div class='divide-line'></div>
@@ -60,9 +60,46 @@
 			console.log('点击事件');
 			plus.storage.setItem("token", " ");
 			plus.storage.setItem("sessid", " ");
+			mui.back();
 			loginpage.show();
 			//	loginpage.show();
 		});
+		document.querySelector("#about-us").addEventListener("tap",function(){
+			mui.openWindow({
+						id: 'guide',
+						url: '../guide.html',
+						show: {
+							aniShow: 'none'
+						},
+						waiting: {
+							autoShow: false
+						}
+					});
+		});
+		document.querySelector("#version-declare").addEventListener("tap",function(){
+			mui.openWindow({
+						id: 'version-declear',
+						url: 'version-declear.html',
+						show: {
+							aniShow: 'none'
+						},
+						waiting: {
+							autoShow: false
+						}
+					});
+		})
+		document.querySelector("#suggest-to-me").addEventListener('tap',function(){
+			mui.openWindow({
+						id: 'customer-reflect',
+						url: 'customer-reflect.html',
+						show: {
+							aniShow: 'none'
+						},
+						waiting: {
+							autoShow: false
+						}
+					});
+		})
 	</script>
 
 </html>

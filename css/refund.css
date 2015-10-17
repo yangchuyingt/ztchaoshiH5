@@ -24,7 +24,7 @@
 	left: 40%;
 	top: 0px;
 	line-height: 2.75em;
-	color: #9B9B9B;
+	color: #D52722;
 }
 .divide-line-without-margin {
 	width: 100%;
@@ -161,4 +161,72 @@
     text-align: center;
     line-height: 2.5em;
     color: #fff;
+}
+.version-declear{
+	width: 100%;
+	height: auto;
+	background: #fff;
+	margin-top: 0.625em;
+}
+.version-declear-text{
+	width: 100%;
+	height: 2.5em;
+	line-height: 2.5em;
+	padding-left: 1.5em;
+}
+.chaoshi-declear{
+	width: 100%;
+	padding-left: 10%;
+	padding-right: 10%;
+	font-size: 0.6875em;
+	height: 5.5em;
+	line-height: 1.5em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+.contect-declear{
+	width: 100%;
+	padding-left: 10%;
+	padding-right: 10%;
+	font-size: 0.6875em;
+	height: 8.5em;
+	line-height: 1.5em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+.customer-suggest{
+	width: 100%;
+	height: 18.75em;
+	background-color: #EAEAEA;
+	margin-top: 0.5em;
+	margin-left: -0.5em;
+}
+.sugest-text{
+	width: 100%;
+	height: 2.75em;
+	line-height: 2.75em;
+	padding-left: 1em;
+}
+.me-all-header2{
+	width: 100%;
+	height: 2.75em;
+	background-color: #F5F5F5;
+	position: relative;
+	margin-left: -0.5em;
+	margin-top: -0.5em;
+	
+	
+}
+.suggest-post-button{
+	width: 30%;
+	height: 2em;
+	font-size: 1.125em;
+	text-align: center;
+	color: white;
+	margin-top: 2em;
+	margin-left: 35%;
+	margin-right: 35%;
+	background-color: #DD524D;
+	border-radius: 3px;
+	line-height: 2em;
 }
