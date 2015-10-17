@@ -30,8 +30,13 @@
    <script>
    
    	 document.querySelector(".suggest-post-button").addEventListener("tap",function(){
-   	 	 console.log("yyyyy");
-         var suggestion=$("textarea-sytle").val();
+   	 	
+         var suggestion=$(".textarea-sytle").val();
+          console.log("yyyyy"+suggestion);
+          if(suggestion.length<=0){
+          	mui.toast("您尚未填写建议");
+          	return;
+          }
          var url="http://app.teambuy.com.cn/apnc/m/my/a/feedback";
          var token = plus.storage.getItem("token");
 	     var sessid = plus.storage.getItem("sessid");
@@ -43,6 +48,8 @@
          	console.log(JSON.stringify(result));
          	if(result.ret=='1'){
          		mui.toast("感谢您的建议");
+         	}else if(result.ret=='-2'){
+         		mui.toast("请先登陆");
          	}
          },'json');
    	 });

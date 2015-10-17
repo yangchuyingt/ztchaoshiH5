@@ -379,7 +379,7 @@
 							</div>
 
 						</div>
-						<div class="my-asset">
+						<div id="my-suggestion"class="my-asset">
 							<div class="me-fankui"></div>
 							<div class="me-myorder-text">意见反馈</div>
 
@@ -572,6 +572,18 @@
 		document.querySelector('.me-header-right').addEventListener('tap', function() {
 			loginpages.show();
 			//console.log('denglu');
+		});
+		document.querySelector("#my-suggestion").addEventListener("tap",function(){
+			mui.openWindow({
+						id: 'customer-reflect',
+						url: 'examples/me/customer-reflect.html',
+						show: {
+							aniShow: 'none'
+						},
+						waiting: {
+							autoShow: false
+						}
+					});
 		});
 		window.addEventListener("finishlogin", function() {
 			console.log("finish log 执行了");
