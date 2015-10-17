@@ -27,26 +27,31 @@ function postchangepassword(password, yanzhenma) {
 		"mobyzm": yanzhenma
 	}, function(result) {
 		if (result.ret == "1") {
-			mui.confirm("修改密码"，
-				"修改密码成功"，
-				new Array()｛
-				"确定"｝，function() {
+			mui.confirm("修改密码",
+				"修改密码成功",
+				new Array("确定"),
+				function()
+				{
 					mui.back();
 				})
 		}
 	}, "json")
 }
-/**
- * *计时器
- /
+
+
+
+ /*
+  *计时器
+  * */
 function timedCount() {
 	//document.getElementById('txt').value=c
-	$(".get-yanzhenma-button").text(c + "s后再次获取")；
+	console.log("c:"+c);
+	$(".get-yanzhenma-button").text(c + "s后再次获取");
 	c--;
 	if (c >= 0) {
 		t = setTimeout("timedCount()", 1000);
 	} else {
-       $(".get-yanzhenma-button").text("获取验证码")；
+       $(".get-yanzhenma-button").text("获取验证码");
        canclick=true;
 	}
 
