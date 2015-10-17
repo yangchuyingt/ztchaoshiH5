@@ -7,7 +7,6 @@
 		<title></title>
 		<script type="text/javascript" src="../../js/mui.min.js" ></script>
 		<script type="text/javascript" src="../../js/jquery.js" ></script>
-		<link rel="stylesheet" href="../../css/mui.min.css" />
 		<link rel="stylesheet" href="../../css/refund.css" />
 		<script type="text/javascript" charset="utf-8">
 			mui.init();
@@ -29,9 +28,7 @@
 		</div>
 	</body>
    <script>
-    document.querySelector(".me-header-title").addEventListener("tap",function(){
-    	console.log('ggggg');
-    });
+   
    	 document.querySelector(".suggest-post-button").addEventListener("tap",function(){
    	 	 console.log("yyyyy");
          var suggestion=$("textarea-sytle").val();
@@ -43,8 +40,9 @@
 		    "sessid": sessid,
 		    "feedback":suggestion
          },function(result){
+         	console.log(JSON.stringify(result));
          	if(result.ret=='1'){
-         		mui.toast("感谢您的建议")；
+         		mui.toast("感谢您的建议");
          	}
          },'json');
    	 });
