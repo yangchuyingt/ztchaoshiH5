@@ -5,17 +5,21 @@
  * */
 function getproductimg(id) {
 		var url = "http://app.teambuy.com.cn/apnc/m/temai/a/gettminfo";
+		console.log("tmid:"+id);
 		$.post(url, {
 			"tmid": id,
 		}, function(result) {
 			console.log(JSON.stringify(result));
-			console.log("id:"+id);
-		//	console.log("结果："+result.data.photos);
+			if(result.ret=='1'){
+				//	console.log("结果："+result.data.photos);
 			var picturls = result.data.photos.split("||");
 			//console.log(picturls.length);
 			setimgviews(picturls);
            $("#product-paramters").append(result.data.param);
           // console.log(JSON.stringify(result.data.param));
+			}else{
+				mui.toast(result.data);
+			}
 		}, "json");
 
 	}

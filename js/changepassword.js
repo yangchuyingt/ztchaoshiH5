@@ -17,6 +17,7 @@ function postchangepassword(password, yanzhenma) {
 	var psw = convertsmall(ww);
 	var url = "http://app.teambuy.com.cn/apnc/m/my/a/chpwd";
 	var username = plus.storage.getItem("username");
+	   username=reversestr(username);
 	var token = plus.storage.getItem("token");
 	var sessid = plus.storage.getItem("sessid");
 	$.post(url, {
@@ -26,6 +27,8 @@ function postchangepassword(password, yanzhenma) {
 		"password": psw,
 		"mobyzm": yanzhenma
 	}, function(result) {
+		console.log("用户名："+username+",密码："+psw);
+		console.log("result:"+JSON.stringify(result));
 		if (result.ret == "1") {
 			mui.confirm("修改密码",
 				"修改密码成功",
@@ -45,7 +48,7 @@ function postchangepassword(password, yanzhenma) {
   * */
 function timedCount() {
 	//document.getElementById('txt').value=c
-	console.log("c:"+c);
+	//Sconsole.log("c:"+c);
 	$(".get-yanzhenma-button").text(c + "s后再次获取");
 	c--;
 	if (c >= 0) {
@@ -59,8 +62,14 @@ function timedCount() {
 function getyzm(){
 	var url="http://app.teambuy.com.cn/apnc/m/user/a/sendyzm";
 	var username = plus.storage.getItem("username");
+	if(username==null){
+		mui.toast("请先登录，再修改密码");
+		return;
+	}
+	username=reversestr(username);
 	var token = plus.storage.getItem("token");
 	var sessid = plus.storage.getItem("sessid");
+	console.log("发送验证码的手机号："+username);
 	$.post(url,{
 		"acctoken": token,
 		"sessid": sessid,
@@ -69,6 +78,7 @@ function getyzm(){
 		if(result.ret=='1'){
 			mui.toast("验证码已发送请注意查收");
 		}else{
+			console.log("验证码请求结果："+JSON.stringify(result));
 			mui.toast("请先登录，再修改密码");
 		}
 	},"json");

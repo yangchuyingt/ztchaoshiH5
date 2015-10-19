@@ -47,31 +47,34 @@ function loadproduct(data, page, clear) {
 			len = data.length - 1;
 		}
 		for (var i = 0; i < data.length; i += 2) {
+			if ((i + 1) >= data.length) {
+				result += '<tr>' + '<td   value="' + data[i].tmid + '"' + '>' + '<div  id="product-item' + (page * 10 + i) + '"' + 'class="td-product-item">' + '<div id="product-img-item' + (page * 10 + i) + '"' + 'class="td-product-item-img"></div>' + '<div class="td-product-item-title">' + data[i].title + '</div>' + '<div class="td-product-item-price">' + '<div class="td-product-item-nowprice">￥' + data[i].tmdj + '</div>' + '<div class="td-product-item-beforprice">￥' + data[i].dj0 + '</div>' + '</div>' + '</div>' + '</td>' + '<td value="' + data[1].tmid + '"' + '>' + '<div id="product-item' + (page * 10 + i + 1) + '"' + 'class="td-product-item">' + '<div id="product-img-item' + (page * 10 + i + 1) + '"' + 'class="td-product-item-img"></div>' + '<div class="td-product-item-title">' + data[1].title + '</div>' + '<div class="td-product-item-price">' + '<div class="td-product-item-nowprice">' + "￥" + data[1].tmdj + '</div>' + '<div class="td-product-item-beforprice">' + "￥" + data[1].dj0 + '</div>' + '</div>' + '</div>' + '</td>' + '</tr>'
 
-			result += '<tr>' + '<td   value="' + data[i].tmid  + '"' + '>' + '<div  id="product-item' + (page * 10 + i) + '"' + 'class="td-product-item">' + '<div id="product-img-item' + (page * 10 + i) + '"' + 'class="td-product-item-img"></div>' + '<div class="td-product-item-title">' + data[i].title + '</div>' + '<div class="td-product-item-price">' + '<div class="td-product-item-nowprice">￥' + data[i].tmdj + '</div>' + '<div class="td-product-item-beforprice">￥' + data[i].dj0 + '</div>' + '</div>' + '</div>' + '</td>' + '<td value="' + data[i + 1].tmid + '"' + '>' + '<div id="product-item' + (page * 10 + i + 1) + '"' + 'class="td-product-item">' + '<div id="product-img-item' + (page * 10 + i + 1) + '"' + 'class="td-product-item-img"></div>' + '<div class="td-product-item-title">' + data[i + 1].title + '</div>' + '<div class="td-product-item-price">' + '<div class="td-product-item-nowprice">' + "￥" + data[i + 1].tmdj + '</div>' + '<div class="td-product-item-beforprice">' + "￥" + data[i + 1].dj0 + '</div>' + '</div>' + '</div>' + '</td>' + '</tr>'
-				/*productionarray[page*10+i]=data[i];
-				productionarray[page*10+i+1]=data[i+1];
-				console.log(productionarray[page*10+i].xh);
-				console.log(productionarray[page*10+i+1].xh);*/
+			} else {
+				result += '<tr>' + '<td   value="' + data[i].tmid + '"' + '>' + '<div  id="product-item' + (page * 10 + i) + '"' + 'class="td-product-item">' + '<div id="product-img-item' + (page * 10 + i) + '"' + 'class="td-product-item-img"></div>' + '<div class="td-product-item-title">' + data[i].title + '</div>' + '<div class="td-product-item-price">' + '<div class="td-product-item-nowprice">￥' + data[i].tmdj + '</div>' + '<div class="td-product-item-beforprice">￥' + data[i].dj0 + '</div>' + '</div>' + '</div>' + '</td>' + '<td value="' + data[i + 1].tmid + '"' + '>' + '<div id="product-item' + (page * 10 + i + 1) + '"' + 'class="td-product-item">' + '<div id="product-img-item' + (page * 10 + i + 1) + '"' + 'class="td-product-item-img"></div>' + '<div class="td-product-item-title">' + data[i + 1].title + '</div>' + '<div class="td-product-item-price">' + '<div class="td-product-item-nowprice">' + "￥" + data[i + 1].tmdj + '</div>' + '<div class="td-product-item-beforprice">' + "￥" + data[i + 1].dj0 + '</div>' + '</div>' + '</div>' + '</td>' + '</tr>'
+			}
+			/*productionarray[page*10+i]=data[i];
+			productionarray[page*10+i+1]=data[i+1];
+			console.log(productionarray[page*10+i].xh);
+			console.log(productionarray[page*10+i+1].xh);*/
 		}
 		//console.log("reslut:"+result);
 		if (clear) {
 			$("#table-product-list ").empty();
 			//$("#table-product-list").children("tr").remove();
-		    
+
 
 		}
 		$("#table-product-list").append(result);
-		for (var i = 0; i < data.length; i++) {
-			$("#product-img-item" + (page * 10 + i)).css("background-image", "url(" + data[i].picurl + ")");
-			/* var item=document.getElementById("product-img-item" + (page * 10+i));
-			 if(item){
-			 	item.addEventListener("tap",function(event){
-			 		
-			 	},false);
-			 }else{
-			 	console.log("is null");
-			 }*/
+		if ((data.length / 2) == 0) {
+			for (var i = 0; i < data.length; i++) {
+				$("#product-img-item" + (page * 10 + i)).css("background-image", "url(" + data[i].picurl + ")");
+			}
+		}else{
+			for (var i = 0; i < data.length; i++) {
+				$("#product-img-item" + (page * 10 + i)).css("background-image", "url(" + data[i].picurl + ")");
+			}
+			$("#product-img-item" +(page * 10 + i+1)).css("background-image", "url(" + data[1].picurl + ")");
 		}
 	}
 	/*
@@ -135,12 +138,12 @@ function finishpullup(ret) {
 
 		if ((typeof(ret) == "string") && (ret.trim() == "1")) {
 			page = page + 1;
-			mui('#pullup-container').pullRefresh().endPullupToRefresh(false);
-			mui('#pullup-container').pullRefresh().refresh(true);
+			mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
+			mui('#refreshContainer').pullRefresh().refresh(true);
 			// mui('#pullup-container').pullRefresh().refresh(true);
 			//console.log("ret=1");
 		} else {
-			mui('#pullup-container').pullRefresh().endPullupToRefresh(true);
+			mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
 			console.log(JSON.stringify(ret));
 		}
 		console.log("上拉加载更多结束！");
@@ -163,38 +166,38 @@ function clickmiddleadv(position) {
 function bottonAdvClick(Position) {
 	console.log("底部的广告：" + Position);
 }
-function addlistlistener(){
-	mui("#table-product-list").on('tap','td',function(event){
-		var tmid=this.getAttribute('value');
-		//console.log("tmid:"+tmid);
-		mui.openWindow({
-			url: 'examples/mainpage/productDetial.html',
-			id: 'productDetial',
-			styles: {
-			},
-			extras: {
-				"tmid": tmid,
-			},
+
+function addlistlistener() {
+		mui("#table-product-list").on('tap', 'td', function(event) {
+			var tmid = this.getAttribute('value');
+			//console.log("tmid:"+tmid);
+			mui.openWindow({
+				url: 'examples/mainpage/productDetial.html',
+				id: 'productDetial',
+				styles: {},
+				extras: {
+					"tmid": tmid,
+				},
+			});
 		});
-	});
 	}
-/*
- *点击事件对ios没有用，
- * 
- * */
-//function productItemClick(tmid) {
-//	console.log(tmid);
-//	mui.openWindow({
-//			url: 'examples/mainpage/productDetial.html',
-//			id: 'productDetial',
-//			styles: {
-//				
-//			},
-//			extras: {
-//				"tmid": tmid,
-//			},
-//		}
-//
-//	);
-//
-//}
+	/*
+	 *点击事件对ios没有用，
+	 *
+	 * */
+	//function productItemClick(tmid) {
+	//	console.log(tmid);
+	//	mui.openWindow({
+	//			url: 'examples/mainpage/productDetial.html',
+	//			id: 'productDetial',
+	//			styles: {
+	//				
+	//			},
+	//			extras: {
+	//				"tmid": tmid,
+	//			},
+	//		}
+	//
+	//	);
+	//
+	//}
