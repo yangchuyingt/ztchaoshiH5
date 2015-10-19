@@ -104,6 +104,9 @@
 		},
 		"File": {
 			"description": "访问本地文件系统"
+		},
+		"Payment": {
+			"description": "访问支付插件"
 		}
 	},
 	"plus": {
