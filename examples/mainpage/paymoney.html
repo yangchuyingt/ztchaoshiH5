@@ -31,7 +31,7 @@
 		<div class="pay-way-text">
 			选择支付方式
 		</div>
-		<div class="pay-by-zhifubao">
+		<div id="zhifubao" class="pay-by-zhifubao">
 			<div class="pay-img zhifubao-img">
 			</div>
 			<div class="pay-way-is">
@@ -44,7 +44,7 @@
 				<input type="checkbox" />
 			</div>
 		</div>
-		<div class="pay-by-zhifubao">
+		<!--<div class="pay-by-zhifubao">
 			<div class="pay-img yinlian-img">
 			</div>
 			<div class="pay-way-is">
@@ -56,11 +56,11 @@
 			<div class="pay-way-select">
 				<input type="checkbox" />
 			</div>
-		</div>
-		<div class="pay-by-zhifubao">
+		</div>-->
+		<div id="weixin" class="pay-by-zhifubao">
 			<div class="pay-img weixin-img">
 			</div>
-			<div class="pay-way-is">
+			<div  class="pay-way-is">
 				微信支付
 				<br/>
 				<font color="#9B9B9B" size="2">
@@ -77,7 +77,7 @@
 	<script>
 		var price;
 		var orderno;
-
+        
 		function showallprice(price) {
 				//	共计：<font color="#D52722">￥866</font>
 				var str = '共计：<font color="#D52722">￥' + price + '</font>'
@@ -135,6 +135,16 @@
 			console.log(orderno);
 			console.log("yyyy");
 		});
+	
+//		mui('.near-background').on('tap','.pay-by-zhifubao',function(){
+//			console.log('this:'+this.getAttribute('value'));
+//		});
+      document.querySelector('#zhifubao').addEventListener('tap',function(){
+      	console.log('支付宝');
+      });
+      document.querySelector('#weixin').addEventListener('tap',function(){
+      	console.log('微信');
+      })
 	</script>
 
 </html>

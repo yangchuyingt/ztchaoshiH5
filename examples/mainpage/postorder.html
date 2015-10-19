@@ -13,13 +13,7 @@
 		<script type="text/javascript" src="../../js/sqlOpeate.js"></script>
 		<script type="text/javascript" charset="utf-8">
 			mui.init(
-				/*{preloadPages: [{
-								url:'../me/login.html',
-								id:'login',
-								styles: {}, //窗口参数
-								extras: {"pagenameid":"postorder"}, //自定义扩展参数
-								subpages: [{}, {}] //预加载页面的子页面
-							}]}*/
+				
 			);
 		</script>
 	</head>
@@ -114,17 +108,17 @@
 							aniShow: 'none'
 						}
 					});
-//					loginpage = mui.preload({
-//						url: '../me/login.html',
-//						id: 'login',
-//						extras: {
-//							"pagenameid": "postorder"
-//						},
-//						styles: {},
-//						show: {
-//							aniShow: 'none'
-//						}
-//					});
+					loginpage = mui.preload({
+						url: '../me/login.html',
+						id: 'login',
+						extras: {
+							"pagenameid": "postorder"
+						},
+						styles: {},
+						show: {
+							aniShow: 'none'
+						}
+					});
 					//getaddressmsg(loginpage);
 				}, 200);
 				dealAddressMsg();
