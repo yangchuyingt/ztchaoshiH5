@@ -43,9 +43,9 @@
 					loginpage = mui.preload({
 						url: '../me/login.html',
 						id: 'login',
-						extras: {
-							"pagenameid": "congsigneeaddress"
-						},
+//						extras: {
+//							"pagenameid": "congsigneeaddress"
+//						},
 						styles: {},
 						show: {
 							aniShow: 'none'
@@ -61,6 +61,7 @@
 						}
 					});
 					getaddressmsg(loginpage);
+					loadaddressmsg(loginpage)
 				}, 200);
 			});
 			window.addEventListener('finishlogin', function(event) { //finishlogin

@@ -41,6 +41,7 @@ function login(user, password, pagenameid) {
 			plus.storage.setItem("sessid",result.sessid);
 			//console.log("pagenameid:"+pagenameid);
 			var page;
+			console.log("pagenameid:"+pagenameid);
 			if(pagenameid=='index'){
 				
 				page=plus.webview.getLaunchWebview();

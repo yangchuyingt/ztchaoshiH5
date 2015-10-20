@@ -27,6 +27,7 @@ function loadaddressmsg(loginpage) {
 		//console.log(JSON.stringify(result));
 		console.log(result.ret);
 		if (result.ret == "-2") {
+			mui.fire(loginpage,"logintocongress",{"pagenameid": "congsigneeaddress"});
 			loginpage.show();
 			//setTimeout(openloginpage(),1000);
 			/*console.log("hehe");
@@ -106,6 +107,7 @@ function showaddressdiv(results){
 			    
 	}
 	//console.log(str);
+   $("#address-add").empty();
    $("#address-add").append(str);
    var isdefultaddress;
    var receiveTime;

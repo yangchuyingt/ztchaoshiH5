@@ -11,7 +11,7 @@
 		<script type="text/javascript" charset="utf-8">
 			mui.init();
 		</script>
-		<script type="text/javascript" src="../../js/jquery.js" ></script>
+		<script type="text/javascript" src="../../js/jquery.js"></script>
 		<script type="text/javascript" src="../../js/paymoney.js"></script>
 	</head>
 
@@ -56,19 +56,19 @@
 				<input type="checkbox" />
 			</div>
 		</div>-->
-		<div id="weixin" class="pay-by-zhifubao">
+		<!--<div id="weixin" class="pay-by-zhifubao">
 			<div class="pay-img weixin-img">
 			</div>
-			<div  class="pay-way-is">
+			<div class="pay-way-is">
 				微信支付
 				<br/>
 				<font color="#9B9B9B" size="2">
 		推荐安装5.0以上的版本使用</font>
 			</div>
 			<div class="pay-way-select">
-				<input id="weixin-checkbox"  type="checkbox" />
+				<input id="weixin-checkbox" type="checkbox" />
 			</div>
-		</div>
+		</div>-->
 		<div class="buttom-pay">
 			确 定 支 付
 		</div>
@@ -76,104 +76,97 @@
 	<script>
 		var price;
 		var orderno;
-        
+		var pays={}
+			mui.plusReady(function() {
+				plus.payment.getChannels(function(channels) {
+					var content = document.getElementById('dcontent');
+					var txt = "支付通道信息：";
+					for (var i in channels) {
+						var channel = channels[i];
+						pays[channel.id] = channel;
+					}
+				}, function(e) {
+					outLine("获取支付通道失败：" + e.message);
+				});
+			});
+         
 		function showallprice(price) {
-				//	共计：<font color="#D52722">￥866</font>
-				var str = '共计：<font color="#D52722">￥' + price + '</font>'
-				$("#show-price").append(str);
-			}
-			/*function pingPay(price, order) {
-					var url = "http://app.teambuy.com.cn/apnc/m/tmord/a/createpaybych"
-					var charge = {
-						"order_no": order,
-						"app": {
-							"id": "app_3LuYhhseDkzIG7orn"
-						},
-						"channel": "alipay",
-						"amount": price,
-						"client_ip": url,
-						"currency": "cny",
-						"subject": "",
-						"body": ""
-					};
-					pingpp.createPayment(charge, function(result, err) {
-						console.log(JSON.stringify(result));
-						console.log(JSON.stringify(err));
-					});
-				}*/
-       	function Pay(price, order) {
-			var url = "http://app.teambuy.com.cn/apnc/payment/alipay";
-			var token = plus.storage.getItem("token");
-			var sessid = plus.storage.getItem("sessid");
-			console.log(order);
-			$.post(url,{
-//				"acctoken": token,
-//				"sessid": sessid,
-				"ordno": order,
-				"paym": "alipayd"
-			}, function(result) {
-				console.log("charge:"+JSON.stringify(result));
-//				pingpp.createPayment(result.data.charge, function(result, err) {
-//						console.log(JSON.stringify(result));
-//						console.log(JSON.stringify(err));
-//					});
-			}, "json");
-			
+			//	共计：<font color="#D52722">￥866</font>
+			var str = '共计：<font color="#D52722">￥' + price + '</font>';
+			$("#show-price").empty();
+			$("#show-price").append(str);
 		}
 		window.addEventListener('getprice', function(event) {
 			price = event.detail.aa;
 			orderno = event.detail.ordno;
 			//console.log(orderno);
-			
 			showallprice(price);
 		});
-		function testpost(ord){
-			var url="http://app.teambuy.com.cn/apnc/payment/alipay";
-			console.log("订单号"+ord);
-			$.post(url,{
-			   "ordno":ord,
-			   "paym":"alipayd"
-			},function(result){
-				console.log("return:"+JSON.stringify(result));
-			},"json");
+
+		function paypost(ord) {
+			//var url = "http://app.teambuy.com.cn/apnc/payment/alipay/"
+				var url="http://app.teambuy.com.cn/apnc/m/tmord/a/createpay"
+			console.log("订单号" + ord);
+			$.post(url, {
+				"ordno": ord,
+				"paym": "alipay"
+			}, function(result) {
+				console.log("return:" + JSON.stringify(result));
+				console.log("pays[i]"+JSON.stringify(pays['alipay']));
+				var ordmsg=result.data.credential.alipay.orderInfo;
+				//var ordmsg=result.data.credential.wx;
+				//var ordmsg=result.data.payurl;
+				console.log("ordmsg:"+JSON.stringify(ordmsg));
+				plus.payment.request(pays['alipay'],ordmsg,function(result){
+				   	mui.back();
+				   	var mainpage =plus.webview.getLaunchWebview();
+				   	mui.fire(mainpage,'refreshmyOrder',{});
+				},function(e){
+					//outLine("----- 支付失败 -----");
+					//outLine("["+e.code+"]："+e.message);
+					console.log("错误信息："+e.message);
+					//plus.nativeUI.alert("更多错误信息请参考支付(Payment)规范文档：http://www.html5plus.org/#specification#/specification/Payment.html",null,"支付失败："+e.code);
+				});
+			}, "json");
 		}
 		document.querySelector('.buttom-pay').addEventListener('tap', function() {
 			//h_pay(price, orderno);
-//			Pay(price, orderno);
-            testpost(orderno);
+			//			Pay(price, orderno);
+			// testpost(orderno);
+			paypost(orderno);
 			console.log(orderno);
 		});
-	
-		mui('.near-background').on('tap','.pay-by-zhifubao',function(){
-			var id=this.getAttribute('id');
-			console.log('this:'+this.getAttribute('id')+",heh:"+(id=="zhifubao"));
-			if(id=="zhifubao"){
-				var id=this.getAttribute('id');
-				$("#weixin-checkbox").attr("checked",false);
-    	        $("#alipay-checkbox").attr("checked",true);
-    	        
-//
-			}else if(id=="weixin"){
-				$("#weixin-checkbox").attr("checked",true);
-    	        $("#alipay-checkbox").attr("checked",false);
-    	        console.log("微信："+$("#weixin-checkbox").attr("checked")+"支付宝："+$("#alipay-checkbox").attr("checked"));
-//
+		mui('.near-background').on('tap', '.pay-by-zhifubao', function() {
+			var id = this.getAttribute('id');
+			//console.log('this:' + this.getAttribute('id') + ",heh:" + (id == "zhifubao"));
+			if (id == "zhifubao") {
+				var id = this.getAttribute('id');
+				$("#weixin-checkbox").attr("checked", "");
+				$("#alipay-checkbox").attr("checked", true);
+				console.log("微信：" + $("#weixin-checkbox").attr("checked") + "支付宝：" + $("#alipay-checkbox").attr("checked"));
+		
+				//
+			} else if (id == "weixin") {
+				$("#weixin-checkbox").attr("checked", true);
+				$("#alipay-checkbox").attr("checked", "");
+				console.log("微信：" + $("#weixin-checkbox").attr("checked") + "支付宝：" + $("#alipay-checkbox").attr("checked"));
+				//
 			}
 		});
-//    document.querySelector('#alipay-checkbox').addEventListener('tap',function(){
-//    	console.log('支付宝');
-////    	$("#weixin-checkbox").attr("checked",false);
-////    	$("#alipay-checkbox").attr("checked",true);
-//  	console.log("微信："+$("#weixin-checkbox").attr("checked")+"支付宝："+$("#alipay-checkbox").attr("checked"));
-//    	
-//    });
-//    document.querySelector('#weixin-checkbox').addEventListener('tap',function(){
-//    	console.log('微信');
-////    	$("#weixin-checkbox").attr("checked",true);
-////    	$("#alipay-checkbox").attr("checked",false);
-//    	console.log("微信："+$("#weixin-checkbox").attr("checked")+"支付宝："+$("#alipay-checkbox").attr("checked"));
-//   
-//    })
+		 //    document.querySelector('#alipay-checkbox').addEventListener('tap',function(){
+		 //    	console.log('支付宝');
+		 ////    	$("#weixin-checkbox").attr("checked",false);
+		 ////    	$("#alipay-checkbox").attr("checked",true);
+		 //  	console.log("微信："+$("#weixin-checkbox").attr("checked")+"支付宝："+$("#alipay-checkbox").attr("checked"));
+		 //    	
+		 //    });
+		 //    document.querySelector('#weixin-checkbox').addEventListener('tap',function(){
+		 //    	console.log('微信');
+		 ////    	$("#weixin-checkbox").attr("checked",true);
+		 ////    	$("#alipay-checkbox").attr("checked",false);
+		 //    	console.log("微信："+$("#weixin-checkbox").attr("checked")+"支付宝："+$("#alipay-checkbox").attr("checked"));
+		 //   
+		 //    })
 	</script>
 
 </html>

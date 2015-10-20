@@ -105,9 +105,7 @@
 		"File": {
 			"description": "访问本地文件系统"
 		},
-		"Payment": {
-			"description": "访问支付插件"
-		}
+		"Payment": {}
 	},
 	"plus": {
 		"splashscreen": {
@@ -118,6 +116,14 @@
 		"runmode": "liberate",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
 		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
 		"distribute": {
+			"plugins": {
+				"payment": {
+					"alipay": {
+						"description": "阿里支付",
+						"scheme": "yangchuyingt"
+					}
+				}
+			},
 			"apple": {
 				"appid": "",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
 				"mobileprovision": "",/*iOS应用打包配置文件*/
@@ -173,13 +179,7 @@
 			},
 			"splashscreen": {
 				"ios": {
-					"iphone": {
-						"default": "/Users/anddward/Downloads/中团logo画面/320X442.png", /*iPhone3启动图片选，分辨率：320x480*/
-						"retina35": "/Users/anddward/Downloads/中团logo画面/720X1242.png",/*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
-						"retina40": "/Users/anddward/Desktop/ycy/ios打包/480X762.png",
-						"retina55": "/Users/anddward/Desktop/ycy/ios打包/1080X1882.png",
-						"retina47": "/Users/anddward/Desktop/ycy/ios打包/720X1242.png"
-					},
+					"iphone": {},
 					"ipad": {
 						"portrait": "", /*iPad竖屏启动图片，分辨率：768x1004*/
 						"portrait-retina": "",/*iPad高分屏竖屏图片，分辨率：1536x2008*/

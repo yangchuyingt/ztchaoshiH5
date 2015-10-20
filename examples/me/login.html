@@ -44,7 +44,9 @@
 		pagenameid = pagelast.pagenameid;
 		//console.log("pagenameids:"+pagenameid);
 	});
-	
+	window.addEventListener('logintocongress',function(event){
+		pagenameid=event.detail.pagenameid;
+	});
 	</script>
 </body>
 </html>

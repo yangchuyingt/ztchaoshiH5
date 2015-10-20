@@ -117,8 +117,9 @@ function addtoshopcart(tmid){
 		console.log(result.ret);
 		if(result.ret=='-2'){
 			gotologn();
-		}else {
+		}else if(result.ret=='1'){
 			//弹出toast
+			plus.nativeUI.alert("加入购物车成功");
 		}
 	},'json');
 }
