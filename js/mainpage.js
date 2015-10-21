@@ -32,10 +32,73 @@ function showmidadv(midadv) {
 }
 
 function showbottom(botadv) {
-	$("#buttom-adv-left").css("background-image", "url(" + botadv[0][0] + ")");
-	$("#buttom-adv-right-top").css("background-image", "url(" + botadv[1][0] + ")");
-	$("#buttom-adv-right-bottom-inner1").css("background-image", "url(" + botadv[2][0] + ")");
-	$("#buttom-adv-right-bottom-inner2").css("background-image", "url(" + botadv[3][0] + ")");
+		$("#buttom-adv-left").css("background-image", "url(" + botadv[0][0] + ")");
+		$("#buttom-adv-right-top").css("background-image", "url(" + botadv[1][0] + ")");
+		$("#buttom-adv-right-bottom-inner1").css("background-image", "url(" + botadv[2][0] + ")");
+		$("#buttom-adv-right-bottom-inner2").css("background-image", "url(" + botadv[3][0] + ")");
+	}
+	/**
+	 * *处理三个部分广告的点击事件；
+	 *
+	 * */
+
+function dealadvonclick(value, position) {
+	//	var topadvobj;//顶部的广告对象
+	//	    var midadvobj;//中间的广告对象
+	//	    var bottomadvobj;//底部的广告对象
+	var adv;
+	switch (position) {
+		case "top":
+			adv = topadvobj;
+			break;
+		case "mid":
+			adv = midadvobj;
+			break;
+		case 'bottom':
+			adv = bottomadvobj;
+			break;
+	}
+	var wheretogo=adv[value][1];
+	console.log('wheretogo:'+wheretogo);
+	switch(wheretogo){
+		case "largelist"://大列表
+		  largelistpage.show();
+			largelistPageSub=plus.webview.getWebviewById("product-largelist-sub");
+			mui.fire(largelistPageSub,"getsdvmsg",{
+				"advobj":adv[value]
+			});
+		break;
+		case "tmshop"://
+		break;
+		case "tmitem":
+		var tmid=(adv[value][2].split('|'))[1];
+		console.log('tmid:'+tmid);
+		  mui.openWindow({
+				url: 'examples/mainpage/productDetial.html',
+				id: 'productDetial',
+				styles: {},
+				extras: {
+					"tmid":tmid,
+				},
+			});
+		break;
+		case "url":
+		break;
+		case 'smalllist':
+		var tmid=(adv[value][2].split('|'))[1];
+		console.log('tmid:'+tmid);
+		  mui.openWindow({
+				url: 'examples/category/production_list.html',
+				id: 'production_list',
+				styles: {},
+				extras: {
+					"tmid":tmid,
+				},
+			});
+		break;
+	}
+	
+	
 }
 
 function loadproduct(data, page, clear) {
@@ -70,11 +133,11 @@ function loadproduct(data, page, clear) {
 			for (var i = 0; i < data.length; i++) {
 				$("#product-img-item" + (page * 10 + i)).css("background-image", "url(" + data[i].picurl + ")");
 			}
-		}else{
+		} else {
 			for (var i = 0; i < data.length; i++) {
 				$("#product-img-item" + (page * 10 + i)).css("background-image", "url(" + data[i].picurl + ")");
 			}
-			$("#product-img-item" +(page * 10 + i+1)).css("background-image", "url(" + data[1].picurl + ")");
+			$("#product-img-item" + (page * 10 + i + 1)).css("background-image", "url(" + data[1].picurl + ")");
 		}
 	}
 	/*
@@ -85,9 +148,13 @@ function loadproduct(data, page, clear) {
 function getadv() {
 		var url = "http://app.teambuy.com.cn/apnc/m/sys/a/getappadv";
 		$.post(url, {}, function(result) {
-			showlunbotu(result.data.adv.tmindex.topad);
-			showmidadv(result.data.adv.tmindex.cxzad);
-			showbottom(result.data.adv.tmindex.zspad);
+			topadvobj = result.data.adv.tmindex.topad; //顶部的广告对象
+			midadvobj = result.data.adv.tmindex.cxzad; //中间的广告对象
+			bottomadvobj = result.data.adv.tmindex.zspad; //底部的广告对象
+			console.log("广告:" + JSON.stringify(result));
+			showlunbotu(topadvobj); //顶部的广告
+			showmidadv(midadvobj); //中间的广告
+			showbottom(bottomadvobj); //底部的广告
 		}, "json");
 	}
 	/*

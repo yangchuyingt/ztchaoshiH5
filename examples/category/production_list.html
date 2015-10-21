@@ -37,7 +37,16 @@
 <script >
     var lbid;
     var cup;
-   
+    var tmid='';
+    mui.plusReady(function(){
+    	  page=plus.webview.currentWebview();
+    	  tmid=page.tmid;
+    	  if(tmid==""){
+    	  	return;
+    	  }else{
+    	  	getmainpageadata();
+    	  }
+    });
 	window.addEventListener('postlbid',function(event){
 		 console.log("go on ");
 		 lbid = event.detail.lbid;

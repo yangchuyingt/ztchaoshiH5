@@ -11,7 +11,20 @@
 //		});
 //	
 //}
-function getdatafromnet() {
+function getmainpageadata(){//从主页过来的时候走这个函数
+	var url="http://app.teambuy.com.cn/apnc/m/temai/a/gettemai";
+	console.log("meizou:"+tmid);
+	$.post(url,{
+		'tmid':tmid
+	},function(result){
+		console.log("tmid:"+JSON.stringify(result));
+		if(result.ret=='1'){
+			//addview(result.data);
+			categoryProductshow(result.data, 0);
+		}
+	},"json");
+}
+function getdatafromnet() {//从分类过来的走这个函数
 	console.log('cpdl:'+cup+'cpxl:'+lbid);
 	var url = "http://app.teambuy.com.cn/apnc/m/temai/a/gettemai";
 	$.post(url, {
