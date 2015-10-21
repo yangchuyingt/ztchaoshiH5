@@ -60,7 +60,7 @@ function dealadvonclick(value, position) {
 	}
 	var wheretogo = adv[value][1];
 	console.log('wheretogo:' + adv);
-	console.log("列表分类："+wheretogo);
+	console.log("列表分类：" + wheretogo);
 	switch (wheretogo) {
 		case "largelist": //大列表
 			largelistpage.show();
@@ -84,26 +84,30 @@ function dealadvonclick(value, position) {
 			});
 			break;
 		case "url":
-		   advurlpage.show();
-		   var adurl = (adv[value][2].split('|'))[1];
-		   console.log("adurl:"+adurl);
-		   if(firsttoadvurl){
-		   	  console.log("isfirstto");
-		   	  firsttoadvurl=false;                       
-		   	  advurlSubPage=plus.webview.getWebviewById("advurl-sub");
-		   }
-		   console.log("hhh:"+advurlSubPage);
-		   mui.fire(advurlSubPage,"advurl",{
-		   	  "adurl":adurl
-		   })
-		   
+			advurlpage.show();
+			var adurl = (adv[value][2].split('|'))[1];
+			console.log("adurl:" + adurl);
+			if (firsttoadvurl) {
+				console.log("isfirstto");
+				firsttoadvurl = false;
+				advurlSubPage = plus.webview.getWebviewById("advurl-sub");
+				advurlSubPage.loadURL(adurl);
+				console.log("hhh:" + JSON.stringify(advurlSubPage));
+
+			}else{            
+				advurlSubPage.loadURL(adurl);
+		
+			}
+			
+
+
 			break;
 		case 'smalllist':
 			var tmid = (adv[value][2].split('|'))[1];
 			console.log('tmid:' + tmid);
-			productlistPage.show();                          
-			var productlistpage=plus.webview.getWebviewById("production_list");
-			mui.fire(productlistpage,'frommainpageadv',{
+			productlistPage.show();
+			var productlistpage = plus.webview.getWebviewById("production_list");
+			mui.fire(productlistpage, 'frommainpageadv', {
 				"tmid": tmid
 			})
 			break;
