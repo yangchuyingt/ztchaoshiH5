@@ -18,6 +18,7 @@
 			var loginpages;
 			var productlistPage;
 			var largelistpage;
+			var advurlpage;// 打开一个网页的页面
 			mui.init({
 				pullRefresh: {
 					container: '#refreshContainer',
@@ -89,6 +90,13 @@
 					largelistpage=mui.preload({
 						url: 'examples/mainpage/product-largelist.html',
 						id: 'product-largelist',
+						show: {
+							aniShow: 'none'
+						}
+					});
+					advurlpage=mui.preload({
+						url: 'examples/mainpage/advurl.html',
+						id: 'advurl',
 						show: {
 							aniShow: 'none'
 						}

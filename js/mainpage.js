@@ -58,47 +58,62 @@ function dealadvonclick(value, position) {
 			adv = bottomadvobj;
 			break;
 	}
-	var wheretogo=adv[value][1];
-	console.log('wheretogo:'+wheretogo);
-	switch(wheretogo){
-		case "largelist"://大列表
-		  largelistpage.show();
-			largelistPageSub=plus.webview.getWebviewById("product-largelist-sub");
-			mui.fire(largelistPageSub,"getsdvmsg",{
-				"advobj":adv[value]
+	var wheretogo = adv[value][1];
+	console.log('wheretogo:' + adv);
+	console.log("列表分类："+wheretogo);
+	switch (wheretogo) {
+		case "largelist": //大列表
+			largelistpage.show();
+			largelistPageSub = plus.webview.getWebviewById("product-largelist-sub");
+			mui.fire(largelistPageSub, "getsdvmsg", {
+				"advobj": adv[value]
 			});
-		break;
-		case "tmshop"://
-		break;
+			break;
+		case "tmshop": //
+			break;
 		case "tmitem":
-		var tmid=(adv[value][2].split('|'))[1];
-		console.log('tmid:'+tmid);
-		  mui.openWindow({
+			var tmid = (adv[value][2].split('|'))[1];
+			console.log('tmid:' + tmid);
+			mui.openWindow({
 				url: 'examples/mainpage/productDetial.html',
 				id: 'productDetial',
 				styles: {},
 				extras: {
-					"tmid":tmid,
+					"tmid": tmid,
 				},
 			});
-		break;
+			break;
 		case "url":
-		break;
+		   
+		   advurlpage.show();
+		   var adurl = (adv[value][2].split('|'))[1];
+		   console.log("adurl:"+adurl);
+		   var advurlSubPage=plus.webview.getWebviewById("advurl-sub");
+		   mui.fire(advurlSubPage,"advurl",{
+		   	  "adurl":adurl
+		   })
+		   
+			break;
 		case 'smalllist':
-		var tmid=(adv[value][2].split('|'))[1];
-		console.log('tmid:'+tmid);
-		  mui.openWindow({
-				url: 'examples/category/production_list.html',
-				id: 'production_list',
-				styles: {},
-				extras: {
-					"tmid":tmid,
-				},
-			});
-		break;
+			var tmid = (adv[value][2].split('|'))[1];
+			console.log('tmid:' + tmid);
+//			mui.openWindow({
+//				url: 'examples/category/production_list.html',
+//				id: 'production_list',
+//				styles: {},
+//				extras: {
+//					"tmid": tmid,
+//				},
+//			});
+			productlistPage.show();                          
+			var productlistpage=plus.webview.getWebviewById("production_list");
+			mui.fire(productlistpage,'frommainpageadv',{
+				"tmid": tmid
+			})
+			break;
 	}
-	
-	
+
+
 }
 
 function loadproduct(data, page, clear) {
