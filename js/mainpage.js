@@ -84,13 +84,15 @@ function dealadvonclick(value, position) {
 			});
 			break;
 		case "url":
-
 		   advurlpage.show();
 		   var adurl = (adv[value][2].split('|'))[1];
 		   console.log("adurl:"+adurl);
 		   if(firsttoadvurl){
+		   	  console.log("isfirstto");
+		   	  firsttoadvurl=false;                       
 		   	  advurlSubPage=plus.webview.getWebviewById("advurl-sub");
 		   }
+		   console.log("hhh:"+advurlSubPage);
 		   mui.fire(advurlSubPage,"advurl",{
 		   	  "adurl":adurl
 		   })
