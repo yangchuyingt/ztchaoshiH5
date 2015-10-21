@@ -1,33 +1,27 @@
+
 <!DOCTYPE html>
 <html>
-
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title></title>
-		<link rel="stylesheet" href="../../css/mui.min.css" />
-		<link rel="stylesheet" href="../../css/product-largelist.css" />
-		<script type="text/javascript" src="../../js/jquery.js" ></script>
-		<script type="text/javascript" src="../../js/mui.min.js"></script>
-		<script type="text/javascript" charset="utf-8">
-			 //      mui.plusReady(function(){
-			 //      	page=plus.webview
-			 //      	console.log('plus is ok');
-			 //      })
-			     	mui.init({
-			 					subpages: [{
-			 						url: 'advurl-sub.html', //子页面HTML地址，支持本地地址和网络地址
-			 						id: 'advurl-sub', //子页面标志
-			 						styles: {
-			 							top: '45px',
-			 							bottom:'0px'
-			 						},
-			 					}]
-			 				});
-		</script>
-	</head>
-
-	<body class="body-bg">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link rel="stylesheet" href="../../css/mui.min.css" />
+     <link rel="stylesheet" href="../../css/product-largelist.css" />
+     <script type="text/javascript" src="../../js/mui.min.js" ></script>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init({
+					subpages: [{
+						url: 'advurl-sub.html', //子页面HTML地址，支持本地地址和网络地址
+						id: 'advurl-sub', //子页面标志
+						styles: {
+							top: '45px',
+							bottom:'0px'
+						},
+					}]
+				});
+    </script>
+</head>
+<body class="body-bg">
 		<div class="me-all-header">
 			<div class="mui-action-back me-header-left">
 			</div>
@@ -35,30 +29,10 @@
 				中团新动态
 			</div>
 		</div>
-		<div id='load-html'></div>
 	</body>
-	<script> 
-	 mui.plusReady(function(){
-	 	var page=plus.webview.currentWebview();
-	 	var url=page.tmid;
-	    var	childviewpage=plus.webview.getWebviewById('advurl-sub');
-	    setTimeout(function(){
-	    	mui.fire(childviewpage,"advurl",{
-		   	  "adurl":url
-		   })
-	    },500);
-	 	
-	 });
-	
-//		window.addEventListener('advurl', function(event) {
-//					console.log('advurl:' + event.detail.adurl);
-//					var url1 = event.detail.adurl;
-//					$.post(url1,{},function(result){
-//						$('#load-html').html(result);
-//					})
-//
-//		});
-					
+	<script>
+//		window.addEventListener('getsubpage',function(event){
+//			subpage=event.detail.subpage;
+//		})
 	</script>
-
 </html>

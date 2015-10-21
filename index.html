@@ -19,6 +19,8 @@
 			var productlistPage;
 			var largelistpage;
 			var advurlpage;// 打开一个网页的页面
+			var firsttoadvurl=true;
+			
 			mui.init({
 				pullRefresh: {
 					container: '#refreshContainer',
@@ -454,6 +456,7 @@
 	    var topadvobj;//顶部的广告对象
 	    var midadvobj;//中间的广告对象
 	    var bottomadvobj;//底部的广告对象
+	    var advurlSubPage;
 		 //创建数据库表
 		mui('.buttom-show').on('tap', 'td', function(e) {
 			currentposition = this.getAttribute('value');
@@ -637,6 +640,10 @@
 		window.addEventListener("refreshmyOrder",function(){
 			loadUserordermsg();
 		});
+		window.addEventListener('getsubpage',function(event){
+			 advurlSubPage=event.detail.subpage;
+			 console.log('cycy');
+		})
 	</script>
 
 </html>
