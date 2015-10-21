@@ -433,6 +433,4 @@ function loadUserordermsg(){
 			   'orders':result
 			});
 	},'json');
-	
-	
 }

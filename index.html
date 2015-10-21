@@ -17,6 +17,8 @@
 			var waitpaypage;
 			var loginpages;
 			var productlistPage;
+			var largelistpage;
+			var advurlpage;// 打开一个网页的页面
 			mui.init({
 				pullRefresh: {
 					container: '#refreshContainer',
@@ -85,6 +87,20 @@
 							aniShow: 'none'
 						}
 					});
+					largelistpage=mui.preload({
+						url: 'examples/mainpage/product-largelist.html',
+						id: 'product-largelist',
+						show: {
+							aniShow: 'none'
+						}
+					});
+					advurlpage=mui.preload({
+						url: 'examples/mainpage/advurl.html',
+						id: 'advurl',
+						show: {
+							aniShow: 'none'
+						}
+					});
 					productlistPage = mui.preload({
 						url: 'examples/category/production_list.html',
 						id: 'production_list',
@@ -125,7 +141,7 @@
 								<table class="middle-adv">
 									<tr>
 										<td>
-											<div id="clickmiddleadv" value="1">
+											<div id="clickmiddleadv" value="0">
 												<div class="middle-adv-item-inner">
 													<img id="mid-adv-img1" class="middle-adv-item-img" width="60px" src="css/img/buy_one_send_one.png" />
 												</div>
@@ -133,7 +149,7 @@
 											</div>
 										</td>
 										<td>
-											<div id="clickmiddleadv" value="2">
+											<div id="clickmiddleadv" value="1">
 												<div class="middle-adv-item-inner">
 													<img id="mid-adv-img2" class="middle-adv-item-img" width="60px" src="css/img/special_sale_select.png" />
 												</div>
@@ -141,7 +157,7 @@
 											</div>
 										</td>
 										<td>
-											<div id="clickmiddleadv" value="3">
+											<div id="clickmiddleadv" value="2">
 												<div class="middle-adv-item-inner">
 													<img id="mid-adv-img3" class="middle-adv-item-img" width="60px" src="css/img/today_half_price.png" />
 												</div>
@@ -149,7 +165,7 @@
 											</div>
 										</td>
 										<td>
-											<div id="clickmiddleadv" value="4">
+											<div id="clickmiddleadv" value="3">
 												<div class="middle-adv-item-inner">
 													<img id="mid-adv-img4" class="middle-adv-item-img" width="60px" src="css/img/tweenty_nine_nine.png" />
 													<div id="mid-adv-text4" class="middle-adv-item-text">限量体验</div>
@@ -160,16 +176,16 @@
 									</tr>
 								</table>
 								<div class="buttom-adv">
-									<div id="buttom-adv-left" onclick='bottonAdvClick("1")' class="buttom-adv-left"></div>
+									<div id="buttom-adv-left"  class="buttom-adv-left"></div>
 									<div class="buttom-adv-right">
-										<div id="buttom-adv-right-top" onclick='bottonAdvClick("2")' class="buttom-adv-right-top">
+										<div id="buttom-adv-right-top"  class="buttom-adv-right-top">
 
 										</div>
 										<div id="buttom-adv-right-bottom" class="buttom-adv-right-buttom">
 
-											<div id="buttom-adv-right-bottom-inner1" onclick='bottonAdvClick("3")' class="buttom-adv-right-buttom-inner"></div>
+											<div id="buttom-adv-right-bottom-inner1"  class="buttom-adv-right-buttom-inner"></div>
 
-											<div id="buttom-adv-right-bottom-inner2" onclick='bottonAdvClick("4")' class="buttom-adv-right-buttom-inner"></div>
+											<div id="buttom-adv-right-bottom-inner2"  class="buttom-adv-right-buttom-inner"></div>
 
 										</div>
 									</div>
@@ -435,6 +451,9 @@
 		var allprice = 0;//要支付的订单的总价是
 	    var sl = 0;//要支付的产品数量是
 	    var currentcup='1';//当前的大类；
+	    var topadvobj;//顶部的广告对象
+	    var midadvobj;//中间的广告对象
+	    var bottomadvobj;//底部的广告对象
 		 //创建数据库表
 		mui('.buttom-show').on('tap', 'td', function(e) {
 			currentposition = this.getAttribute('value');
@@ -456,6 +475,22 @@
 			currentposition = event.detail.slideNumber;
 			changetabs();
 		});
+		document.querySelector('#buttom-adv-left').addEventListener('tap',function(){
+			console.log('底部广告拦1');
+			dealadvonclick("0",'bottom');
+		});
+		document.querySelector('#buttom-adv-right-top').addEventListener('tap',function(){
+			dealadvonclick("1",'bottom');
+			console.log('底部广告拦2');
+		});
+		document.querySelector('#buttom-adv-right-bottom-inner1').addEventListener('tap',function(){
+			dealadvonclick("2",'bottom');
+			console.log('底部广告拦3');
+		});
+		document.querySelector('#buttom-adv-right-bottom-inner2').addEventListener('tap',function(){
+			dealadvonclick("3",'bottom');
+			console.log('底部广告拦4');
+		});
 		 // 分类部分的代码
 		 //左边菜单的点击事件
 		mui('#left-menu').on('tap', 'div', function(e) {
@@ -476,9 +511,10 @@
 		 //主页面部分的js代码
 		function addmiddleadvlistener() {
 				mui("table").on('tap', '#clickmiddleadv', function(event) {
-					var id = this.getAttribute('id');
+					//var id = this.getAttribute('id');
 					var value = this.getAttribute('value');
-					console.log(id + value);
+					dealadvonclick(value,'mid');
+					console.log(','+ value);
 				});
 			}
 			//		function canscroll(){//rang

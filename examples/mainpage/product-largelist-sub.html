@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script type="text/javascript" src="../../js/mui.min.js" ></script>
+    <script type="text/javascript" src="../../js/jquery.js" ></script>
+    <script type="text/javascript" src="../../js/productlargelist.js" ></script>
+    <link rel="stylesheet" href="../../css/mui.min.css" />
+    <link rel="stylesheet" href="../../css/product-largelist.css" />
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+</head>
+<body class="body-bg">
+	<div class="product-introduce">
+		<!--<div class='product-item'>
+			<div class='product-imgs'></div>
+			<div class="product-name">尚无间日式懒人沙发</div>
+			<div class="price-line">
+				<div class='now-price'>￥288.0</div>
+				<div class="before-price">￥388.0</div>
+				<div class='pro-discount'>7.4折</div>
+			</div>
+			<div class="product-sells">
+				<div class="product-sells-text">销量6</div>
+				<div class='pro-brand'>品牌</div>
+			</div>
+		</div>-->
+	</div>
+</body>
+<script>
+   var adv;
+	window.addEventListener("getsdvmsg",function(event){
+		adv=event.detail.advobj;
+		console.log("adv"+JSON.stringify(adv));
+		loadadvproduct();
+	});
+	mui('.product-introduce').on('tap',".product-item",function(){
+	  	var tmid = this.getAttribute('value');
+			//console.log("tmid:"+tmid);
+			mui.openWindow({
+				url: 'productDetial.html',
+				id: 'productDetial',
+				styles: {},
+				extras: {
+					"tmid": tmid,
+				},
+			});
+	})
+</script>
+</html>

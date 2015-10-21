@@ -37,7 +37,25 @@
 <script >
     var lbid;
     var cup;
-   
+    var tmid='';
+//  mui.plusReady(function(){
+//  	  page=plus.webview.currentWebview();
+//  	  tmid=page.tmid;
+//  	  console.log("lllll:"+tmid);
+//  	  if(tmid==""||tmid==undefined){
+//  	  	return;
+//  	  }else{
+//  	  	getmainpageadata();
+//  	  }
+//  });
+    window.addEventListener('frommainpageadv',function(event){
+     
+    	   tmid=event.detail.tmid;
+    	 //  console.log("来自主页的广告"+tmid);
+    	   $("#table-product-list").empty();
+    	   getmainpageadata();
+    	  
+    })
 	window.addEventListener('postlbid',function(event){
 		 console.log("go on ");
 		 lbid = event.detail.lbid;

@@ -31,8 +31,12 @@ function login(user, password, pagenameid) {
 	}, function(result) {
 		//console.log(JSON.stringify(result));
 		if (result.ret == "0") {
-			mui.toast("密码错误!");
+			plus.nativeUI.toast( "密码错误!",{verticalAlign:"top"});
+//			mui.toast("密码错误!");
+//			plus.ui.toast("登陆失败");
 		} else if (result.ret == "1") {
+//			plus.ui.toast("登陆成功");
+            plus.nativeUI.toast( "登陆成功!",{verticalAlign:"top"});
 			//console.log("fanhui:"+JSON.stringify(result));
 		    plus.storage.setItem('avatar',result.data.avatar);
 			plus.storage.setItem("username", result.data.mobile);
