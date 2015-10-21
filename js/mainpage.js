@@ -85,6 +85,7 @@ function loadproduct(data, page, clear) {
 function getadv() {
 		var url = "http://app.teambuy.com.cn/apnc/m/sys/a/getappadv";
 		$.post(url, {}, function(result) {
+			console.log("广告："+JSON.stringify(result));
 			showlunbotu(result.data.adv.tmindex.topad);
 			showmidadv(result.data.adv.tmindex.cxzad);
 			showbottom(result.data.adv.tmindex.zspad);
