@@ -1,52 +1,66 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <title></title>
-    <script src="../../js/mui.min.js"></script>
-  
-    <link rel="stylesheet" href="../../css/login.css" />
-    <script type="text/javascript" src="../../js/jquery.js" ></script>
-    <script type="text/javascript" src="../../js/md5.js" ></script>
-    <script type="text/javascript" src="../../js/login.js" ></script>
-    <script type="text/javascript" charset="utf-8">
-      	mui.init();
-    </script>
-</head>
-<body class="body-bg">
-	<div class="header border-white">
-		<div class="title-return  mui-action-back"></div>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../../js/mui.min.js"></script>
+
+		<link rel="stylesheet" href="../../css/login.css" />
+		<script type="text/javascript" src="../../js/jquery.js"></script>
+		<script type="text/javascript" src="../../js/md5.js"></script>
+		<script type="text/javascript" src="../../js/login.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</head>
+
+	<body class="body-bg">
+		<div class="header border-white">
+			<div class="title-return  mui-action-back"></div>
 			<div class="title-name">登录</div>
-	</div>
-	<div class="login">
-		&#160账号
-		<input id="username" class="user-name" type="number"  />
-		<div class="red-line"></div>
-	</div>
-	<div class="password">
-		&#160密码
-		<input id="password" class="user-name" type="password"  />
-		<div class="red-line"></div>
-	</div>
-	<div class="login-btn">登录</div>
-	<div class="quickly-rigiste">手机快速注册</div>
-	<div class="forget-password">忘记密码</div>
-	<script>
-	var pagenameid;
-	document.querySelector(".login-btn").addEventListener("tap",function(){
-		//var regEx = /^\\d{9}[3587][1]$/;
-		checkusername(pagenameid);
-		//console.log("pagenameid:"+pagenameid);
-	});
-	mui.plusReady(function(){
-		var pagelast = plus.webview.currentWebview();
-		pagenameid = pagelast.pagenameid;
-		//console.log("pagenameids:"+pagenameid);
-	});
-	window.addEventListener('logintocongress',function(event){
-		pagenameid=event.detail.pagenameid;
-	});
-	</script>
-</body>
+		</div>
+		<div class="login">
+			&#160账号
+			<input id="username" class="user-name" type="number" />
+			<div class="red-line"></div>
+		</div>
+		<div class="password">
+			&#160密码
+			<input id="password" class="user-name" type="password" />
+			<div class="red-line"></div>
+		</div>
+		<div class="login-btn">登录</div>
+		<div class="quickly-rigiste">手机快速注册</div>
+		<div class="forget-password">忘记密码</div>
+		<script>
+			var pagenameid;
+			document.querySelector(".login-btn").addEventListener("tap", function() {
+				//var regEx = /^\\d{9}[3587][1]$/;
+				checkusername(pagenameid);
+				//console.log("pagenameid:"+pagenameid);
+			});
+			var registpage;
+			mui.plusReady(function() {
+				var pagelast = plus.webview.currentWebview();
+				pagenameid = pagelast.pagenameid;
+				registpage = mui.preload({
+					url: 'regist.html',
+					id: 'regist',
+					show: {
+						aniShow: 'none'
+					}
+				});
+				//console.log("pagenameids:"+pagenameid);
+			});
+			window.addEventListener('logintocongress', function(event) {
+				pagenameid = event.detail.pagenameid;
+			});
+			document.querySelector('.quickly-rigiste').addEventListener('tap', function() {
+				registpage.show();
+			});
+		</script>
+	</body>
+
 </html>
