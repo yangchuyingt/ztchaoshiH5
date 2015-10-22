@@ -12,12 +12,18 @@ function convertsmall(data) {
 	return str;
 }
 
-function postchangepassword(password, yanzhenma) {
+function postchangepassword(password, yanzhenma,usercount) {
 	var ww = hex_md5(password);
 	var psw = convertsmall(ww);
 	var url = "http://app.teambuy.com.cn/apnc/m/my/a/chpwd";
-	var username = plus.storage.getItem("username");
+	var username;
+	if(usercount==''||usercount==undefined){
+		 username = plus.storage.getItem("username");
 	   username=reversestr(username);
+	}else{
+		username=usercount;
+	}
+	
 	var token = plus.storage.getItem("token");
 	var sessid = plus.storage.getItem("sessid");
 	$.post(url, {
@@ -40,7 +46,29 @@ function postchangepassword(password, yanzhenma) {
 		}
 	}, "json")
 }
-
+//function postfogetpassword(usercount,password, yanzhenma){
+//	var ww = hex_md5(password);
+//	var psw = convertsmall(ww);
+//	var url = "http://app.teambuy.com.cn/apnc/m/my/a/chpwd";
+//	 username=reversestr(usercount);
+//	$.post(url, {
+//		"username": username,
+//		"password": psw,
+//		"mobyzm": yanzhenma
+//	}, function(result) {
+//		console.log("用户名："+username+",密码："+psw);
+//		console.log("result:"+JSON.stringify(result));
+//		if (result.ret == "1") {
+//			mui.confirm("修改密码",
+//				"修改密码成功",
+//				new Array("确定"),
+//				function()
+//				{
+//					mui.back();
+//				})
+//		}
+//	}, "json")
+//}
 
 
  /*

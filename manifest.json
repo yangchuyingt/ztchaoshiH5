@@ -3,7 +3,7 @@
 	"id": "H5D18348D",/*应用的标识，创建应用时自动生成，勿手动修改*/
 	"name": "中团超市h5",/*应用名称，程序桌面图标名称*/
 	"version": {
-		"name": "1.0.1",/*应用版本名称*/
+		"name": "1.0.2",/*应用版本名称*/
 		"code": "83"
 	},
 	"description": "",/*应用描述信息*/
@@ -54,9 +54,7 @@
 		"Invocation": {
 			"description": "使用Native.js能力"
 		},
-		"Messaging": {
-			"description": "访问通讯能力"
-		},
+		
 		"Orientation": {
 			"description": "访问方向感应器"
 		},
@@ -179,16 +177,16 @@
 			},
 			"splashscreen": {
 				"ios": {
-					"iphone": {},
+					"iphone": {"default":"/Users/anddward/Downloads/day22/iphone330-480.png","retina55":"/Users/anddward/Downloads/day22/iphone1242-2208.png","retina47":"/Users/anddward/Downloads/day22/iphone750-1134.png","retina40":"/Users/anddward/Downloads/day22/iphone640-1136.png","retina35":"/Users/anddward/Downloads/day22/iphone640-960.png","retina55l":"/Users/anddward/Downloads/day22/iphone2208-1242.png"},
 					"ipad": {
-						"portrait": "", /*iPad竖屏启动图片，分辨率：768x1004*/
-						"portrait-retina": "",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
-						"landscape": "", /*iPad横屏启动图片，分辨率：1024x748*/
-						"landscape-retina": "", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
-						"portrait7": "", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
-						"portrait-retina7": "",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
-						"landscape7": "", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
-						"landscape-retina7": ""
+						"portrait": "/Users/anddward/Downloads/day22/iphone768-1004.png", /*iPad竖屏启动图片，分辨率：768x1004*/
+						"portrait-retina": "/Users/anddward/Downloads/day22/iphone1536-2048.png",/*iPad高分屏竖屏图片，分辨率：1536x2008*/
+						"landscape": "/Users/anddward/Downloads/day22/iphone1024-768.png", /*iPad横屏启动图片，分辨率：1024x748*/
+						"landscape-retina": "/Users/anddward/Downloads/day22/iphone2048-1536.png", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+						"portrait7": "/Users/anddward/Downloads/day22/iphone768-1024.png", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
+						"portrait-retina7": "/Users/anddward/Downloads/day22/iphone1536-2048.png",/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+						"landscape7": "/Users/anddward/Downloads/day22/iphone1024-768.png", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
+						"landscape-retina7": "/Users/anddward/Downloads/day22/iphone2048-1536.png"
 					}
 				},
 				"android": {

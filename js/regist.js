@@ -71,10 +71,10 @@ function postrigist() {
 
 		"mobile": username
 	}, function(result) {
+		console.log("result:"+JSON.stringify(result));
 		if (result.ret == '1') {
-
+			mui.toast('验证码已发送到手机');
 		} else {
-			mui.toast("请先登录，再修改密码");
 		}
 	}, "json");
 }
