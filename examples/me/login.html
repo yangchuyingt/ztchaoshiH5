@@ -60,6 +60,18 @@
 			document.querySelector('.quickly-rigiste').addEventListener('tap', function() {
 				registpage.show();
 			});
+			document.querySelector('.forget-password').addEventListener('tap',function(){
+				mui.openWindow({
+						id: 'change-password',
+						url: 'change-password.html',
+						show: {
+							aniShow: 'none'
+						},
+						waiting: {
+							autoShow: false
+						}
+					});
+			});
 		</script>
 	</body>
 
