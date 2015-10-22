@@ -93,10 +93,8 @@ function dealadvonclick(value, position) {
 				advurlSubPage = plus.webview.getWebviewById("advurl-sub");
 				advurlSubPage.loadURL(adurl);
 				console.log("hhh:" + JSON.stringify(advurlSubPage));
-
 			}else{            
 				advurlSubPage.loadURL(adurl);
-		
 			}
 			
 
