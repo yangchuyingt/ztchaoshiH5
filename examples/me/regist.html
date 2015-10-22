@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script type="text/javascript" src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/changepassword.js" ></script>
+		<script type="text/javascript" src="../../js/jquery.js" ></script>
+		<link rel="stylesheet" href="../../css/regist.css" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</head>
+
+	<body class="body-bg">
+		<div class="me-all-header">
+			<div class="mui-action-back me-header-left">
+			</div>
+			<div class='me-header-title'>
+				注册
+			</div>
+		</div>
+		<div class="usercount">账号
+			<input class="input-count" type="number" />
+		</div>
+		<div class="red-divide-line"></div>
+		<div class="usercount">验证码
+			<input class="input-count" type="number" />
+			<div class="getyzm">
+				获取验证码
+			</div>
+		</div>
+		<div class="red-divide-line"></div>
+		<div class="next-step">下一步</div>
+	</body>
+	<script>
+	var canclick=true;
+	var c=120;
+	 document.querySelector('.getyzm').addEventListener('tap',function(){
+	 	if(canclick){
+	 		canclick=false;
+	 		timedCount();
+	 		getyzm();
+	 	}
+	 });
+	</script>
+
+</html>

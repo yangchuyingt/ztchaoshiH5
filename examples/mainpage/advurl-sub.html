@@ -7,11 +7,35 @@
     <script type="text/javascript" src="../../js/mui.min.js" ></script>
     <link rel="stylesheet" href="../../css/mui.min.css" />
     <script type="text/javascript" charset="utf-8">
-      
+      	mui.init();
     </script>
 </head>
 <body>
 	
 </body>
-
+<script>
+//	 window.addEventListener('advurl',function(event){
+//	 	console.log('advurl:'+event.detail.adurl);
+//	 	console.log('ycyc');
+//	 	window.open(event.detail.adurl);
+//	 	//mui.openWindow(event.detail.adurl);
+//	 	var currentpage=plus.webview.currentWebview();//.loadURL(event.detail.adurl);
+//	 	var parentpage=plus.webview.getWebviewById('advurl');
+//	 	console.log("相等："+currentpage==parentpage);
+//	 	mui.fire(parentpage,'getsubpage',{
+//	 		'subpage':currentpage;
+//	 	});
+//	 });
+   window.addEventListener('advurl',function(event){
+   	  console.log("is ko");
+   	  window.open(event.detail.adurl);
+//	 	//mui.openWindow(event.detail.adurl);
+//	 	var currentpage=plus.webview.currentWebview();//.loadURL(event.detail.adurl);
+//	 	var parentpage=plus.webview.getWebviewById('advurl');
+//	 	console.log("相等："+currentpage==parentpage);
+//	 	mui.fire(parentpage,'getsubpage',{
+//	 		'subpage':currentpage;
+//	 	});
+   });
+	</script>
 </html>
