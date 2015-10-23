@@ -75,6 +75,7 @@ function getproductchima(tmid){
 	$.post(url,{
 		"tmid":tmid
 	},function(result){
+		console.log('尺码信息：'+JSON.stringify(result));
 		if(result.ret=="0"){
 			
 		}else{
