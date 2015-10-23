@@ -19,7 +19,12 @@ function postchangepassword(password, yanzhenma,usercount) {
 	var username;
 	if(usercount==''||usercount==undefined){
 		 username = plus.storage.getItem("username");
+		if(username==''||username==undefined){
+		   plus.nativeUI.alert("用户名为空");
+		   return;
+		}
 	   username=reversestr(username);
+	   
 	}else{
 		username=usercount;
 	}
@@ -27,8 +32,8 @@ function postchangepassword(password, yanzhenma,usercount) {
 	var token = plus.storage.getItem("token");
 	var sessid = plus.storage.getItem("sessid");
 	$.post(url, {
-		"acctoken": token,
-		"sessid": sessid,
+//		"acctoken": token,
+//		"sessid": sessid,
 		"username": username,
 		"password": psw,
 		"mobyzm": yanzhenma
@@ -89,18 +94,21 @@ function timedCount() {
 }
 function getyzm(){
 	var url="http://app.teambuy.com.cn/apnc/m/user/a/sendyzm";
-	var username = plus.storage.getItem("username");
+	if(username=="changepassword"){
+		 username = plus.storage.getItem("username");
+		
+	}
 	if(username==null){
 		mui.toast("请先登录，再修改密码");
 		return;
 	}
-	username=reversestr(username);
+	 username=reversestr(username);
 	var token = plus.storage.getItem("token");
 	var sessid = plus.storage.getItem("sessid");
 	console.log("发送验证码的手机号："+username);
 	$.post(url,{
-		"acctoken": token,
-		"sessid": sessid,
+//		"acctoken": token,
+//		"sessid": sessid,
 		"mobile":username
 	},function(result){
 		if(result.ret=='1'){
