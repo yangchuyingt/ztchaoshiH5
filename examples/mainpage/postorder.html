@@ -92,9 +92,11 @@
 			var tmid;
 			var loginpage;
 			var addressid;
+			var productsize;
 		mui.plusReady(function() {
 				var pagelast = plus.webview.currentWebview();
 				tmid = pagelast.tmid;
+				productsize=pagelast.productsize;
 				getproductmsg(tmid);
 				setTimeout(function() {
 					paymoneypage = mui.preload({
@@ -191,7 +193,7 @@
 					allPrice=getsingleprice();
 				}
 				//posterordermethod(id, sl, cm,addressid,sendm,shopmess,allPrice)
-				posterordermethod(tmid,$("#buy-number-show").text()," ",addressid,send_way,"",allPrice);
+				posterordermethod(tmid,$("#buy-number-show").text(),productsize,addressid,send_way,"",allPrice);
 				//showpaymoneypage(paymoneypage,allPrice);
 			});
 		</script>

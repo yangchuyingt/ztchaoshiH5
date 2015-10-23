@@ -31,6 +31,9 @@
 		<script>
 			var tmid;
 			var loginpage;
+			var selectedsize;
+			var haveloadsize;
+			var havesize;
 			//console.log("yyy");
 			mui.plusReady(function() {
 				var self = plus.webview.currentWebview();
@@ -61,19 +64,59 @@
 				},200);
 			});
 			document.querySelector('.buy-at-once').addEventListener('tap', function() {
-				gotoorderpostpage(tmid);
+				if(haveloadsize){
+					if(havesize){
+						if(selectedsize=='null'||selectedsize==undefined){
+							plus.nativeUI.alert('请选择您要购买产品的款式');
+						}else{
+							gotoorderpostpage(tmid);
+						}
+						
+					}else{
+						gotoorderpostpage(tmid);
+					}
+					
+				}else{
+					plus.nativeUI.alert("正在加载尺码信息，请稍后");
+				}
+				
 				//getproductmsg();
+				
 				
 			});
 			document.querySelector('.add-to-factory').addEventListener('tap', function() {
 				console.log("加入购物车：" + tmid);
-				addtoshopcart(tmid);
+				if(haveloadsize){
+					if(havesize){
+						if(selectedsize=='null'||selectedsize==undefined){
+							plus.nativeUI.alert('请选择您要购买产品的款式');
+						}else{
+							addtoshopcart(tmid);
+						}
+						
+					}else{
+						addtoshopcart(tmid);
+					}
+					
+				}else{
+					plus.nativeUI.alert("正在加载尺码信息，请稍后");
+				}
+				
+				
 			});
 			document.querySelector('.shopcart-img').addEventListener('tap',function(){
 				mui.back();
 				page=plus.webview.getLaunchWebview();
 				page.show();
 				mui.fire(page,'gotoshopcart',{});
+			});
+			window.addEventListener('postsize',function(event){
+				selectedsize=event.detail.productsize;
+				console.log('hh:'+selectedsize);
+			})
+			window.addEventListener('isloadsizemsg',function(event){
+				haveloadsize=event.detail.haveloadsize;
+				havesize=event.detail.havesize;
 			});
 		</script>
 	</body>
