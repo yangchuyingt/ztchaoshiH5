@@ -270,7 +270,15 @@
 	height: auto;
 	background-color: #007AFF;
 	list-style-type:none;
+	margin-right: -17px;
 }
 .margin-left{
 	margin-left: 15px;
+}
+.product-size{
+	width: auto;
+	height: auto;
+	border: 1px solid #9B9B9B;
+	border-radius: 3px;
+	padding-left: 11px;
 }
