@@ -10,8 +10,8 @@
 		<script src="../../js/jquery.js"></script>
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link href="../../css/productDetial.css" rel="stylesheet" />
-		<script type="text/javascript" src="../../js/sqlOpeate.js" ></script>
-		
+		<script type="text/javascript" src="../../js/sqlOpeate.js"></script>
+
 		<script type="text/javascript" charset="utf-8">
 			mui.init();
 		</script>
@@ -33,24 +33,36 @@
 				<img class="share-img" src="../../css/img/share_tm.png" />
 			</div>
 		</div>
-		<div id="product-name"class="product-name">【圣蓝】雅致蚕丝优质轻柔舒适空调被</div>
+		<div id="product-name" class="product-name">【圣蓝】雅致蚕丝优质轻柔舒适空调被</div>
 
-		<div class=" product-paramters2 mui-collapse mui-table-view-cell ">
-			<a class="a-height" href="#">
-				<div class="paramter-text-tu">查看：尺码分类</div>
-				<div class="paramter-img2"></div>
-			</a>
-			<ul class="mui-table-view  show-content">
-				<div id="product-size">粉红白皮</div>
-			</ul>
-
+		<div id="look-color-size" class="product-paramters margin-top">
+			<div class="paramter-left-img-tu photo-word-detail"></div>
+			<div class="paramter-text">查看：颜色尺码分类</div>
+			<div class="paramter-img"></div>
 		</div>
-		<div class="product-paramters margin-top">
+		<div class="show-content">
+			<!--<div class="product-size-unselect" >粉红白皮</div>
+				<div class="product-size-unselect" >粉红白皮</div>
+				<div class="product-size-unselect" >粉红白皮</div>
+				<div class="product-size-unselect" >粉红白皮</div>-->
+		</div>
+		<div id="photo-word-detial" class="product-paramters margin-top">
 			<div class="paramter-left-img-tu photo-word-detail"></div>
 			<div class="paramter-text">图文详情</div>
 			<div class="paramter-img"></div>
 		</div>
-		<div class=" product-paramters2 mui-collapse mui-table-view-cell ">
+		<div id='product-paramters' class="product-paramters ">
+			<div class="paramter-left-img-tu photo-product-paramter"></div>
+			<div class="paramter-text">产品参数</div>
+			<div class="paramter-img"></div>
+		</div>
+		<div class='productmsg'></div>
+		<div class="product-paramters ">
+			<div class="paramter-left-img-tu photo-product-evlute"></div>
+			<div class="paramter-text">产品评价</div>
+			<div class="paramter-img"></div>
+		</div>
+		<!--<div class=" product-paramters2 mui-collapse mui-table-view-cell ">
 			<a class="a-height" href="#">
 				<div class="paramter-left-img photo-product-paramter"></div>
 				<div class="paramter-text-tu">产品参数</div>
@@ -83,20 +95,85 @@
 				<div id="size-masage"></div>
 			</ul>
 
-		</div>
+		</div>-->
 
 		<script>
 			var tmid;
+			var sizeopenflag = true;
+			var selectsizeid = '-1' //选择的尺码id
+			var selectedelement;
+			var parentpage;
+			var havesize = true; //默认产品有尺寸信息
+			var haveloadsize = false; //默认产品没有加载尺寸信息
+			var paramterIsShow = false;
+			var photoWordDetialpage;
+			var productresult;
 			mui.plusReady(function() {
+				photoWordDetialpage = mui.preload({
+					url: 'phote-text-detial.html',
+					id: 'phote-text-detial',
+					show: {
+						aniShow: 'none'
+					}
+				});
 				var self = plus.webview.currentWebview();
 				tmid = self.tmid;
 				getproductchima(tmid);
 				getproductimg(tmid);
 				getaproductmsg(tmid);
 				//console.log("mui ready");
-				
+				parentpage = plus.webview.getWebviewById('productDetial');
 			});
-			
+			mui('.show-content').on("tap", '.product-size-unselect', function() {
+					var sizeid = this.getAttribute('value');
+					console.log("gg");
+					$(".show-content").find(this).removeClass('product-size-unselect');
+					$(".show-content").find(this).addClass('product-size');
+					selectsizeid = sizeid;
+					console.log('selectsizeid:' + selectsizeid);
+					mui.fire(parentpage, 'postsize', {
+						'productsize': selectsizeid
+					});
+					if (selectedelement == null || selectedelement == undefined || selectedelement == this) {
+						selectedelement = this;
+						return;
+					}
+					$(".show-content").find(selectedelement).addClass('product-size-unselect');
+					$(".show-content").find(selectedelement).removeClass('product-size');
+					selectedelement = this;
+				})
+				//			mui('.show-content').on("tap",'.product-size',function(){
+				//			var sizeid=this.getAttribute('value');
+				//			console.log("gg");
+				//			$(".show-content").find(this).addClass('product-size-unselect');
+				//			$(".show-content").find(this).removeClass('product-size');
+				//				
+				//			})
+			 document.querySelector('#look-color-size').addEventListener('tap', function() {
+				if (sizeopenflag) {
+					$(".show-content").css("display", 'none');
+					sizeopenflag = false;
+				} else {
+					$(".show-content").css("display", 'block');
+					sizeopenflag = true;
+				}
+			});
+			document.querySelector('#product-paramters').addEventListener('tap', function() {
+				if (paramterIsShow) {
+					$('.productmsg').css('display', 'none');
+					paramterIsShow = false;
+				} else {
+					$('.productmsg').css('display', 'block');
+					paramterIsShow = true;
+				}
+			});
+			document.querySelector('#photo-word-detial').addEventListener('tap', function() {
+				photoWordDetialpage.show();
+				var photoWordDetialSubPage = plus.webview.getWebviewById('photo-word-detial-sub');
+				mui.fire(photoWordDetialSubPage, 'sendhtml', {
+					"productmsg": productresult.data.content
+				});
+			});
 		</script>
 	</body>
 
