@@ -3,7 +3,7 @@
  *获取单个产品的图片信息，以及产品参数
  * id：产品的id
  * */
-function getproductimg(id) {
+function getproductimg(id,pic) {
 		var url = "http://app.teambuy.com.cn/apnc/m/temai/a/gettminfo";
 		console.log("tmid:"+id);
 		$.post(url, {
@@ -13,8 +13,11 @@ function getproductimg(id) {
 			if(result.ret=='1'){
 					console.log("结果："+result.data.photos);
 			var picturls = result.data.photos.split("||");
+			var pics=new Array(picturls.length+1);
+			pics=picturls;
+			pics[picturls.length]=pic;
 			//console.log(picturls.length);
-			setimgviews(picturls);
+			setimgviews(pics);
 			setproductparamters(result.data.param);
            $("#product-paramters").append(result.data.param);
           // console.log(JSON.stringify(result.data.param));
@@ -68,6 +71,7 @@ function getaproductmsg(tmid){
 	  console.log("product:"+JSON.stringify(result));
 	  saveproductmsg(result);
       showproductmsg(result);
+      getproductimg(tmid,result.data.picurl);
      
      
 },"json");
