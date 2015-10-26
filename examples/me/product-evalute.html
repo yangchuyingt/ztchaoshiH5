@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script type="text/javascript" src="../../js/mui.min.js"></script>
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/product-evalute.css" />
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</head>
+
+	<body class="body-bg">
+		<div class="me-all-header">
+			<div class="mui-action-back me-header-left">
+			</div>
+			<div class='me-header-title'>
+				评价
+			</div>
+			<div class="evalute-right-bar">提交评价</div>
+		</div>
+		<div class='product-msgs'>
+			<div class="order-product-img"></div>
+			<div class="right-text">
+				<div class="order-product-name">【中团数码】iPhone 原装数据线</div>
+				<div class='allprice-num'>
+					<div class='allprice'>总价：￥0</div>
+					<div class="allprice">数量：</div>
+				</div>
+				<div class="buy-time">购买时间：</div>
+			</div>
+		</div>
+		<div class="rating-bar-p">总体评价：
+			<div class="rating-bar-star-item img-select"></div>
+			<div class="rating-bar-star-item img-select"></div>
+			<div class="rating-bar-star-item img-select"></div>
+			<div class="rating-bar-star-item img-select"></div>
+			<div class="rating-bar-star-item img-select"></div>
+		</div>
+		<div class="divide-line"></div>
+		<div class='input-bg'>
+			<div class="mui-input-row" style="margin: 5px 10px;">
+				<textarea id="textarea" rows="3" placeholder="亲，商品还可以吗？物流还满意吗？"></textarea>
+			</div>
+		</div>
+	</body>
+<script>
+    var ordermsg; 
+	mui.plusReady(function(){
+		var page=plus.webview.currentWebview();
+		ordermsg=page.orderobj;
+		console.log("ordermsg:"+JSON.stringify(ordermsg));
+		showordermsg();
+	});
+</script>
+</html>

@@ -1,0 +1,120 @@
+.body-bg {
+	background-image: url(img/near_background.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+.me-all-header {
+	width: 100%;
+	height: 2.75em;
+	background-color: #F5F5F5;
+	position: relative;
+}
+.me-header-left {
+	width: 2.5em;
+	height: 2.5em;
+	margin-left: 10px;
+	background-image: url(img/header_back.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+.me-header-title {
+	position: absolute;
+	width: auto;
+	height: 100%;
+	left: 40%;
+	top: 3px;
+	line-height: 2.75em;
+	color: #D52722;
+}
+.evalute-right-bar{
+	position: absolute;
+	right: 0.8em;
+	top: 3px;
+	width: auto;
+	height: 100%;
+	line-height: 2.75em;
+	color: #D52722;
+}
+.product-msgs{
+	background-color: #fff;
+	width: 100%;
+	height: 6.25em;
+	padding-top: 0.625em;
+}
+.order-product-img{
+	width: 5em;
+	height: 5em;
+	background-color: #007AFF;
+	margin-left: 0.625em;
+	margin-right: 0.625em;
+	float: left;
+}
+.right-text{
+	width: 66%;
+	height: 100%;
+	float: right;
+	padding-right: 0.625em;
+	
+}
+.order-product-name{
+	width: 100%;
+	font-size:  0.8125em;
+	line-height: 1.25em;
+	height: 2.5em;
+	overflow: hidden;
+	
+}
+.allprice-num{
+	width: 100%;
+	height: 1.25em;
+	
+}
+.allprice{
+	width: 50%;
+	height: 100%;
+	font-size: 0.8125em;
+	color: #9B9B9B;
+	float: left;
+}
+.buy-time{
+	width: 100%;
+	height: 1.25em;
+	font-size: 0.8125em;
+	
+}
+.rating-bar-p{
+	width: 100%;
+	height: auto;
+	background-color: #fff;
+	margin-top: 0.625em;
+	font-size: 0.875em;
+	padding-left: 0.625em;
+	display: inline-block;
+	padding-top: 0.625em;
+	padding-bottom: 0.625em;
+	line-height: 1.25em;
+}
+.rating-bar-star-item{
+	width: 1.25em;
+	height: 1.25em;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	display: inline-block;
+}
+.img-select{
+	background-image: url(img/ratingbar_1.png);
+}
+.img-unselect{
+	background-image: url(img/ratingbar_0.png);
+}
+.divide-line{
+	width: 100%;
+	height: 2px;
+	background-color: #EAEAEA;
+}
+.input-bg{
+	width: 100%;
+	height: auto;
+	background-color: #fff;
+	padding-top: 0.625em;
+}

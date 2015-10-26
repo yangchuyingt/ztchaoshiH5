@@ -613,7 +613,7 @@ function onclickButton1(orderno, element) {
 			});
 			break;
 		case "goevalute": //去评价
-
+          gotoevalutePage(orderno);
 			break;
 		case "applySellAfter": //售后
 			console.log("申请售后" + element);
@@ -685,4 +685,24 @@ function ensurGetPackage(orderno, elements) {
 			mui.fire(mainpage, "refreshmyOrder", {});
 		}
 	}, "json");
+}
+function gotoevalutePage(orderno){
+	console.log(JSON.stringify(orderobj));
+	var smallorder = orderno.split(",");
+	var evlauteobj;
+	for (var i = 0; i < orderobj.cpmx.length; i++) {
+				//console.log("order1:" + orderobj.cpmx[i].ordnox + "order2:" + smallorder[1]);
+				if (orderobj.cpmx[i].ordnox == smallorder[1]) {
+					evlauteobj = orderobj.cpmx[i];
+					break;
+				}
+			}
+	mui.openWindow({
+				url: 'product-evalute.html',
+				id: 'product-evalute',
+				styles: {},
+				extras: {
+					"orderobj": evlauteobj,
+				},
+			});
 }
