@@ -64,9 +64,11 @@ function getaproductmsg(tmid){
 	var url="http://app.teambuy.com.cn/apnc/m/temai/a/getatemai";
 	$.post(url,{
 "tmid":tmid},function(result){
-	 // console.log(JSON.stringify(result));
+	  productresult=result;
+	  console.log("product:"+JSON.stringify(result));
 	  saveproductmsg(result);
-      showproductmsg(result);	
+      showproductmsg(result);
+     
      
 },"json");
 	
@@ -86,13 +88,8 @@ function getproductchima(tmid){
 			havesize=false;
 		}else if(result.ret=='1'){
 			handsizemsg(result.data);
-			
 			//$("#size-masage").append(result.data.content);
 		}
-		mui.fire(parentpage,'isloadsizemsg',{
-			'haveloadsize':haveloadsize,
-			"havesize":havesize
-		})
 	},"json")
 }
 /**
