@@ -11,7 +11,7 @@ function getproductimg(id) {
 		}, function(result) {
 			console.log("jj:"+JSON.stringify(result));
 			if(result.ret=='1'){
-				//	console.log("结果："+result.data.photos);
+					console.log("结果："+result.data.photos);
 			var picturls = result.data.photos.split("||");
 			//console.log(picturls.length);
 			setimgviews(picturls);

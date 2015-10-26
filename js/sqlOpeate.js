@@ -167,9 +167,9 @@ function saveproductmsg(result) {
 				data.title, data.tmdj, data.tmlb, data.tmurl, data.tmword, data.xh, data.zkl
 			]);
 		}, function() {
-			console.log("添加成功");
+			console.log("sqlopeateS"+"添加成功");
 		}, function(tx, error) {
-			console.log("error:" + error);
+			console.log("error:" + JSON.stringify(error));
 		});
 		return;
 	}
