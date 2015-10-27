@@ -8,6 +8,8 @@
 		<script type="text/javascript" src="../../js/mui.min.js"></script>
 		<link rel="stylesheet" href="../../css/mui.min.css" />
 		<link rel="stylesheet" href="../../css/product-evalute.css" />
+		<script type="text/javascript" src="../../js/productEvalute.js" ></script>
+		<script type="text/javascript" src="../../js/jquery.js" ></script>
 		<script type="text/javascript" charset="utf-8">
 			mui.init();
 		</script>
@@ -27,18 +29,18 @@
 			<div class="right-text">
 				<div class="order-product-name">【中团数码】iPhone 原装数据线</div>
 				<div class='allprice-num'>
-					<div class='allprice'>总价：￥0</div>
-					<div class="allprice">数量：</div>
+					<div id="allprice" class='allprice'>总价：￥0</div>
+					<div id="buy-number" class="allprice">数量：</div>
 				</div>
 				<div class="buy-time">购买时间：</div>
 			</div>
 		</div>
 		<div class="rating-bar-p">总体评价：
-			<div class="rating-bar-star-item img-select"></div>
-			<div class="rating-bar-star-item img-select"></div>
-			<div class="rating-bar-star-item img-select"></div>
-			<div class="rating-bar-star-item img-select"></div>
-			<div class="rating-bar-star-item img-select"></div>
+			<div value="0" class="rating-bar-star-item img-select"></div>
+			<div value="1" class="rating-bar-star-item img-select"></div>
+			<div value="2" class="rating-bar-star-item img-select"></div>
+			<div value="3" class="rating-bar-star-item img-select"></div>
+			<div value="4" class="rating-bar-star-item img-select"></div>
 		</div>
 		<div class="divide-line"></div>
 		<div class='input-bg'>
@@ -49,11 +51,37 @@
 	</body>
 <script>
     var ordermsg; 
+    var rate=4;
+    var bigorder;
+    var shopid;
 	mui.plusReady(function(){
 		var page=plus.webview.currentWebview();
 		ordermsg=page.orderobj;
+		bigorder=page.bigorder;
+		shopid=page.shopid;
 		console.log("ordermsg:"+JSON.stringify(ordermsg));
 		showordermsg();
+	});
+	mui('.rating-bar-p').on('tap','.rating-bar-star-item',function(){
+		 var value=this.getAttribute('value');
+		 value=parseInt(value);
+		 rate=value;
+		 var items=$('.rating-bar-star-item');
+		 items.addClass('img-unselect');
+		 items.removeClass('img-select');
+		 for(var i=0;i<=value;i++){
+		 	$('.rating-bar-p').find(items[i]).removeClass("img-unselect");
+		 	$('.rating-bar-p').find(items[i]).addClass('img-select');
+		 }
+		 
+	});
+	document.querySelector(".evalute-right-bar").addEventListener('tap',function(){
+		var msg=$('.evalute-right-bar').val();
+		if(msg==null||msg==undefined){
+			plus.nativeUI.alert("您还未填写评价内容");
+			return;
+		}
+		postmyevalute(msg);
 	});
 </script>
 </html>

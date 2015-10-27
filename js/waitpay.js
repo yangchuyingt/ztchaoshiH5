@@ -688,8 +688,10 @@ function ensurGetPackage(orderno, elements) {
 }
 function gotoevalutePage(orderno){
 	console.log(JSON.stringify(orderobj));
+	var shopid=orderobj.shopid;
 	var smallorder = orderno.split(",");
 	var evlauteobj;
+	console.log('allorder:'+orderobj)
 	for (var i = 0; i < orderobj.cpmx.length; i++) {
 				//console.log("order1:" + orderobj.cpmx[i].ordnox + "order2:" + smallorder[1]);
 				if (orderobj.cpmx[i].ordnox == smallorder[1]) {
@@ -703,6 +705,9 @@ function gotoevalutePage(orderno){
 				styles: {},
 				extras: {
 					"orderobj": evlauteobj,
+					"bigorder":smallorder[0],
+					"shopid":shopid
 				},
 			});
+			mui.back();
 }

@@ -45,6 +45,8 @@
 	width: 5em;
 	height: 5em;
 	background-color: #007AFF;
+	background-size: 100%;
+	background-repeat: no-repeat;
 	margin-left: 0.625em;
 	margin-right: 0.625em;
 	float: left;
